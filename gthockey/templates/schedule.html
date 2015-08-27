@@ -1,0 +1,7 @@
+{% include "header.html" %}
+<ul>
+    {% for game in games %}
+        <li>{{ game.date }} {{ game.time }} vs {{ game.opponent.school_name }} at {{ game.location.rink_name }}</li>
+    {% endfor %}
+</ul>
+{% include "footer.html" %}
