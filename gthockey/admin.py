@@ -9,6 +9,11 @@ class PlayerAdmin(admin.ModelAdmin):
 
 class GameAdmin(admin.ModelAdmin):
     list_display = ['date', 'time', 'opponent']
+    fieldsets = [
+        ('Date/Time', {'fields': ['date', 'time']}),
+        ('Team', {'fields': ['opponent']}),
+        ('Location', {'fields': ['venue', 'location']}),
+    ]
 
 
 class TeamAdmin(admin.ModelAdmin):

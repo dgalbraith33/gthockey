@@ -30,7 +30,8 @@ class Game(models.Model):
     time = models.TimeField(null=True,
                             blank=True)
     opponent = models.ForeignKey('Team',
-                                 null=True)
+                                 null=True,
+                                 blank=True)
 
     HOME = 'H'
     AWAY = 'A'
@@ -44,10 +45,14 @@ class Game(models.Model):
                              choices=VENUE_CHOICES,
                              default=HOME)
     location = models.ForeignKey('Rink',
-                                 null=True)
+                                 null=True,
+                                 blank=True)
+
+    class Meta:
+        ordering = ['-date', '-time']
 
     def __str__(self):
-        return "vs " + self.opponent
+        return "vs " + str(self.opponent)
 
 
 class Team(models.Model):
@@ -56,6 +61,9 @@ class Team(models.Model):
                                    blank=True)
     web_url = models.CharField(max_length=100,
                                blank=True)
+
+    class Meta:
+        ordering = ['school_name']
 
     def __str__(self):
         return self.school_name
