@@ -1,6 +1,6 @@
 # Georgia Tech Hockey Website
 
-This repository holds the code for the Georgia Tech club hockey website that can be found at gthockey.com
+This repository holds the code for the Georgia Tech club hockey website that can be found [here.](http://www.gthockey.com)
 
 Currently, it is in beta and not running in production.
 
