@@ -3,3 +3,4 @@ db.sqlite3
 virtenv
 __pycache__
 *.pyc
+gtsite/local_settings.py
