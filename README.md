@@ -23,16 +23,18 @@ virtualenv -p python3 virtenv
 source virtenv/bin/activate
 ```
 
-Install the requirements with pip
+Install the postgres dev library:
+```
+sudo apt-get install libpq-dev
+```
+
+Install the rest of the requirements with pip
 
 ```
 pip install -r requirements.txt
 ```
 
-Install the postgres dev library:
-```
-sudo apt-get install libpq-dev
-```
+
 
 and configure local_settings.py like so:
 
