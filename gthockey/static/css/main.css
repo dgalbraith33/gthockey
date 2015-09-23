@@ -2,10 +2,10 @@ body {
     background-image: url("http://www.gthockey.com/wp-content/uploads/2014/08/civiccenterhockey-1080p-min.jpg");
 }
 
-table.main {
+table.bg, tr.bg, td.bg {
 	padding: 0px;
 	border-width: 0px;
-	background-color: "white";
+	background-color: white;
 	align-self: center;
 	width: 80%;
 	height: 100%;
