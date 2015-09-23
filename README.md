@@ -39,12 +39,12 @@ and configure local_settings.py like so:
 ```
 DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': '********',
             'USER': '********',
             'PASSWORD': '*********',
-            'HOST': '******',                      # Empty for localhost through domain sockets or           '127.0.0.1' for localhost through TCP.
-            'PORT': '',                      # Set to empty string for default.
+            'HOST': '******',
+            'PORT': '',
         }
     }
 
