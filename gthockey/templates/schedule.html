@@ -1,10 +1,16 @@
 {% include "header.html" %}
 <body>
 <h1 align="center"><img src="http://www.gthockey.com/wp-content/uploads/2014/08/GTHockey-871.png"></h1>
+<table class="bg">
+<tr class="bg">
+<td class="bg">
 <ul>
     {% for game in games %}
         <li>{{ game.date }} {{ game.time }} vs {{ game.opponent.school_name }} at {{ game.location.rink_name }}</li>
     {% endfor %}
 </ul>
+</td>
+</tr>
+</table>
 </body>
 {% include "footer.html" %}
