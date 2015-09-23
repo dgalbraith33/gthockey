@@ -1,4 +1,0 @@
-{% include "header.html" %}
-    Homepage
-    Welcome to GT Hockey!
-{% include "footer.html" %}
