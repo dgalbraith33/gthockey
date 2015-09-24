@@ -6,7 +6,7 @@ table.bg, tr.bg, td.bg {
 	padding: 0px;
 	border-width: 0px;
 	background-color: white;
-	text-align: center;
+	text-align: left;
 	width: 100%;
 	height: 100%;
 }
