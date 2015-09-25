@@ -12,8 +12,9 @@ body {
 }
 .navBar {
 	text-align: center;
-	background-color: white;
+	background-color: #C59353;
 	padding: 2px;
+	color: black;
 }
 
 
