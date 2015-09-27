@@ -17,6 +17,7 @@
 <ul>
     {% for game in games %}
         <li>{{ game.date }} {{ game.time }} vs {{ game.opponent.school_name }} at {{ game.location.rink_name }}</li>
+        <br>
     {% endfor %}
 </ul>
 	</td>
@@ -33,4 +34,4 @@
 </tr>
 </table>
 </body>
-{% include "footer.html" %}
+{% include "footer.html" %}./
