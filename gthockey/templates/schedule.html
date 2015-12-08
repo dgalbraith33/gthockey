@@ -1,37 +1,22 @@
 {% include "header.html" %}
-<body>
-<h1 align="center"><img src="http://www.gthockey.com/wp-content/uploads/2014/08/GTHockey-871.png"></h1>
-<table width="100%">
-<tr class="navBar">
-	<td class="navBar">Home</td>
-	<td class="navBar"><a href="schedule/">Schedule</a></td>
-	<td class="navBar">Team</td>
-	<td class="navBar">About</td>
-	<td class="navBar">Alumni</td>
-	<td class="navBar">Prospective Players</td>
-	<td class="navBar">Contact Us</td>
-	<td class="navBar">Sponsors</td>
-</tr>
-<tr class="bg">
-    <td class="bg" colspan="8">
-<ul>
+<table class="schedule">
+    <thead>
+    <tr>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Opponent</th>
+        <th>Location</th>
+    </tr>
+    </thead>
+    <tbody>
     {% for game in games %}
-        <li>{{ game.date }} {{ game.time }} vs {{ game.opponent.school_name }} at {{ game.location.rink_name }}</li>
-        <br>
+        <tr class="game-{{ game.get_venue }}">
+            <td>{{ game.date }}</td>
+            <td>{{ game.time }}</td>
+            <td>{{ game.opponent.school_name }}</td>
+            <td>{{ game.location.rink_name }}</td>
+        </tr>
     {% endfor %}
-</ul>
-	</td>
-</tr>
-<tr class="navBar">
-	<td class="navBar">Home</td>
-	<td class="navBar">Schedule</td>
-	<td class="navBar">Team</td>
-	<td class="navBar">About</td>
-	<td class="navBar">Alumni</td>
-	<td class="navBar">Prospective Players</td>
-	<td class="navBar">Contact Us</td>
-	<td class="navBar">Sponsors</td>
-</tr>
+    </tbody>
 </table>
-</body>
 {% include "footer.html" %}./

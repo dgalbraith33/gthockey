@@ -1,0 +1,22 @@
+{% include "header.html" %}
+<table class="roster">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Position</th>
+        <th>Name</th>
+        <th>Hometown</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for player in players %}
+        <tr>
+            <td>{{ player.number }}</td>
+            <td>{{ player.position }}</td>
+            <td>{{ player }}</td>
+            <td>{{ player.hometown }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% include "footer.html" %}./

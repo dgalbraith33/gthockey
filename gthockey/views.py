@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.template import RequestContext, loader
 from django.http import HttpResponse
 
-from .models import Game
+from .models import Game, Player
 
 
 def index(request):
@@ -19,3 +19,10 @@ def schedule(request):
     })
     return HttpResponse(template.render(context))
 
+def roster(request):
+    players = Player.objects.order_by('number')
+    template = loader.get_template("roster.html")
+    context = RequestContext(request, {
+        "players": players,
+    })
+    return HttpResponse(template.render(context))

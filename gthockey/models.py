@@ -51,6 +51,14 @@ class Game(models.Model):
     class Meta:
         ordering = ['-date', '-time']
 
+    def get_venue(self):
+        vdict = {
+            "H": "home",
+            "A": "away",
+            "T": "tournament"
+        }
+        return vdict[self.venue]
+
     def __str__(self):
         return "vs " + str(self.opponent)
 
