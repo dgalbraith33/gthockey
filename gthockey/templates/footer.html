@@ -21,20 +21,10 @@
                             Puck Drop 6:00PM
                         </div>
                         <div class="countdown-time">
-                            <span>40<small>days</small>
-                            </span>
-                            <span>
-                                40
-                                <small>hours</small>
-                            </span>
-                            <span>
-                                40
-                                <small>mins</small>
-                            </span>
-                            <span>
-                                40
-                                <small>secs</small>
-                            </span>
+                            <span id="countdown-days">0<small>days</small></span>
+                            <span id="countdown-hours">0<small>hours</small></span>
+                            <span id="countdown-mins">0<small>mins</small></span>
+                            <span id="countdown-secs">0<small>secs</small></span>
                         </div>
                     </div>
                 </div>
@@ -77,6 +67,7 @@
     </script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="{% static "js/main.js" %}"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </body>
