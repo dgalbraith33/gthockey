@@ -7,6 +7,13 @@ body {
     font-family: Verdana, sans-serif;
 }
 
+.header-img  img {
+    max-width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 #content {
     background-color: #fff;
     margin-top: 10px;
@@ -134,24 +141,41 @@ body {
 .schedule, .roster {
     width: 100%;
     border-collapse: collapse;
+    text-align: center;
 }
 
-.schedule tr td {
-    padding-left: 10px;
-    padding-top: 3px;
-    padding-bottom: 3px;
+.schedule-item {
+    padding: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 8px;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    box-shadow: 2px 2px 2px #555;
+    background-color: #efefef;
+    border-radius: 2px;
+    font-size: 1.2em;
 }
+
+.schedule-date, .schedule-time, .schedule-school, .schedule-rink {
+    float: left;
+}
+
+.schedule-rink {
+    font-style: italic;
+}
+
+.schedule-school {
+    font-weight: bold;
+}
+
 
 .game-home {
-    background-color: #b08d45 !important;
-    color: #eee;
+    background-color: #dbc9a4;
+    color: #black;
 }
 
-.game-away {
-    background-color: white !important;
-}
-
-.game-tournament {
-    background-color: #777 !important;
-    color: #999;
+.game-away, .game-tournament {
+    background-color: #efefef;
+    color: #black;
 }

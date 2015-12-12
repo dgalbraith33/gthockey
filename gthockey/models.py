@@ -59,6 +59,18 @@ class Game(models.Model):
         }
         return vdict[self.venue]
 
+    def get_time(self):
+        if self.time:
+            return self.time
+        else:
+            return "TBD"
+
+    def get_rink_name(self):
+        if self.location:
+            return self.location.rink_name
+        else:
+            return "TBD"
+
     def __str__(self):
         return "vs " + str(self.opponent)
 
