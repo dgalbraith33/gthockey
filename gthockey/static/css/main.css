@@ -137,11 +137,14 @@ body {
 }
 
 .schedule tr td {
-    color: #383838;
+    padding-left: 10px;
+    padding-top: 3px;
+    padding-bottom: 3px;
 }
 
 .game-home {
     background-color: #b08d45 !important;
+    color: #eee;
 }
 
 .game-away {
@@ -149,5 +152,6 @@ body {
 }
 
 .game-tournament {
-    background-color: darkgray !important;
+    background-color: #777 !important;
+    color: #999;
 }
