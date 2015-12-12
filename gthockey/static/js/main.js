@@ -25,7 +25,7 @@ function getTime(date) {
 }
 
 function prepCountdown() {
-    $.ajax({url: "http://localhost:8000/api/nextgame"}).done(function(data){
+    $.ajax({url: "http://test.gthockey.com/api/nextgame"}).done(function(data){
         var date = new Date(data.date + " " + data.time);
         $(".countdown-date").text(getDate(date));
         $(".countdown-team").text(data.team);
