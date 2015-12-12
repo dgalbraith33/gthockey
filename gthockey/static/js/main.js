@@ -1,6 +1,38 @@
+function getDate(date) {
+    var months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"]
+    var post = "th";
+    if (date.getDate() == 1) {
+        post = "st";
+    }
+
+    if (date.getDate() == 2) {
+        post = "nd";
+    }
+    return months[date.getMonth()] + " " + date.getDate() + post;
+}
+
+function getTime(date) {
+    var hours = date.getHours() % 12;
+    if (hours == 0) {
+        hours = 12;
+    }
+    var mins = date.getMinutes();
+    if (mins < 10) {
+        mins = "0" + mins;
+    }
+    var am = date.getHours() < 12 ? "am" : "pm";
+    return hours + ":" + mins + " " + am;
+}
+
 function prepCountdown() {
     $.ajax({url: "http://127.0.0.1:8000/api/nextgame"}).done(function(data){
-        updateCountdown(new Date(data.date + " " + data.time))
+        var date = new Date(data.date + " " + data.time);
+        $(".countdown-date").text(getDate(date));
+        $(".countdown-team").text(data.team);
+        $(".countdown-location").text(data.location);
+        $(".countdown-starttime").text("Puck Drop " + getTime(date))
+
+        updateCountdown(date)
     })
 }
 

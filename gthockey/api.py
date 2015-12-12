@@ -12,4 +12,10 @@ def nextgame(request):
         ind += 1
 
     game = games[ind]
-    return JsonResponse({"date": game.date, "time": game.time})
+    resp = {
+        "date": game.date,
+        "time": game.time,
+        "team": game.opponent.school_name,
+        "location": game.location.rink_name
+    }
+    return JsonResponse(resp)
