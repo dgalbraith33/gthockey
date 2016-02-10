@@ -1,22 +1,15 @@
 {% include "header.html" %}
-<table class="roster">
-    <thead>
-    <tr>
-        <th>#</th>
-        <th>Position</th>
-        <th>Name</th>
-        <th>Hometown</th>
-    </tr>
-    </thead>
-    <tbody>
+<div class="roster">
     {% for player in players %}
-        <tr>
-            <td>{{ player.number }}</td>
-            <td>{{ player.position }}</td>
-            <td>{{ player }}</td>
-            <td>{{ player.hometown }}</td>
-        </tr>
+    <div class="card">
+        <div class="col-lg-2">{{ player.number }}</div>
+        <div class="col-lg-2">{{ player.position }}</div>
+        <div class="col-lg-4">{{ player }}</div>
+        <div class="col-lg-4">{{ player.hometown }}</div>
+        <div class="clear"></div>
+    </div>
     {% endfor %}
-    </tbody>
-</table>
+    <div class="clear"></div>
+</div>
+
 {% include "footer.html" %}./
