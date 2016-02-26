@@ -12,7 +12,7 @@
 
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
 </head>
 <body>
@@ -39,18 +39,10 @@
             <li {% if not request.path %}class="active"{% endif %}><a href="/">Home <span class="sr-only">(current)</span></a></li>
             <li {% if request.path == "/schedule/" %}class="active"{% endif %}><a href="/schedule">Schedule</a></li>
             <li {% if request.path == "/roster/" %}class="active"{% endif %}><a href="/roster">Roster</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
+            <li {% if request.path == "/board/" %}class="active"{% endif %}><a href="/board">Student Board</a></li>
+            <li {% if request.path == "/coaches/" %}class="active"{% endif %}><a href="/coaches">Coaches</a></li>
+            <li {% if request.path == "/prospect/" %}class="active"{% endif %}><a href="/prospect">Prospective Players</a></li>
+            <li {% if request.path == "/ccontacct/" %}class="active"{% endif %}><a href="/contact">Contact</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->

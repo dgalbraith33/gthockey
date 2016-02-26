@@ -61,7 +61,7 @@ class Game(models.Model):
 
     def get_time(self):
         if self.time:
-            return self.time
+            return self.time.strftime("%I:%M %p").strip("0")
         else:
             return "TBD"
 

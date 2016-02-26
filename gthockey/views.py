@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 from django.template import RequestContext, loader
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotFound
 
 from .models import Game, Player
 
@@ -19,6 +19,7 @@ def schedule(request):
     })
     return HttpResponse(template.render(context))
 
+
 def roster(request):
     players = Player.objects.order_by('number')
     template = loader.get_template("roster.html")
@@ -26,3 +27,19 @@ def roster(request):
         "players": players,
     })
     return HttpResponse(template.render(context))
+
+
+def board(request):
+    return HttpResponseNotFound("Board")
+
+
+def coaches(request):
+    return HttpResponseNotFound("Coaches")
+
+
+def prospect(request):
+    return HttpResponseNotFound("Prospect")
+
+
+def contact(request):
+    return HttpResponseNotFound("Contact")
