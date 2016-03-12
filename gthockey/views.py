@@ -40,6 +40,7 @@ def coaches(request):
 
 
 def prospect(request):
+    success = False
     if request.method == 'POST':
         form = ProspectForm(request.POST)
         if form.is_valid():
@@ -49,13 +50,14 @@ def prospect(request):
             recipients = [e.email for e in Email.objects.all()]
 
             send_mail(subject, message, sender, recipients)
-            return HttpResponseRedirect('/') # TODO create landing page
+            success = True
     else:
         form = ProspectForm()
 
-    return render(request, 'prospect.html', {"form": form})
+    return render(request, 'prospect.html', {"form": form, "success": success})
 
 def contact(request):
+    success = False
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
@@ -66,8 +68,8 @@ def contact(request):
             recipients = [e.email for e in Email.objects.all()]
 
             send_mail(subject, message, sender, recipients)
-            return HttpResponseRedirect('/') # TODO create landing page
+            success = True
     else:
         form = ContactForm()
 
-    return render(request, 'contact.html', {"form": form})
+    return render(request, 'contact.html', {"form": form, "success": success})
