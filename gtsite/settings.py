@@ -97,6 +97,9 @@ CORS_ORIGIN_ALLOW_ALL = True
 CORS_URLS_REGEX = r'^/api/.*$'
 CORS_ALLOW_HEADERS = ('GET')
 
+# Specify SMTP server in local settings
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 try:
     from .local_settings import *
 except ImportError as e:

@@ -1,9 +1,11 @@
 from django.shortcuts import render
 
 from django.template import RequestContext, loader
-from django.http import HttpResponse, HttpResponseNotFound
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.core.mail import send_mail
 
-from .models import Game, Player
+from .models import Game, Player, Email
+from .forms import ProspectForm
 
 
 def index(request):
@@ -38,8 +40,25 @@ def coaches(request):
 
 
 def prospect(request):
-    return HttpResponseNotFound("Prospect")
+    if request.method == 'POST':
+        form = ProspectForm(request.POST)
+        print(form.is_bound)
+        if form.is_valid():
+            subject = form.get_subject()
+            sender = "georgiatechhockey@gmail.com"
+            message = form.get_message()
+            recipients = [e.email for e in Email.objects.all()]
 
+            print("valid")
+
+            send_mail(subject, message, sender, recipients)
+            return HttpResponseRedirect('/') # TODO create landing page
+
+    else:
+        form = ProspectForm()
+
+    print("a")
+    return render(request, 'prospect.html', {"form": form})
 
 def contact(request):
     return HttpResponseNotFound("Contact")

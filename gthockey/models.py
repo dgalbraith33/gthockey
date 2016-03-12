@@ -96,3 +96,9 @@ class Rink(models.Model):
 
     def __str__(self):
         return self.rink_name
+
+
+# Simple model to hold emails in the database rather than commit them to prevent them from being scraped
+class Email(models.Model):
+    name = models.CharField(max_length=50)
+    email = models.EmailField(max_length=100)
