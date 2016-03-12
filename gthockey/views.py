@@ -5,7 +5,7 @@ from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.core.mail import send_mail
 
 from .models import Game, Player, Email
-from .forms import ProspectForm
+from .forms import ProspectForm, ContactForm
 
 
 def index(request):
@@ -44,7 +44,7 @@ def prospect(request):
         form = ProspectForm(request.POST)
         if form.is_valid():
             subject = form.get_subject()
-            sender = "georgiatechhockey@gmail.com"
+            sender = "GT Hockey"
             message = form.get_message()
             recipients = [e.email for e in Email.objects.all()]
 
@@ -56,4 +56,18 @@ def prospect(request):
     return render(request, 'prospect.html', {"form": form})
 
 def contact(request):
-    return HttpResponseNotFound("Contact")
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            subject = form.get_subject()
+            sender = "GT Hockey"
+            print(sender)
+            message = form.get_message()
+            recipients = [e.email for e in Email.objects.all()]
+
+            send_mail(subject, message, sender, recipients)
+            return HttpResponseRedirect('/') # TODO create landing page
+    else:
+        form = ContactForm()
+
+    return render(request, 'contact.html', {"form": form})

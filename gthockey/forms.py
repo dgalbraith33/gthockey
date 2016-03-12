@@ -31,7 +31,7 @@ class ProspectForm(forms.Form):
     status = forms.ChoiceField(choices=STATUS_CHOICES,label="Status")
     experience = forms.CharField(required=False, label="Experience Level")
     position = forms.ChoiceField(choices=POSITION_CHOICES, label="Position")
-    comments = forms.CharField(required=False, widget=forms.Textarea)
+    comments = forms.CharField(required=False, widget=forms.Textarea, label="Comments")
 
     @staticmethod
     def get_subject():
@@ -48,4 +48,25 @@ class ProspectForm(forms.Form):
         message += "Experience: %s\n" % self.cleaned_data['experience']
         message += "Position: %s\n" % ProspectForm.POSITION_CHOICES[int(self.cleaned_data['position'])][1]
         message += "Comments: %s\n" % self.cleaned_data['comments']
+        return message
+
+
+class ContactForm(forms.Form):
+
+    SUBJECT = "GT Hockey Contact Form"
+
+    name = forms.CharField(required=True, label="Full Name")
+    email = forms.CharField(required=True, label="Email")
+    subject = forms.CharField(required=True, label="Subject")
+    message = forms.CharField(required=True, widget=forms.Textarea, label="Message")
+
+    def get_subject(self):
+        return self.SUBJECT
+
+    def get_message(self):
+        message = ""
+        message += "From: %s\n" % self.cleaned_data['name']
+        message += "Email: %s\n" % self.cleaned_data['email']
+        message += "Subject: %s\n" % self.cleaned_data['subject']
+        message += "\n%s" % self.cleaned_data['message']
         return message
