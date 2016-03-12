@@ -42,22 +42,17 @@ def coaches(request):
 def prospect(request):
     if request.method == 'POST':
         form = ProspectForm(request.POST)
-        print(form.is_bound)
         if form.is_valid():
             subject = form.get_subject()
             sender = "georgiatechhockey@gmail.com"
             message = form.get_message()
             recipients = [e.email for e in Email.objects.all()]
 
-            print("valid")
-
             send_mail(subject, message, sender, recipients)
             return HttpResponseRedirect('/') # TODO create landing page
-
     else:
         form = ProspectForm()
 
-    print("a")
     return render(request, 'prospect.html', {"form": form})
 
 def contact(request):
