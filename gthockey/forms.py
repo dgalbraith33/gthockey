@@ -60,7 +60,7 @@ class ContactForm(forms.Form):
 
     SUBJECT = "GT Hockey Contact Form"
 
-    name = forms.CharField(required=True, label="Full Name")
+    name = forms.CharField(required=True, label="Name")
     email = forms.CharField(required=True, label="Email")
     subject = forms.CharField(required=True, label="Subject")
     message = forms.CharField(required=True, widget=forms.Textarea, label="Message")
