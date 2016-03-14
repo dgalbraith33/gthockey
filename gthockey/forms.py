@@ -23,6 +23,7 @@ class ProspectForm(forms.Form):
         (3, 'Goalie')
     ]
 
+
     name = forms.CharField(required=True, label="Full Name")
     email = forms.CharField(required=True, label="Email")
     phone = forms.CharField(required=False, label="Phone Number")
@@ -32,6 +33,10 @@ class ProspectForm(forms.Form):
     experience = forms.CharField(required=False, label="Experience Level")
     position = forms.ChoiceField(choices=POSITION_CHOICES, label="Position")
     comments = forms.CharField(required=False, widget=forms.Textarea, label="Comments")
+
+    def __init__(self, *args, **kwargs):
+        super(ProspectForm, self).__init__(*args, **kwargs)
+        self.label_suffix = ''
 
     @staticmethod
     def get_subject():
@@ -59,6 +64,10 @@ class ContactForm(forms.Form):
     email = forms.CharField(required=True, label="Email")
     subject = forms.CharField(required=True, label="Subject")
     message = forms.CharField(required=True, widget=forms.Textarea, label="Message")
+
+    def __init__(self, *args, **kwargs):
+        super(ContactForm, self).__init__(*args, **kwargs)
+        self.label_suffix = ''
 
     def get_subject(self):
         return self.SUBJECT

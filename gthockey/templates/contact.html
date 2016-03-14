@@ -6,7 +6,13 @@
 
 <form>
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Submit" formmethod="post"/>
+    <table class="form">
+        {{ form.as_table }}
+        <tr>
+            <td colspan="2">
+                <input class="submit" type="submit" value="Submit" formmethod="post"/>
+            </td>
+        </tr>
+    </table>
 </form>
 {% include "footer.html" %}
