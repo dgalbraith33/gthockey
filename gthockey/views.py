@@ -51,6 +51,7 @@ def prospect(request):
 
             send_mail(subject, message, sender, recipients)
             success = True
+            form = ProspectForm()
     else:
         form = ProspectForm()
 
@@ -69,6 +70,7 @@ def contact(request):
 
             send_mail(subject, message, sender, recipients)
             success = True
+            form = ContactForm()
     else:
         form = ContactForm()
 
