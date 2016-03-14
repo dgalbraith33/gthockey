@@ -15,20 +15,12 @@ def index(request):
 
 def schedule(request):
     games = Game.objects.order_by('date')
-    template = loader.get_template("schedule.html")
-    context = RequestContext(request, {
-        'games': games,
-    })
-    return HttpResponse(template.render(context))
+    return render(request, 'schedule.html', {'games': games})
 
 
 def roster(request):
     players = Player.objects.order_by('number')
-    template = loader.get_template("roster.html")
-    context = RequestContext(request, {
-        "players": players,
-    })
-    return HttpResponse(template.render(context))
+    return render(request, 'roster.html', {'players': players})
 
 
 def board(request):
@@ -56,6 +48,7 @@ def prospect(request):
         form = ProspectForm()
 
     return render(request, 'prospect.html', {"form": form, "success": success})
+
 
 def contact(request):
     success = False
