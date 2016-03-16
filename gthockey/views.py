@@ -68,3 +68,7 @@ def contact(request):
         form = ContactForm()
 
     return render(request, 'contact.html', {"form": form, "success": success})
+
+def news(request, id):
+    story = NewsStory.objects.get(id=id)
+    return render(request, 'news.html', {'story': story})

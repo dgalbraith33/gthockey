@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^board/', views.board, name="board"),
     url(r'^coaches/', views.coaches, name="coaches"),
     url(r'^prospect/', views.prospect, name="prospect"),
-    url(r'^contact', views.contact, name="contact"),
-    url(r'^api/nextgame', api.nextgame, name="nextgame")
+    url(r'^contact/', views.contact, name="contact"),
+    url(r'^api/nextgame/', api.nextgame, name="nextgame"),
+    url(r'^news/(?P<id>[0-9]+)/', views.news, name="newsstory")
 ]

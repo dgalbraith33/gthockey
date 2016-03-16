@@ -120,6 +120,9 @@ class NewsStory(models.Model):
 
         return formatted
 
+    def get_absolute_url(self):
+        return "/news/%i/" % self.id
+
 
 # Simple model to hold emails in the database rather than commit them to prevent them from being scraped
 class Email(models.Model):
