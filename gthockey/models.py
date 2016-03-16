@@ -82,7 +82,7 @@ class Team(models.Model):
     web_url = models.CharField(max_length=100,
                                blank=True)
 
-    logo = models.ImageField(upload_to='teamlogos', blank=True)
+    logo = models.ImageField(upload_to='teamlogos', blank=True )
 
     class Meta:
         ordering = ['school_name']
@@ -98,6 +98,27 @@ class Rink(models.Model):
 
     def __str__(self):
         return self.rink_name
+
+
+class NewsStory(models.Model):
+    title = models.CharField(max_length=100)
+    date = models.DateField()
+    image = models.ImageField(upload_to="news")
+    content = models.CharField(max_length=10000, blank=True)
+
+    def has_content(self):
+        return self.content is not None \
+               and len(self.content) > 0
+
+    def content_p(self):
+        formatted = ""
+        paras = self.content.split("\n")
+        for line in paras:
+            formatted += "<p>"
+            formatted += line
+            formatted += "</p"
+
+        return formatted
 
 
 # Simple model to hold emails in the database rather than commit them to prevent them from being scraped

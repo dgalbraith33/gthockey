@@ -1,6 +1,7 @@
 from django.contrib import admin
+from django import forms
 
-from .models import Player, Game, Team, Rink, Email
+from .models import Player, Game, Team, Rink, Email, NewsStory
 
 
 class PlayerAdmin(admin.ModelAdmin):
@@ -23,11 +24,22 @@ class TeamAdmin(admin.ModelAdmin):
     ]
 
 
+class NewsAdmin(admin.ModelAdmin):
+    list_display = ['title']
+
+    def formfield_for_dbfield(self, db_field, **kwargs):
+        formfield = super(NewsAdmin, self).formfield_for_dbfield(db_field, **kwargs)
+        if db_field.name == 'content':
+            formfield.widget = forms.Textarea(attrs=formfield.widget.attrs)
+        return formfield
+
+
 class RinkAdmin(admin.ModelAdmin):
     pass
 
 admin.site.register(Player, PlayerAdmin)
 admin.site.register(Game, GameAdmin)
 admin.site.register(Team, TeamAdmin)
+admin.site.register(NewsStory, NewsAdmin)
 admin.site.register(Rink, RinkAdmin)
 admin.site.register(Email)

@@ -12,6 +12,14 @@
     </ol>
 
     <div class="carousel-inner" role="listbox">
+        {% for story in stories %}
+            <div class="item">
+                <img src="http://test.gthockey.com{{ story.image.url }}" />
+                <div class="carousel-caption">
+                    {{ story.title }}
+                </div>
+            </div>
+        {% endfor %}
         <div class="item active">
             <img src="http://placekitten.com/g/800/400" />
             <div class="carousel-caption">

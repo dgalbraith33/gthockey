@@ -4,13 +4,13 @@ from django.template import RequestContext, loader
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.core.mail import send_mail
 
-from .models import Game, Player, Email
+from .models import Game, Player, Email, NewsStory
 from .forms import ProspectForm, ContactForm
 
 
 def index(request):
-    template = loader.get_template("index.html")
-    return HttpResponse(template.render())
+    stories = NewsStory.objects.order_by("-date")[:3]
+    return render(request, 'index.html', {'stories': stories})
 
 
 def schedule(request):
