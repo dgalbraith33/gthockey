@@ -93,6 +93,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+MEDIA_ROOT = '/media/'
+
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_URLS_REGEX = r'^/api/.*$'
 CORS_ALLOW_HEADERS = ('GET')

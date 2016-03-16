@@ -82,6 +82,8 @@ class Team(models.Model):
     web_url = models.CharField(max_length=100,
                                blank=True)
 
+    logo = models.ImageField(upload_to='teamlogos', blank=True)
+
     class Meta:
         ordering = ['school_name']
 

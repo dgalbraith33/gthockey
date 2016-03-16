@@ -19,7 +19,7 @@ class GameAdmin(admin.ModelAdmin):
 class TeamAdmin(admin.ModelAdmin):
     fieldsets = [
         ('Team Name', {'fields': ['school_name', 'mascot_name']}),
-        ('Other Information', {'fields': ['web_url']})
+        ('Other Information', {'fields': ['web_url', 'logo']})
     ]
 
 
