@@ -16,6 +16,7 @@ def nextgame(request):
         "date": game.date,
         "time": game.time,
         "team": game.opponent.school_name,
-        "location": game.location.rink_name
+        "location": game.location.rink_name,
+        "logo": game.opponent.logo.url
     }
     return JsonResponse(resp)
