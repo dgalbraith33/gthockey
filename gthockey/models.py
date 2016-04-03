@@ -116,7 +116,7 @@ class NewsStory(models.Model):
         for line in paras:
             formatted += "<p>"
             formatted += line
-            formatted += "</p"
+            formatted += "</p>"
 
         return formatted
 

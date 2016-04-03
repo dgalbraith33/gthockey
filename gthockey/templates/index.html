@@ -6,9 +6,10 @@
 </div> -->
 <div id="news-slider" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
-        <li data-target="#news-slider" data-slide-to="0" class="active"></li>
-        <li data-target="#news-slider" data-slide-to="1"></li>
-        <li data-target="#news-slider" data-slide-to="2"></li>
+        {% for story in stories %}
+        <li data-target="#news-slider" data-slide-to="{% cycle "0" "1" "2" "3" "4" %}"
+                {% cycle 'class="active">' "" "" "" "" %} </li>
+        {% endfor %}
     </ol>
 
     <div class="carousel-inner" role="listbox">
@@ -20,7 +21,7 @@
                         {% if story.has_content %}
                         <a href="{{ story.get_absolute_url }}">
                         {% endif %}
-                        {{ story.title }}
+                            {{ story.title }}
                         {% if story.has_content %}
                         </a>
                         {% endif %}
@@ -28,26 +29,6 @@
                 </div>
             </div>
         {% endfor %}
-        <div class="item">
-            <img src="http://placekitten.com/g/800/400" />
-            <div class="carousel-caption">
-                <h3>Weekend Update #1</h3>
-            </div>
-        </div>
-
-        <div class="item">
-            <img src="http://placehold.it/800x400" />
-            <div class="carousel-caption">
-                <h3>Weekend Update #2</h3>
-            </div>
-        </div>
-
-        <div class="item">
-            <img src="http://baconmockup.com/800/400" />
-            <div class="carousel-caption">
-                <h3>Buy Savannah Tickets!</h3>
-            </div>
-        </div>
     </div>
     <a class="left carousel-control" href="#news-slider" role="button" data-slide="prev">
       <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -58,19 +39,5 @@
       <span class="sr-only">Next</span>
     </a>
 </div>
-
-<tr class="bg">
-	<td class = "bg" colspan="8">The Georgia Tech Hockey Program was established in 1973 and is currently registered within Division III of the American Collegiate Hockey Association (ACHA). Since 1991, the ACHA has been the central governing body for all non-varsity hockey in the United States, and has roughly 450 teams registered in its three men’s divisions. Each season, the ACHA sponsors national championship tournaments in each of its divisions, and past tournament locations have included such diverse sites as Washington, DC, New York, Los Angeles, Chicago, and Atlanta.
-
-<br><br><img align = "left" src="http://www.gthockey.com/wp-content/uploads/2014/09/GTHockey-Buzz-Image.jpg" width="15%" height= "35%">Since 1999, when the ACHA offered the national championship for Division III, The Georgia Tech Hockey team has competed in 7 of the national championship tournaments and has placed 2nd once and has placed 3rd twice. Our goal each and every year is to compete for a national championship.
-
-<br><br>The GT Hockey team is recruiting serious student-athletes that want a premier education from one of the top 10 universities in the nation, as well as continuing their hockey playing career with a hockey program that has over 35 years of hockey tradition. Both graduate and undergraduate students at Georgia Tech are eligible to play for the Georgia Tech Hockey program provided they meet the ACHA minimum academic credit and GPA requirements.
-
-<br><br>The GT Hockey team plays roughly 24 games a season against only the most competitive opponents within ACHA Division II and Division III. We compete against fellow rivals of the ACC, such as Clemson, Florida State, Virginia Tech and Duke. Also scheduled are teams from neighboring states of Tennessee, South Carolina, and Florida, as well as interstate foe, University of Georgia.
-
-<br><br>The GT Hockey team skates out of The ICE in Cumming Ga. The ICE is the Yellow Jackets home rink for games and it is conveniently located 45 minutes north of campus and downtown Atlanta.
-
-<br><br>As a program, we were very privileged to be the first non-varsity ice hockey team to be featured in the prestigious American Hockey Magazine, which normally features NCAA and NHL teams and players. We were also mentioned in Herb Brooks’ book, “Inside Story of a Hockey Mastermind” where he talks about the future of college hockey. We have our own pep band that plays at our home games and when we travel, we work closely with many GT Alumni clubs throughout the country.</td>
-</tr>
 
 {% include "footer.html" %}

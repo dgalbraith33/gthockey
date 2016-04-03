@@ -1,5 +1,12 @@
 {% include "header.html" %}
 
-<h3>{{ story.title }}</h3>
+<div class="story" style="background-image:url(http://test.gthockey.com{{ story.image.url }});background-repeat: no-repeat;">
+    <div class="story-content col-lg-8 col-sm-12 col-md-12">
+        <div class="story-title">{{ story.title }}</div>
+        <div class="story-date">{{ story.date }}</div>
+        <hr />
+        {{ story.content_p | safe }}
+    </div>
+</div>
 
 {% include "footer.html" %}
