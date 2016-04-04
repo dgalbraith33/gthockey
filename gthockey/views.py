@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
 
 from django.template import RequestContext, loader
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
@@ -69,6 +69,14 @@ def contact(request):
 
     return render(request, 'contact.html', {"form": form, "success": success})
 
+
 def news(request, id):
     story = NewsStory.objects.get(id=id)
     return render(request, 'news.html', {'story': story})
+
+
+def handler404(request):
+    response = render_to_response('404.html', {},
+                                  context_instance=RequestContext(request))
+    response.status_code = 404
+    return response
