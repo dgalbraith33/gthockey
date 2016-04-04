@@ -420,3 +420,26 @@ form, .form {
     width:100%;
     margin-bottom: 10px;
 }
+
+.coach-card {
+    clear: left;
+    width: 90%;
+    margin: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    background-color: #fafafa;
+    overflow: auto;
+    padding: 10px;
+}
+
+.coach-card img {
+    float: left;
+    padding-right: 10px;
+}
+
+.coach-name {
+    font-size: 1.5em;
+}
+
+.coach-bio {
+    margin-left: 90px;
+}

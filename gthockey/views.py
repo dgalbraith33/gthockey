@@ -28,7 +28,7 @@ def board(request):
 
 
 def coaches(request):
-    return HttpResponseNotFound("Coaches")
+    return render(request, 'coaches.html')
 
 
 def prospect(request):
