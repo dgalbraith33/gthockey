@@ -24,7 +24,7 @@ def roster(request):
 
 
 def board(request):
-    return HttpResponseNotFound("Board")
+    return render(request, 'board.html')
 
 
 def coaches(request):
