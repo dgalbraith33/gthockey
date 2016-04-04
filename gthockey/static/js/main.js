@@ -25,7 +25,7 @@ function getTime(date) {
 }
 
 function prepCountdown() {
-    $.ajax({url: "http://test.gthockey.com/api/nextgame"}).done(function(data){
+    $.ajax({url: "//test.gthockey.com/api/nextgame"}).done(function(data){
         if (data.exists) {
             // Brittle Firefox fix to parse date
             data.date = data.date.replace("-", "/");
