@@ -5,18 +5,20 @@ from datetime import date
 from .models import Game
 
 def nextgame(request):
-    games = Game.objects.order_by('date')
-    ind = 0
-    d = date.today()
-    while ind < len(games) and games[ind].date < d:
-        ind += 1
+    games = Game.objects.order_by('date').filter(date__gte=date.today())
 
-    game = games[ind]
     resp = {
-        "date": game.date,
-        "time": game.time,
-        "team": game.opponent.school_name,
-        "location": game.location.rink_name,
-        "logo": game.opponent.logo.url
+        "exists": False
     }
+
+    if len(games) > 0:
+        game = games[0]
+        resp = {
+            "exists": True,
+            "date": game.date,
+            "time": game.time,
+            "team": game.opponent.school_name,
+            "location": game.location.rink_name,
+            "logo": game.opponent.logo.url
+        }
     return JsonResponse(resp)

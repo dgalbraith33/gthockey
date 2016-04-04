@@ -73,6 +73,10 @@ body {
     clear: both;
 }
 
+.hidden {
+    display: none;
+}
+
 /* Sidebar classes */
 
 .countdown {
@@ -153,6 +157,12 @@ body {
     float: left;
     width: 100%;
     margin-top: -5px;
+}
+
+#countdown-alt {
+    font-size: 1.2em;
+    color: #b08d45;
+    padding: 10px;
 }
 
 /* Main News Carousel */

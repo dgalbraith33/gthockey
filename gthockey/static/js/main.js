@@ -26,20 +26,26 @@ function getTime(date) {
 
 function prepCountdown() {
     $.ajax({url: "http://test.gthockey.com/api/nextgame"}).done(function(data){
-        // Brittle Firefox fix to parse date
-        data.date = data.date.replace("-","/");
-        data.date = data.date.replace("-","/");
+        if (data.exists) {
+            // Brittle Firefox fix to parse date
+            data.date = data.date.replace("-", "/");
+            data.date = data.date.replace("-", "/");
 
-        var date = new Date(data.date + " " + data.time);
-        $(".countdown-date").text(getDate(date));
-        $(".countdown-team").text(data.team);
-        console.log(data.logo);
-        $(".countdown-logo").attr("src", "http://test.gthockey.com" + data.logo); // TODO Make this so it wont break
-        $(".countdown-location").text("@ " + data.location);
-        $(".countdown-starttime").text("Puck Drop " + getTime(date))
+            var date = new Date(data.date + " " + data.time);
+            $(".countdown-date").text(getDate(date));
+            $(".countdown-team").text(data.team);
+            console.log(data.logo);
+            $(".countdown-logo").attr("src", "http://test.gthockey.com" + data.logo); // TODO Make this so it wont break
+            $(".countdown-location").text("@ " + data.location);
+            $(".countdown-starttime").text("Puck Drop " + getTime(date))
 
-        updateCountdown(date)
-    })
+            updateCountdown(date)
+        } else {
+            displayAltMessage();
+        }
+    }).fail(function(data) {
+        displayAltMessage();
+    });
 }
 
 function diffDays(d1, d2) {
@@ -76,22 +82,7 @@ function updateCountdown(date) {
 $(document).ready(prepCountdown);
 
 
-/*
-$(document).ready(function updateCountdown(cnt) {
-    var secsText = "<small>secs</small>";
-    console.log("A");
-    console.log(cnt);
-    if(typeof cnt != "number") {
-        cnt = 0;
-    }
-    console.log(cnt);
-    var secs = $("#countdown-secs");
-    var tmp = secs.find("small");
-    secs.text(cnt);
-    secs.append(tmp);
-    cnt++;
-    console.log("B");
-    window.setTimeout(updateCountdown, 1000, cnt);
-    console.log("C");
-})
-*/
+function displayAltMessage() {
+    $("#countdown-primary").addClass("hidden");
+    $("#countdown-alt").removeClass("hidden");s
+}
