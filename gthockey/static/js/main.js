@@ -84,5 +84,5 @@ $(document).ready(prepCountdown);
 
 function displayAltMessage() {
     $("#countdown-primary").addClass("hidden");
-    $("#countdown-alt").removeClass("hidden");s
+    $("#countdown-alt").removeClass("hidden");
 }
