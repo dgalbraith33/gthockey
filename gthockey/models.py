@@ -1,5 +1,5 @@
 from django.db import models
-
+from datetime import date
 
 class Player(models.Model):
     first_name = models.CharField(max_length=25)
@@ -26,13 +26,6 @@ class Player(models.Model):
 
 
 class Game(models.Model):
-    date = models.DateField()
-    time = models.TimeField(null=True,
-                            blank=True)
-    opponent = models.ForeignKey('Team',
-                                 null=True,
-                                 blank=True)
-
     HOME = 'H'
     AWAY = 'A'
     TOURNAMENT = 'T'
@@ -41,12 +34,38 @@ class Game(models.Model):
         (AWAY, 'Away'),
         (TOURNAMENT, 'Tournament'),
     )
+
+    UPCOMING = "Upcoming"
+
+
+    date = models.DateField()
+    time = models.TimeField(null=True,
+                            blank=True)
+    opponent = models.ForeignKey('Team',
+                                 null=True,
+                                 blank=True)
+
     venue = models.CharField(max_length=1,
                              choices=VENUE_CHOICES,
                              default=HOME)
     location = models.ForeignKey('Rink',
                                  null=True,
                                  blank=True)
+
+    score_gt_first = models.IntegerField(null=True, blank=True)
+    score_gt_second = models.IntegerField(null=True, blank=True)
+    score_gt_third = models.IntegerField(null=True, blank=True)
+    score_gt_ot = models.IntegerField(null=True, blank=True)
+    score_gt_final = models.IntegerField(null=True, blank=True)
+    score_opp_first = models.IntegerField(null=True, blank=True)
+    score_opp_second = models.IntegerField(null=True, blank=True)
+    score_opp_third = models.IntegerField(null=True, blank=True)
+    score_opp_ot = models.IntegerField(null=True, blank=True)
+    score_opp_final = models.IntegerField(null=True, blank=True)
+
+    period = models.IntegerField(default=0)
+    minutes = models.IntegerField(default=0)
+    seconds = models.IntegerField(default=0)
 
     class Meta:
         ordering = ['-date', '-time']
@@ -71,6 +90,40 @@ class Game(models.Model):
         else:
             return "TBD"
 
+    def get_result(self):
+        if self.period == 0 and self.date >= date.today():
+            return "Upcoming"
+
+        if self.score_gt_final > self.score_opp_final:
+            return "Win"
+
+        if self.score_opp_ot > self.score_gt_ot:
+            return "Overtime Loss"
+
+        if self.score_opp_final > self.score_gt_final:
+            return "Loss"
+
+        if self.score_opp_final == self.score_gt_final and self.period == 5:
+            return "Tie"
+
+        if self.period == 6:
+            return "Cancelled"
+
+        return "Not Yet Reported"
+
+    def get_short_result(self):
+        trans = {
+            "Upcoming": "U",
+            "Win": "W",
+            "Overtime Loss": "OTL",
+            "Loss": "L",
+            "Tie": "T",
+            "Cancelled": "C"
+        }
+
+        return trans[self.get_result()]
+
+
     def __str__(self):
         return "vs " + str(self.opponent)
 
@@ -82,7 +135,7 @@ class Team(models.Model):
     web_url = models.CharField(max_length=100,
                                blank=True)
 
-    logo = models.ImageField(upload_to='teamlogos', blank=True )
+    logo = models.ImageField(upload_to='teamlogos', blank=True)
 
     class Meta:
         ordering = ['school_name']

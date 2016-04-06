@@ -14,6 +14,9 @@ class GameAdmin(admin.ModelAdmin):
         ('Date/Time', {'fields': ['date', 'time']}),
         ('Team', {'fields': ['opponent']}),
         ('Location', {'fields': ['venue', 'location']}),
+        ('Time', {'fields': ['period', 'minutes', 'seconds']}),
+        ('Score GT', {'fields': ['score_gt_first','score_gt_second','score_gt_third','score_gt_ot','score_gt_final']}),
+        ('Score Opp', {'fields': ['score_opp_first','score_opp_second','score_opp_third','score_opp_ot','score_opp_final']})
     ]
 
 
