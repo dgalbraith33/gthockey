@@ -19,6 +19,10 @@ def nextgame(request):
             "time": game.time,
             "team": game.opponent.school_name,
             "location": game.location.rink_name,
-            "logo": game.opponent.logo.url
+            "logo": "//placehold.it/80x80"
         }
+
+        if game.opponent.logo is not None:
+            resp["logo"] = game.opponent.logo.url
+
     return JsonResponse(resp)
