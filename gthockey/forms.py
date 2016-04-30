@@ -1,7 +1,14 @@
 from django import forms
 from captcha.fields import ReCaptchaField
 
-class ProspectForm(forms.Form):
+
+class MyForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        super(MyForm, self).__init__(*args, **kwargs)
+        self.label_suffix = ''
+
+
+class ProspectForm(MyForm):
 
     SUBJECT = "Prospective Player"
 
@@ -33,11 +40,7 @@ class ProspectForm(forms.Form):
     experience = forms.CharField(required=False, label="Experience Level")
     position = forms.ChoiceField(choices=POSITION_CHOICES, label="Position")
     comments = forms.CharField(required=False, widget=forms.Textarea, label="Comments")
-    captcha = ReCaptchaField()
-
-    def __init__(self, *args, **kwargs):
-        super(ProspectForm, self).__init__(*args, **kwargs)
-        self.label_suffix = ''
+    captcha = ReCaptchaField(label="")
 
     @staticmethod
     def get_subject():
@@ -57,7 +60,7 @@ class ProspectForm(forms.Form):
         return message
 
 
-class ContactForm(forms.Form):
+class ContactForm(MyForm):
 
     SUBJECT = "GT Hockey Contact Form"
 
@@ -65,11 +68,7 @@ class ContactForm(forms.Form):
     email = forms.CharField(required=True, label="Email")
     subject = forms.CharField(required=True, label="Subject")
     message = forms.CharField(required=True, widget=forms.Textarea, label="Message")
-    captcha = ReCaptchaField()
-
-    def __init__(self, *args, **kwargs):
-        super(ContactForm, self).__init__(*args, **kwargs)
-        self.label_suffix = ''
+    captcha = ReCaptchaField(label="")
 
     def get_subject(self):
         return self.SUBJECT
@@ -82,7 +81,9 @@ class ContactForm(forms.Form):
         message += "\n%s" % self.cleaned_data['message']
         return message
 
-class EmailListForm(forms.Form):
+
+class EmailListForm(MyForm):
+
     RELATIONS = (('1', "I'm a GT Hockey Alum"),
                  ('2', "I'm a regular GT Alum"),
                  ('3', "I'm related to GT Hockey player"),
@@ -91,4 +92,4 @@ class EmailListForm(forms.Form):
     name = forms.CharField(required=True, label="Name")
     email = forms.EmailField(required=True, label="Email")
     relation = forms.ChoiceField(widget=forms.RadioSelect, choices=RELATIONS, label="")
-    captcha = ReCaptchaField()
+    captcha = ReCaptchaField(label="")
