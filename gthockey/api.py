@@ -19,7 +19,7 @@ def nextgame(request):
             "time": game.time,
             "team": game.opponent.school_name,
             "location": game.location.rink_name,
-            "logo": "//placehold.it/80x80"
+            "logo": "",
         }
 
         if len(game.opponent.logo.name) is not 0:
