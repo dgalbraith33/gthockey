@@ -1,0 +1,23 @@
+{% include "header.html" %}
+
+<div class="col-lg-6">
+    <h4 class="page-title">Fans and Alumni</h4>
+    Want to stay up to date with the latest in Georgia Tech Hockey News? Fill out the form below and we'll add you to our
+    mailing list. We hate spam too, at the most you'll receive a few emails a month from us during the season.
+    <form>
+        {% csrf_token %}
+        <table class="form">
+            {{ email.as_table }}
+            <tr>
+                <td colspan="2">
+                    <input class="submit" type="submit" value="Submit" formmethod="post"/>
+                </td>
+            </tr>
+        </table>
+    </form>
+    {% if email_success %}
+        <div class="form-success">Thanks for reaching out. We will get back to you shortly!</div>
+    {% endif %}
+</div>
+
+{% include "footer.html" %}

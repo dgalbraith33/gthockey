@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'gthockey',
     'corsheaders',
+    'captcha',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -100,6 +101,10 @@ CORS_ALLOW_HEADERS = ('GET')
 
 # Specify SMTP server in local settings
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Recaptcha Settings
+NOCAPTCHA = True
+RECAPTCHA_USE_SSL = True
 
 try:
     from .local_settings import *

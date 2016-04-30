@@ -5,7 +5,7 @@ from datetime import date
 from django.core.mail import send_mail
 
 from .models import Game, Player, Email, NewsStory, Season
-from .forms import ProspectForm, ContactForm
+from .forms import ProspectForm, ContactForm, EmailListForm
 
 
 def index(request):
@@ -74,6 +74,25 @@ def contact(request):
 def news(request, id):
     story = NewsStory.objects.get(id=id)
     return render(request, 'news.html', {'story': story})
+
+def involvement(request):
+    success = False
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            subject = form.get_subject()
+            sender = "GT Hockey"
+            print(sender)
+            message = form.get_message()
+            recipients = [e.email for e in Email.objects.all()]
+
+            send_mail(subject, message, sender, recipients)
+            success = True
+            form = EmailListForm()
+    else:
+        form = EmailListForm()
+
+    return render(request, 'involvement.html', {"email": form, "email_success": success})
 
 
 def handler404(request):

@@ -311,6 +311,7 @@ form, .form {
 
 .form {
     width:90%;
+    margin-top:10px;
 }
 
 .form tr th, .form tr td {
@@ -348,6 +349,23 @@ form, .form {
     box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
     outline: none;
     border: 1px solid #b08d45;
+}
+
+.form tr td ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+.form tr td ul li label {
+    width: 100%;
+    font-size: 0.8em;
+    font-style: italic;
+    font-weight: normal;
+}
+
+.form tr td input[type="radio"] {
+    width: fit-content;
+    margin-right: 5px;
 }
 
 .form tr td input.submit {
