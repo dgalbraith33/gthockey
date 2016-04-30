@@ -4,7 +4,7 @@ from django.template import RequestContext
 from datetime import date
 from django.core.mail import send_mail
 
-from .models import Game, Player, Email, NewsStory
+from .models import Game, Player, Email, NewsStory, Season
 from .forms import ProspectForm, ContactForm
 
 
@@ -15,7 +15,7 @@ def index(request):
 
 
 def schedule(request):
-    games = Game.objects.order_by('date')
+    games = Game.objects.order_by('date').filter(season=Season.get_current())
     return render(request, 'schedule.html', {'games': games})
 
 

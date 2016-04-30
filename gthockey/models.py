@@ -37,7 +37,6 @@ class Game(models.Model):
 
     UPCOMING = "Upcoming"
 
-
     date = models.DateField()
     time = models.TimeField(null=True,
                             blank=True)
@@ -51,6 +50,9 @@ class Game(models.Model):
     location = models.ForeignKey('Rink',
                                  null=True,
                                  blank=True)
+    season = models.ForeignKey('Season',
+                               null=True,
+                               blank=True)
 
     score_gt_first = models.IntegerField(null=True, blank=True)
     score_gt_second = models.IntegerField(null=True, blank=True)
@@ -186,3 +188,15 @@ class NewsStory(models.Model):
 class Email(models.Model):
     name = models.CharField(max_length=50)
     email = models.EmailField(max_length=100)
+
+
+class Season(models.Model):
+    name = models.CharField(max_length=20)
+    year = models.IntegerField()
+
+    def __str__(self):
+        return self.name
+
+    @staticmethod
+    def get_current():
+        return Season.objects.order_by("-year")[0]

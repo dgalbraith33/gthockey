@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django import forms
 
-from .models import Player, Game, Team, Rink, Email, NewsStory
+from .models import Player, Game, Team, Rink, Email, NewsStory, Season
 
 
 class PlayerAdmin(admin.ModelAdmin):
@@ -9,9 +9,10 @@ class PlayerAdmin(admin.ModelAdmin):
 
 
 class GameAdmin(admin.ModelAdmin):
-    list_display = ['date', 'time', 'opponent']
+    list_display = ['date', 'time', 'opponent', 'season']
+    list_filter = ['season']
     fieldsets = [
-        ('Date/Time', {'fields': ['date', 'time']}),
+        ('Date/Time', {'fields': ['date', 'time', 'season']}),
         ('Team', {'fields': ['opponent']}),
         ('Location', {'fields': ['venue', 'location']}),
         ('Time', {'fields': ['period', 'minutes', 'seconds']}),
@@ -46,3 +47,4 @@ admin.site.register(Team, TeamAdmin)
 admin.site.register(NewsStory, NewsAdmin)
 admin.site.register(Rink, RinkAdmin)
 admin.site.register(Email)
+admin.site.register(Season)
