@@ -22,7 +22,7 @@ def nextgame(request):
             "logo": "//placehold.it/80x80"
         }
 
-        if game.opponent.logo is not None:
+        if len(game.opponent.logo.name) is not 0:
             resp["logo"] = game.opponent.logo.url
 
     return JsonResponse(resp)
