@@ -40,4 +40,18 @@
     </a>
 </div>
 
+<div class="page-item col-lg-6 col-md-12 col-sm12">
+    <div class="sub-title">
+        Recent Games
+    </div>
+    {% for game in recent %}
+        <div class="recent">
+            <div class="col-lg-2 recent-result ">{{ game.get_short_result }}</div>
+            <div class="recent-score col-lg-2">{{ game.score_gt_final }}-{{ game.score_opp_final }}</div>
+            <div class="recent-date col-lg-2" style="text-align:right">{{ game.date | date:'n/j' }}</div>
+            <div class="recent-opponent col-lg-6">vs {{ game.opponent }}</div>
+        </div>
+    {% endfor %}
+</div>
+
 {% include "footer.html" %}

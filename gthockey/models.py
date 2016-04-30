@@ -94,10 +94,14 @@ class Game(models.Model):
         if self.period == 0 and self.date >= date.today():
             return "Upcoming"
 
+        if self.score_gt_final is None or self.score_opp_final is None:
+            return "Not Yet Reported"
+
         if self.score_gt_final > self.score_opp_final:
             return "Win"
 
-        if self.score_opp_ot > self.score_gt_ot:
+        if self.score_opp_ot is not None and self.score_gt_ot is not None and \
+                        self.score_opp_ot > self.score_gt_ot:
             return "Overtime Loss"
 
         if self.score_opp_final > self.score_gt_final:
@@ -115,10 +119,11 @@ class Game(models.Model):
         trans = {
             "Upcoming": "U",
             "Win": "W",
-            "Overtime Loss": "OTL",
+            "Overtime Loss": "OT",
             "Loss": "L",
             "Tie": "T",
-            "Cancelled": "C"
+            "Cancelled": "C",
+            "Not Yet Reported": "N"
         }
 
         return trans[self.get_result()]

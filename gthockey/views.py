@@ -1,7 +1,7 @@
 from django.shortcuts import render, render_to_response
 
-from django.template import RequestContext, loader
-from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.template import RequestContext
+from datetime import date
 from django.core.mail import send_mail
 
 from .models import Game, Player, Email, NewsStory
@@ -10,7 +10,8 @@ from .forms import ProspectForm, ContactForm
 
 def index(request):
     stories = NewsStory.objects.order_by("-date")[:3]
-    return render(request, 'index.html', {'stories': stories})
+    recent_games = Game.objects.order_by("-date").filter(date__lt=date.today())[:4]
+    return render(request, 'index.html', {'stories': stories, 'recent': recent_games})
 
 
 def schedule(request):
