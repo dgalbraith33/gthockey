@@ -25,7 +25,7 @@ function getTime(date) {
 }
 
 function prepCountdown() {
-    $.ajax({url: "//test.gthockey.com/api/nextgame"}).done(function(data){
+    $.ajax({url: "//gthockey.com/api/nextgame"}).done(function(data){
         if (data.exists) {
             // Brittle Firefox fix to parse date
             data.date = data.date.replace("-", "/");
@@ -36,7 +36,7 @@ function prepCountdown() {
             $(".countdown-team").text(data.team);
             console.log(data.logo);
             if (data.logo.length > 0) {
-                $(".countdown-logo").attr("src", "//test.gthockey.com" + data.logo); // TODO Make this so it wont break
+                $(".countdown-logo").attr("src", "//gthockey.com" + data.logo); // TODO Make this so it wont break
             }
             $(".countdown-location").text("@ " + data.location);
             $(".countdown-starttime").text("Puck Drop " + getTime(date))
