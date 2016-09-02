@@ -78,12 +78,11 @@ def news(request, id):
 def involvement(request):
     success = False
     if request.method == 'POST':
-        form = ContactForm(request.POST)
+        form = EmailListForm(request.POST)
         if form.is_valid():
-            subject = form.get_subject()
+            subject = "Email List Sign Up"
             sender = "GT Hockey"
-            print(sender)
-            message = form.get_message()
+            message = "Name: %s\n Email: %s\n Relation: %s\n" % (form.cleaned_data['name'], form.cleaned_data['email'], form.cleaned_data['relation'])
             recipients = [e.email for e in Email.objects.all()]
 
             send_mail(subject, message, sender, recipients)
