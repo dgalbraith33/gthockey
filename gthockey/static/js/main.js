@@ -36,7 +36,7 @@ function prepCountdown() {
             $(".countdown-team").text(data.team);
             console.log(data.logo);
             if (data.logo.length > 0) {
-                $(".countdown-logo").attr("src", "//gthockey.com" + data.logo); // TODO Make this so it wont break
+                $(".countdown-logo").attr("src", data.logo); // TODO Make this so it wont break
             }
             $(".countdown-location").text("@ " + data.location);
             $(".countdown-starttime").text("Puck Drop " + getTime(date))
