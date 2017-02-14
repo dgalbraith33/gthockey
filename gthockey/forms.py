@@ -97,7 +97,7 @@ class EmailListForm(MyForm):
 
     @staticmethod
     def get_subject():
-        return ProspectForm.SUBJECT
+        return EmailListForm.SUBJECT
 
     def get_message(self):
         message = ""
@@ -117,7 +117,7 @@ class GolfForm(MyForm):
 
     @staticmethod
     def get_subject():
-        return ProspectForm.SUBJECT
+        return GolfForm.SUBJECT
 
     def get_message(self):
         message = ""
