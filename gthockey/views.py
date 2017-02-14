@@ -106,7 +106,7 @@ def golf(request):
 
             send_mail(subject, message, sender, recipients)
             success = True
-            form = EmailListForm()
+            form = GolfForm()
     else:
         form = GolfForm()
 
