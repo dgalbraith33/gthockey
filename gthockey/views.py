@@ -5,7 +5,7 @@ from datetime import date
 from django.core.mail import send_mail
 
 from .models import Game, Player, Email, NewsStory, Season
-from .forms import ProspectForm, ContactForm, EmailListForm
+from .forms import ProspectForm, ContactForm, EmailListForm, GolfForm
 
 
 def index(request):
@@ -58,7 +58,6 @@ def contact(request):
         if form.is_valid():
             subject = form.get_subject()
             sender = "GT Hockey"
-            print(sender)
             message = form.get_message()
             recipients = [e.email for e in Email.objects.all()]
 
@@ -75,14 +74,15 @@ def news(request, id):
     story = NewsStory.objects.get(id=id)
     return render(request, 'news.html', {'story': story})
 
+
 def involvement(request):
     success = False
     if request.method == 'POST':
         form = EmailListForm(request.POST)
         if form.is_valid():
-            subject = "Email List Sign Up"
+            subject = form.get_subject()
             sender = "GT Hockey"
-            message = "Name: %s\n Email: %s\n Relation: %s\n" % (form.cleaned_data['name'], form.cleaned_data['email'], form.cleaned_data['relation'])
+            message = form.get_message()
             recipients = [e.email for e in Email.objects.all()]
 
             send_mail(subject, message, sender, recipients)
@@ -92,6 +92,25 @@ def involvement(request):
         form = EmailListForm()
 
     return render(request, 'involvement.html', {"email": form, "email_success": success})
+
+
+def golf(request):
+    success = False
+    if request.method == 'POST':
+        form = GolfForm(request.POST)
+        if form.is_valid():
+            subject = form.get_subject()
+            sender = "GT Hockey"
+            message = form.get_message()
+            recipients = [e.email for e in Email.objects.all()]
+
+            send_mail(subject, message, sender, recipients)
+            success = True
+            form = EmailListForm()
+    else:
+        form = GolfForm()
+
+    return render(request, 'golf.html', {"form": form, "success": success})
 
 
 def handler404(request):

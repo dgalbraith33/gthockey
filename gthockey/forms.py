@@ -30,7 +30,6 @@ class ProspectForm(MyForm):
         (3, 'Goalie')
     ]
 
-
     name = forms.CharField(required=True, label="Full Name")
     email = forms.CharField(required=True, label="Email")
     phone = forms.CharField(required=False, label="Phone Number")
@@ -84,6 +83,8 @@ class ContactForm(MyForm):
 
 class EmailListForm(MyForm):
 
+    SUBJECT = "Email List Sign Up"
+
     RELATIONS = (('1', "I'm a GT Hockey Alum"),
                  ('2', "I'm a regular GT Alum"),
                  ('3', "I'm related to GT Hockey player"),
@@ -93,3 +94,34 @@ class EmailListForm(MyForm):
     email = forms.EmailField(required=True, label="Email")
     relation = forms.ChoiceField(widget=forms.RadioSelect, choices=RELATIONS, label="")
     captcha = ReCaptchaField(label="")
+
+    @staticmethod
+    def get_subject():
+        return ProspectForm.SUBJECT
+
+    def get_message(self):
+        message = ""
+        message += "Name: %s\n" % self.cleaned_data['name']
+        message += "Email: %s\n" % self.cleaned_data['email']
+        message += "Relation: %s\n" % ProspectForm.RELATIONS[int(self.cleaned_data['relation'])][1]
+        return message
+
+
+class GolfForm(MyForm):
+
+    SUBJECT = "Golf Sign Up"
+
+    name = forms.CharField(required=True, label="Name")
+    email = forms.EmailField(required=True, label="Email")
+    foursome = forms.CharField(required=False, widget=forms.Textarea, label="Foursome Members")
+
+    @staticmethod
+    def get_subject():
+        return ProspectForm.SUBJECT
+
+    def get_message(self):
+        message = ""
+        message += "Name: %s\n" % self.cleaned_data['name']
+        message += "Email: %s\n" % self.cleaned_data['email']
+        message += "Foursome:\n %s\n" % self.cleaned_data['foursome']
+        return message
