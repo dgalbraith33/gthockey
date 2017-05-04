@@ -12,5 +12,5 @@ urlpatterns = [
     url(r'^api/nextgame/', api.nextgame, name="nextgame"),
     url(r'^news/(?P<id>[0-9]+)/', views.news, name="newsstory"),
     url(r'^involvement/', views.involvement, name="involvement"),
-    url(r'^golf/', views.golf, name="golf")
+    # url(r'^golf/', views.golf, name="golf")
 ]

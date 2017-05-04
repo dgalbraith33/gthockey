@@ -14,67 +14,28 @@
 </div>
 
 <div class="row">
+    {% for board_member in board_members %}
     <div class="board-card col-lg-5 col-md-12 col-md-12">
-        <img src="//placehold.it/80x100" style="float:left" />
-        <p class="board-title">President</p>
-        <p class="board-name">Drew Galbraith</p>
-        <p class="board-email"><a href="mailto:dgalbraith33@gmail.com">dgalbraith33@gmail.com</a></p>
-        <p class="board-desc">Responsible for the continued operation and success of the hockey club. Most external inquires can be directed to the President.</p>
+        <img src="//gthockey.com{{ board_member.image.url}}" style="float:left" />
+        <p class="board-title">{{board_member.position}}</p>
+        <p class="board-name">{{board_member.first_name}} {{board_member.last_name}}</p>
+        <p class="board-email"><a href="mailto:{{board_member.email}}">{{board_member.email}}</a></p>
+        <p class="board-desc">{{board_member.description}}</p>
     </div>
-    <div class="board-card col-lg-5 col-md-12 col-md-12">
-        <img src="//placehold.it/80x100" style="float:left" />
-        <p class="board-title">Vice President</p>
-        <p class="board-name">Joey Schutz</p>
-        <p class="board-email"><a href="mailto:joey0schutz@gmail.com">joey0schutz@gmail.com</a></p>
-        <p class="board-desc">Responsible for supporting the President and ensuring club trips and events run smoothly and efficiently.</p>
-    </div>
-    <div class="board-card col-lg-5 col-md-12 col-md-12 clear">
-        <img src="//placehold.it/80x100" style="float:left" />
-        <p class="board-title">Treasurer</p>
-        <p class="board-name">Caleb Rudnicki</p>
-        <p class="board-email"><a href="mailto:calebrudnicki@gmail.com">calebrudnicki@gmail.com</a></p>
-        <p class="board-desc">Responsible for collecting dues, handling the budget, and processing payments made by the club. Any inquiries about outstanding balances and invoices should be directed to the Treasurer.</p>
-    </div>
-    <div class="board-card col-lg-5 col-md-12 col-md-12">
-        <img src="//placehold.it/80x100" style="float:left" />
-        <p class="board-title">Secretary</p>
-        <p class="board-name">Nick Markwordt</p>
-        <p class="board-email"><a href="mailto:nmarkwordt@gatech.edu">nmarkwordt@gatech.edu</a></p>
-        <p class="board-desc">Responsible for the handling paperwork and administrative tasks for the club. Any inquiries about club administration and paperwork should be directed to the Secretary.</p>
-    </div>
-    <div class="board-card col-lg-5 col-md-12 col-md-12 clear">
-        <img src="//placehold.it/80x100" style="float:left" />
-        <p class="board-title">Public Relations</p>
-        <p class="board-name">Zach Cernich</p>
-        <p class="board-email"><a href="mailto:zcernich3@gatech.edu">zcernich3@gatech.edu</a></p>
-        <p class="board-desc">Responsible for promoting the club and increasing its online/social media presence. Any inquires about promotional events and opportunities can be direct to the PR Officer.</p>
-    </div>
+    {% endfor %}
 </div>
 
 <div class="page-title">
     About the Coaches
 </div>
 
+{% for coach in coaches %}
 <div class="coach-card">
-    <img src="//placehold.it/80x100" />
-    <div class="coach-name">Bob Cernich - Head Coach</div>
-    <div class="coach-bio">
-        Coach Cernich has been involved in the Atlanta youth hockey community for many years and has
-        successfully coached several youth team to the national tournament. He joined the coaching staff at the
-        start of the 2015-16 season looking to usher in a new era of GT Hockey more focused on team play than
-        individual accomplishment.
-    </div>
+    <img src="//gthockey.com{{ coach.image.url}}" style="float:left" />
+    <p class="coach-name">{{coach.first_name}} {{coach.last_name}} - {{coach.coach_position}}</p>
+    <p class="board-email"><a href="mailto:{{coach.email}}">{{coach.email}}</a></p>
+    <p class="coach-bio">{{coach.description}}</p>
 </div>
-
-<div class="coach-card">
-    <img src="//placehold.it/80x100" />
-    <div class="coach-name">Paul Gattung - Manager</div>
-    <div class="coach-bio">
-        Coach Gattung has been involved with GT Hockey ever since his son Christian played on the team
-        many years ago. Gattung has been instrumental in growing and promoting the team on and off the ice. And can
-        be seen as the team's liaison at Regional and National ACHA events. He also serves as the unofficial contact
-        for alumni events and relations.
-    </div>
-</div>
+{% endfor %}
 
 {% include "footer.html" %}

@@ -4,7 +4,7 @@ from django.template import RequestContext
 from datetime import date
 from django.core.mail import send_mail
 
-from .models import Game, Player, Email, NewsStory, Season
+from .models import Game, Player, Email, NewsStory, Season, Board, Coach
 from .forms import ProspectForm, ContactForm, EmailListForm, GolfForm
 
 
@@ -25,7 +25,9 @@ def roster(request):
 
 
 def board(request):
-    return render(request, 'board.html')
+    board = Board.objects.order_by('priority')
+    coach = Coach.objects.order_by('priority')
+    return render(request, 'board.html', {'board_members': board, 'coaches' : coach})
 
 
 def coaches(request):

@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django import forms
 
-from .models import Player, Game, Team, Rink, Email, NewsStory, Season
+from .models import Player, Game, Team, Rink, Email, NewsStory, Season, Board, Coach
 
 
 class PlayerAdmin(admin.ModelAdmin):
@@ -41,6 +41,27 @@ class NewsAdmin(admin.ModelAdmin):
 class RinkAdmin(admin.ModelAdmin):
     pass
 
+
+class BoardAdmin(admin.ModelAdmin):
+    list_display = ['position', 'last_name']
+
+    def formfield_for_dbfield(self, db_field, **kwargs):
+        formfield = super(BoardAdmin, self).formfield_for_dbfield(db_field, **kwargs)
+        if db_field.name == 'description':
+            formfield.widget = forms.Textarea(attrs=formfield.widget.attrs)
+        return formfield
+
+
+class CoachAdmin(admin.ModelAdmin):
+    list_display = ['coach_position', 'last_name']
+
+    def formfield_for_dbfield(self, db_field, **kwargs):
+        formfield = super(CoachAdmin, self).formfield_for_dbfield(db_field, **kwargs)
+        if db_field.name == 'description':
+            formfield.widget = forms.Textarea(attrs=formfield.widget.attrs)
+        return formfield
+
+
 admin.site.register(Player, PlayerAdmin)
 admin.site.register(Game, GameAdmin)
 admin.site.register(Team, TeamAdmin)
@@ -48,3 +69,5 @@ admin.site.register(NewsStory, NewsAdmin)
 admin.site.register(Rink, RinkAdmin)
 admin.site.register(Email)
 admin.site.register(Season)
+admin.site.register(Board, BoardAdmin)
+admin.site.register(Coach, CoachAdmin)

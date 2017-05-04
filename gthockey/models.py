@@ -200,3 +200,21 @@ class Season(models.Model):
     @staticmethod
     def get_current():
         return Season.objects.order_by("-year")[0]
+
+class Board(models.Model):
+    first_name = models.CharField(max_length=25)
+    last_name = models.CharField(max_length=25)
+    position = models.CharField(max_length=25)
+    email = models.EmailField(max_length=100)
+    image = models.ImageField(upload_to="board")
+    description = models.CharField(max_length=1000)
+    priority = models.IntegerField()
+
+class Coach(models.Model):
+    first_name = models.CharField(max_length=25)
+    last_name = models.CharField(max_length=25)
+    coach_position = models.CharField(max_length=25)
+    email = models.EmailField(max_length=100)
+    image = models.ImageField(upload_to="coach")
+    bio = models.CharField(max_length=1000)
+    priority = models.IntegerField()
