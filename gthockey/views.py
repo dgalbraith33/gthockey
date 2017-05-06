@@ -9,7 +9,7 @@ from .forms import ProspectForm, ContactForm, EmailListForm, GolfForm
 
 
 def index(request):
-    stories = NewsStory.objects.order_by("-date")[:3]
+    stories = NewsStory.objects.order_by("-date")[:5]
     recent_games = Game.objects.order_by("-date").filter(date__lt=date.today())[:4]
     return render(request, 'index.html', {'stories': stories, 'recent': recent_games})
 
