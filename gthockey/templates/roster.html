@@ -2,14 +2,15 @@
 <div class="roster">
     {% for player in players %}
     <div class="card">
-        <div class="col-lg-2">{{ player.number }}</div>
-        <div class="col-lg-2">{{ player.position }}</div>
-        <div class="col-lg-4">{{ player }}</div>
-        <div class="col-lg-4">{{ player.hometown }}</div>
+        <div class="col-lg-1">{{ player.number }}</div>
+        <div class="col-lg-1">{{ player.position }}</div>
+        <div class="col-lg-3">{{ player }}</div>
+        <div class="col-lg-3">{{ player.hometown }}</div>
+        <div class="col-lg-4">{{ player.school }}</div>
         <div class="clear"></div>
     </div>
     {% endfor %}
     <div class="clear"></div>
 </div>
 
-{% include "footer.html" %}./
+{% include "footer.html" %}

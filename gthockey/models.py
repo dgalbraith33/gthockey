@@ -8,10 +8,12 @@ class Player(models.Model):
     FORWARD = 'F'
     DEFENSE = 'D'
     GOALIE = 'G'
+    MANAGER = 'M'
     POSITION_CHOICES = (
         (FORWARD, 'F'),
         (DEFENSE, 'D'),
         (GOALIE, 'G'),
+        (MANAGER, 'M')
     )
     position = models.CharField(max_length=1,
                                 choices=POSITION_CHOICES,
@@ -19,6 +21,8 @@ class Player(models.Model):
 
     number = models.IntegerField(null=True, blank=True)
     hometown = models.CharField(max_length=50,
+                                blank=True)
+    school = models.CharField(max_length=50,
                                 blank=True)
 
     def __str__(self):
