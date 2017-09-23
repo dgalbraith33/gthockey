@@ -51,19 +51,19 @@ function prepCountdown() {
 }
 
 function diffDays(d1, d2) {
-    return Math.floor((d2-d1) / (1000 * 60 * 60 * 24));
+    return Math.max(Math.floor((d2-d1) / (1000 * 60 * 60 * 24)), 0);
 }
 
 function diffHours(d1, d2) {
-    return Math.floor((d2-d1) / (1000 * 60 * 60)) % 24;
+    return Math.max(Math.floor((d2-d1) / (1000 * 60 * 60)) % 24, 0);
 }
 
 function diffMinutes(d1, d2) {
-    return Math.floor((d2-d1) / (1000 * 60)) % 60;
+    return Math.max(Math.floor((d2-d1) / (1000 * 60)) % 60, 0);
 }
 
 function diffSeconds(d1, d2) {
-    return Math.floor((d2-d1)/ 1000) % 60;
+    return Math.max(Math.floor((d2-d1)/ 1000) % 60, 0);
 }
 
 function updateField(id, content) {
