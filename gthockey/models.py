@@ -113,7 +113,7 @@ class Game(models.Model):
         if self.score_opp_final > self.score_gt_final:
             return "Loss"
 
-        if self.score_opp_final == self.score_gt_final and self.period == 5:
+        if self.score_opp_final == self.score_gt_final:
             return "Tie"
 
         if self.period == 6:
