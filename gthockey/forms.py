@@ -103,7 +103,7 @@ class EmailListForm(MyForm):
         message = ""
         message += "Name: %s\n" % self.cleaned_data['name']
         message += "Email: %s\n" % self.cleaned_data['email']
-        message += "Relation: %s\n" % ProspectForm.RELATIONS[int(self.cleaned_data['relation'])][1]
+        message += "Relation: %s\n" % EmailListForm.RELATIONS[int(self.cleaned_data['relation'])][1]
         return message
 
 
