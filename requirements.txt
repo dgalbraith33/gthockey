@@ -1,6 +1,6 @@
 django
 pytz
-psycopg2
+psycopg2-binary
 gunicorn
 django-cors-headers
 Pillow
