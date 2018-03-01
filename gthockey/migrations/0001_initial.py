@@ -50,11 +50,11 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='game',
             name='location',
-            field=models.ForeignKey(null=True, to='gthockey.Rink'),
+            field=models.ForeignKey(null=True, to='gthockey.Rink', on_delete=models.SET_NULL),
         ),
         migrations.AddField(
             model_name='game',
             name='opponent',
-            field=models.ForeignKey(null=True, to='gthockey.Team'),
+            field=models.ForeignKey(null=True, to='gthockey.Team', on_delete=models.SET_NULL),
         ),
     ]

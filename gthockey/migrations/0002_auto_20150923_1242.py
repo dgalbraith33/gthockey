@@ -22,11 +22,11 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='game',
             name='location',
-            field=models.ForeignKey(null=True, to='gthockey.Rink', blank=True),
+            field=models.ForeignKey(null=True, to='gthockey.Rink', blank=True, on_delete=models.SET_NULL),
         ),
         migrations.AlterField(
             model_name='game',
             name='opponent',
-            field=models.ForeignKey(null=True, to='gthockey.Team', blank=True),
+            field=models.ForeignKey(null=True, to='gthockey.Team', blank=True, on_delete=models.SET_NULL),
         ),
     ]

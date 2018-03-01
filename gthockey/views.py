@@ -115,8 +115,8 @@ def golf(request):
     return render(request, 'golf.html', {"form": form, "success": success})
 
 
-def handler404(request):
-    response = render_to_response('404.html', {},
+def handler404(request, exception, template='404.html'):
+    response = render_to_response(template, {},
                                   context_instance=RequestContext(request))
     response.status_code = 404
     return response

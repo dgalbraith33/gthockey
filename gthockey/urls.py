@@ -1,17 +1,19 @@
-from django.conf.urls import url
+from django.conf.urls import url, handler404
+from django.urls import path, re_path
 from . import views, api
 
 urlpatterns = [
-    url(r'^$', views.index, name="index"),
-    url(r'^schedule/', views.schedule, name="schedule"),
-    url(r'^roster/', views.roster, name="roster"),
-    url(r'^board/', views.board, name="board"),
-    # url(r'^coaches/', views.coaches, name="coaches"),
-    url(r'^prospect/', views.prospect, name="prospect"),
-    url(r'^contact/', views.contact, name="contact"),
-    url(r'^api/nextgame/', api.nextgame, name="nextgame"),
-    url(r'^api/record/', api.seasonRecord, name="record"),
-    url(r'^news/(?P<id>[0-9]+)/', views.news, name="newsstory"),
-    url(r'^involvement/', views.involvement, name="involvement"),
-    # url(r'^golf/', views.golf, name="golf")
+    path('', views.index),
+    path('schedule/', views.schedule),
+    path('roster/', views.roster),
+    path('board/', views.board),
+    path('prospect/', views.prospect),
+    path('contact/', views.contact),
+    path('news/<int:id>/', views.news),
+    path('involvement/', views.involvement),
+    # path('golf/', views.golf),
+    path('api/nextgame/', api.nextgame),
+    path('api/record/', api.seasonRecord),
 ]
+
+handler404 = 'views.handler404'

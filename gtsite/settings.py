@@ -41,13 +41,12 @@ INSTALLED_APPS = (
     'captcha',
 )
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = (
     'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -105,6 +104,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # Recaptcha Settings
 NOCAPTCHA = True
 RECAPTCHA_USE_SSL = True
+
+APPEND_SLASH = True
 
 try:
     from .local_settings import *
