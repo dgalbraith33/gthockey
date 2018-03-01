@@ -1,7 +1,7 @@
-django
-pytz
-psycopg2-binary
-gunicorn
-django-cors-headers
-Pillow
-django-recaptcha
+Django==1.10.5
+pytz==2016.10
+psycopg2-binary==2.7.4
+gunicorn==19.6.0
+django-cors-headers==2.0.2
+Pillow==4.0.0
+django-recaptcha==1.2.1
