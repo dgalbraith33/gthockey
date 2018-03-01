@@ -1,5 +1,5 @@
-from django.conf.urls import url, handler404
-from django.urls import path, re_path
+from django.conf.urls import handler404
+from django.urls import path
 from . import views, api
 
 urlpatterns = [
