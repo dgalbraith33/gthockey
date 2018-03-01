@@ -46,17 +46,20 @@ class Game(models.Model):
                             blank=True)
     opponent = models.ForeignKey('Team',
                                  null=True,
-                                 blank=True)
+                                 blank=True,
+                                 on_delete=models.SET_NULL)
 
     venue = models.CharField(max_length=1,
                              choices=VENUE_CHOICES,
                              default=HOME)
     location = models.ForeignKey('Rink',
                                  null=True,
-                                 blank=True)
+                                 blank=True,
+                                 on_delete=models.SET_NULL)
     season = models.ForeignKey('Season',
                                null=True,
-                               blank=True)
+                               blank=True,
+                               on_delete=models.SET_NULL)
 
     score_gt_first = models.IntegerField(null=True, blank=True)
     score_gt_second = models.IntegerField(null=True, blank=True)
@@ -138,7 +141,7 @@ class Game(models.Model):
         return self.date < date.today()
 
     def is_reported(self):
-        return self.score_gt_final and self.score_opp_final
+        return self.score_gt_final is not None and self.score_opp_final is not None
 
 
     def __str__(self):
