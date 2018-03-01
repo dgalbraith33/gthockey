@@ -134,6 +134,12 @@ class Game(models.Model):
 
         return trans[self.get_result()]
 
+    def is_over(self):
+        return self.date < date.today()
+
+    def is_reported(self):
+        return self.score_gt_final and self.score_opp_final
+
 
     def __str__(self):
         return "vs " + str(self.opponent)
