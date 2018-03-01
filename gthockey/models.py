@@ -201,6 +201,7 @@ class NewsStory(models.Model):
 class Email(models.Model):
     name = models.CharField(max_length=50)
     email = models.EmailField(max_length=100)
+    active = models.BooleanField(default=True)
 
 
 class Season(models.Model):

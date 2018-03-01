@@ -42,7 +42,7 @@ def prospect(request):
             subject = form.get_subject()
             sender = "GT Hockey"
             message = form.get_message()
-            recipients = [e.email for e in Email.objects.all()]
+            recipients = [e.email for e in Email.objects.all() if e.active]
 
             send_mail(subject, message, sender, recipients)
             success = True
@@ -61,7 +61,7 @@ def contact(request):
             subject = form.get_subject()
             sender = "GT Hockey"
             message = form.get_message()
-            recipients = [e.email for e in Email.objects.all()]
+            recipients = [e.email for e in Email.objects.all() if e.active]
 
             send_mail(subject, message, sender, recipients)
             success = True
