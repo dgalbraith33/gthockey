@@ -51,7 +51,7 @@ function prepCountdown() {
 }
 
 function composeRecord(data) {
-    return data.wins + "-" + data.losses + "-" +data.otl;
+    return data.wins + "-" + data.losses + "-" + data.otl + "-" + data.ties;
 }
 
 function loadSeasonRecord() {
