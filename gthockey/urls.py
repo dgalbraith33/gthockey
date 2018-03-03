@@ -14,6 +14,7 @@ urlpatterns = [
     # path('golf/', views.golf),
     path('api/nextgame/', api.nextgame),
     path('api/record/', api.seasonRecord),
+    path('api/players/', api.player_list),
 ]
 
 handler404 = 'views.handler404'

@@ -18,5 +18,6 @@ from django.contrib import admin
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('gthockey.urls'))
+    path('api-auth/', include('rest_framework.urls')),
+    path('', include('gthockey.urls')),
 ]

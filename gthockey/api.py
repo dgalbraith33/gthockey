@@ -2,7 +2,8 @@ from django.http import JsonResponse
 
 from datetime import date
 
-from .models import Game, Season
+from .models import Game, Season, Player
+from .serializers import PlayerSerializer
 
 def nextgame(request):
     games = Game.objects.order_by('date').filter(date__gte=date.today())
@@ -58,3 +59,11 @@ def seasonRecord(request):
             "ties": ties,
             "unknown": unknown
         })
+
+
+# Django Rest Framework
+
+def player_list(request):
+    players = Player.objects.all()
+    serializer = PlayerSerializer(players, many=True)
+    return JsonResponse(serializer.data, safe=False)
