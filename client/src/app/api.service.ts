@@ -1,13 +1,15 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable'
+import { Observable } from 'rxjs/Observable';
 
-import { Player } from './api/player'
+import { Article } from './api/article';
+import { Player } from './api/player';
 
 @Injectable()
 export class ApiService {
 
-  private rosterUrl = '/api/players'
+  private rosterUrl = '/api/players';
+  private articleUrl = '/api/articles';
 
   constructor(private http: HttpClient) { }
 
@@ -15,4 +17,7 @@ export class ApiService {
     return this.http.get<Player[]>(this.rosterUrl);
   }
 
+  getArticles(): Observable<Article[]> {
+    return this.http.get<Article[]>(this.articleUrl);
+  }
 }

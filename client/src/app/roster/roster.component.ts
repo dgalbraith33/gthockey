@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ApiService } from '../api.service'
-import { Player } from '../api/player'
+import { ApiService } from '../api.service';
+import { Player } from '../api/player';
 
 @Component({
   selector: 'app-roster',
@@ -10,7 +10,7 @@ import { Player } from '../api/player'
 })
 export class RosterComponent implements OnInit {
 
-  players : Player[];
+  players: Player[];
 
   constructor(private apiService: ApiService) { }
 

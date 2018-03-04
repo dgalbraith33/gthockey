@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { RosterComponent } from './roster/roster.component'
+import { FrontpageComponent } from './frontpage/frontpage.component';
+import { RosterComponent } from './roster/roster.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '', pathMatch: 'full'},
+  { path: '', component: FrontpageComponent},
   { path: 'roster', component: RosterComponent }
 ];
 

@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { ApiService } from './api.service'
 import { RosterComponent } from './roster/roster.component';
 import { AppRoutingModule } from './/app-routing.module';
+import { FrontpageComponent } from './frontpage/frontpage.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    RosterComponent
+    RosterComponent,
+    FrontpageComponent
   ],
   imports: [
     BrowserModule,
