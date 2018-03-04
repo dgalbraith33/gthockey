@@ -124,7 +124,7 @@ class Game(models.Model):
 
         return "Not Yet Reported"
 
-    def get_short_result(self):
+    def short_result(self):
         trans = {
             "Upcoming": "U",
             "Win": "W",

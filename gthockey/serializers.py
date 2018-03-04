@@ -11,7 +11,8 @@ class PlayerSerializer(serializers.ModelSerializer):
 class GameSerializer(serializers.ModelSerializer):
     class Meta:
         model = Game
-        fields = ('id', 'date', 'time', 'opponent', 'venue', 'location', 'season')
+        fields = ('id', 'date', 'time', 'opponent', 'venue', 'location', 'season', 'score_gt_final', 'score_opp_final', 'short_result')
+        depth = 1
 
 
 class ArticleSerializer(serializers.ModelSerializer):

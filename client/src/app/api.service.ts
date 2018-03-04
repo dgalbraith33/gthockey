@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 import { Article } from './api/article';
+import { Game } from './api/game';
 import { Player } from './api/player';
 
 @Injectable()
@@ -10,6 +11,7 @@ export class ApiService {
 
   private rosterUrl = '/api/players';
   private articleUrl = '/api/articles';
+  private gameUrl = '/api/games';
 
   constructor(private http: HttpClient) { }
 
@@ -19,5 +21,9 @@ export class ApiService {
 
   getArticles(): Observable<Article[]> {
     return this.http.get<Article[]>(this.articleUrl);
+  }
+
+  getGames(): Observable<Game[]> {
+    return this.http.get<Game[]>(this.gameUrl);
   }
 }
