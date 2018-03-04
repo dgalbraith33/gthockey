@@ -80,6 +80,8 @@ class GameList(APIView):
         min_date_str = params.get('date_from', '2000-01-01')
         max_date_str = params.get('date_to', '2099-01-01')
 
+        limit = int(params.get('limit', 1000))
+
         descending = 'desc' in params
         order = '-date' if descending else 'date'
 
@@ -88,7 +90,7 @@ class GameList(APIView):
             .filter(date__gte=min_date_str) \
             .filter(date__lte=max_date_str) \
             .prefetch_related('location') \
-            .prefetch_related('opponent')
+            .prefetch_related('opponent')[:limit]
 
         serializer = GameMinSerializer(games, many=True)
         return JsonResponse(serializer.data, safe=False)
