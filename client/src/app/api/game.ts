@@ -14,19 +14,21 @@ export class Game {
     opponent: Opponent;
     venue: string;
     location: string;
+    is_reported: boolean;
     short_result: string;
     score_gt_final: number;
     score_opp_final: number;
 
     public constructor(serverModel: any) {
         this.id = serverModel.id;
-        this.date = new Date(serverModel.date + ' ' + serverModel.time);
-        this.opponent = new Opponent(serverModel.opponent);
+        this.date = new Date(serverModel.datetime);
+        this.opponent = serverModel.opponent_name;
         this.venue = serverModel.venue;
-        this.location = serverModel.location.rink_name;
+        this.location = serverModel.rink_name;
+        this.is_reported = serverModel.is_reported;
         this.short_result = serverModel.short_result;
-        this.score_gt_final = serverModel.score_gt_final;
-        this.score_opp_final = serverModel.score_opp_final;
+        this.score_gt_final = serverModel.gt_score;
+        this.score_opp_final = serverModel.opp_score;
     }
 
     public isOver(): boolean {

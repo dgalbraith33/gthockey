@@ -26,7 +26,13 @@ export class FrontpageComponent implements OnInit {
   }
 
   private getGames() {
-    this.apiService.getGames().subscribe(games => this.getRecent(games));
+    this.apiService.getGames({limit: 5, date_to: this.getYesterday(), desc: true}).subscribe(games => this.getRecent(games));
+  }
+
+  private getYesterday(): string {
+    const date = new Date();
+    date.setDate(date.getDate() - 1);
+    return date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate();
   }
 
   private getRecent(games: Game[]) {

@@ -51,7 +51,6 @@ export class SidebarRecordComponent implements OnInit {
                 break;
         }
     });
-    console.log(this);
     this.composeRecord();
   }
 

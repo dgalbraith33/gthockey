@@ -24,7 +24,7 @@ export class ApiService {
     return this.http.get<Article[]>(this.articleUrl);
   }
 
-  getGames(): Observable<Game[]> {
-    return this.http.get<Game[]>(this.gameUrl).map((games: Game[]) => games.map(game => new Game(game)));
+  getGames(params: any = {}): Observable<Game[]> {
+    return this.http.get<Game[]>(this.gameUrl, {params}).map((games: Game[]) => games.map(game => new Game(game)));
   }
 }
