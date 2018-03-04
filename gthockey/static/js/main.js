@@ -50,17 +50,6 @@ function prepCountdown() {
     });
 }
 
-function composeRecord(data) {
-    return data.wins + "-" + data.losses + "-" + data.otl + "-" + data.ties;
-}
-
-function loadSeasonRecord() {
-    $.ajax({url: "/api/record"}).done(function(data) {
-        $(".season-name").text(data.season);
-        $(".season-record-data").text(composeRecord(data))
-    });
-}
-
 function diffDays(d1, d2) {
     return Math.max(Math.floor((d2-d1) / (1000 * 60 * 60 * 24)), 0);
 }
@@ -93,7 +82,6 @@ function updateCountdown(date) {
 }
 
 $(document).ready(prepCountdown);
-$(document).ready(loadSeasonRecord);
 
 
 function displayAltMessage() {

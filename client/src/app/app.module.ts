@@ -1,3 +1,4 @@
+import { SidebarRecordComponent } from './sidebar/sidebar-record.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -16,7 +17,8 @@ import { ScheduleComponent } from './schedule/schedule.component';
     AppComponent,
     RosterComponent,
     FrontpageComponent,
-    ScheduleComponent
+    ScheduleComponent,
+    SidebarRecordComponent,
   ],
   imports: [
     BrowserModule,

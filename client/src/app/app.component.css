@@ -156,23 +156,6 @@
     padding: 10px;
 }
 
-.season-record-header {
-    background-color: #b08d45;
-    color: #fff;
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 1.3em;
-    padding: 5px;
-    text-align: center;
-}
-
-.season-record-data {
-    color: #555;
-    font-weight: bold;
-    font-size: 2.5em;
-    text-align: center;
-}
-
 .story {
     width: 90%;
     margin-left: auto;
