@@ -16,14 +16,13 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li routerLinxActive="active"><a routerLink="/">Home <span class="sr-only">(current)</span></a></li>
-          <li routerLinxActive="active"><a routerLink="/schedule/">Schedule</a></li>
-          <li routerLinxActive="active"><a routerLink="/roster">Roster</a></li>
-          <li routerLinxActive="active"><a routerLink="/board/">Board & Coaches</a></li>
-          <!-- <li {% if request.path == "/coaches/" %}class="active"{% endif %}><a href="/coaches/">Coaches</a></li> -->
-          <li routerLinxActive="active"><a routerLink="/prospect/">Prospective Players</a></li>
-          <li routerLinxActive="active"><a routerLink="/contact/">Contact</a></li>
-          <li routerLinxActive="active"><a routerLink="/involvement/">Get Involved</a></li>
+          <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/">Home <span class="sr-only">(current)</span></a></li>
+          <li routerLinkActive="active"><a routerLink="/schedule/">Schedule</a></li>
+          <li routerLinkActive="active"><a routerLink="/roster/">Roster</a></li>
+          <li routerLinkActive="active"><a routerLink="/board/">Board & Coaches</a></li>
+          <li routerLinkActive="active"><a routerLink="/prospect/">Prospective Players</a></li>
+          <li routerLinkActive="active"><a routerLink="/contact/">Contact</a></li>
+          <li routerLinkActive="active"><a routerLink="/involvement/">Get Involved</a></li>
           <!-- <li {% if request.path == "/golf/" %}class="active"{% endif %}><a href="/golf/">Golf Sign Up</a></li> -->
         </ul>
       </div><!-- /.navbar-collapse -->
