@@ -290,8 +290,6 @@ form, .form {
 }
 
 .form tr td input.submit {
-    float: right;
-    width: auto;
     display: inline;
     font-size: 1em;
     background-color: #b08d45;
