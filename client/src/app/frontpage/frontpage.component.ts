@@ -31,14 +31,10 @@ export class FrontpageComponent implements OnInit {
 
   private getRecent(games: Game[]) {
     this.recentGames = [];
-    console.log(games);
-    console.log('processing');
     let index = games.length - 1;
     const today = new Date();
-    console.log(today);
     while (this.recentGames.length < 5 && index >= 0) {
       if (new Date(games[index].date) < today) {
-        console.log('found');
         this.recentGames.push(games[index]);
       }
       index--;

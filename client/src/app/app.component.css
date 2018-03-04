@@ -173,52 +173,6 @@
     text-align: center;
 }
 
-/* Tables */
-
-.schedule, .roster {
-    text-align: center;
-}
-
-.schedule-item {
-    padding: 5px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-bottom: 8px;
-    margin-left: 0px !important;
-    margin-right: 0px !important;
-    box-shadow: 2px 2px 2px #555;
-    background-color: #efefef;
-    border-radius: 2px;
-    font-size: 1.2em;
-}
-
-.schedule-date, .schedule-time, .schedule-school, .schedule-rink {
-    float: left;
-}
-
-.schedule-rink {
-    font-style: italic;
-}
-
-.schedule-school {
-    font-weight: bold;
-}
-
-
-.game-home {
-    background-color: #dbc9a4;
-    color: black;
-}
-
-.game-away, .game-tournament {
-    background-color: #efefef;
-    color: black;
-}
-
-.roster {
-    background: #fff;
-}
-
 .story {
     width: 90%;
     margin-left: auto;

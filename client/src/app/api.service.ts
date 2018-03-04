@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 
 import { Article } from './api/article';
 import { Game } from './api/game';
@@ -24,6 +25,6 @@ export class ApiService {
   }
 
   getGames(): Observable<Game[]> {
-    return this.http.get<Game[]>(this.gameUrl);
+    return this.http.get<Game[]>(this.gameUrl).map((games: Game[]) => games.map(game => new Game(game)));
   }
 }

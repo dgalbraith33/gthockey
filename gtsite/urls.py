@@ -26,4 +26,5 @@ urlpatterns = [
             RedirectView.as_view(url='/static/%(path)s', permanent=False)),
     path('', serve, kwargs={'path': 'index.html'}),
     path('roster/', serve, kwargs={'path': 'index.html'}),
+    path('schedule/', serve, kwargs={'path': 'index.html'}),
 ]
