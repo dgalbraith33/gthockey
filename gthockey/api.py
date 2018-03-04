@@ -64,6 +64,6 @@ def seasonRecord(request):
 # Django Rest Framework
 
 def player_list(request):
-    players = Player.objects.all()
+    players = Player.objects.order_by('number')
     serializer = PlayerSerializer(players, many=True)
     return JsonResponse(serializer.data, safe=False)

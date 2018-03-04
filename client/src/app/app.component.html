@@ -1,11 +1,82 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-</div>
+<div class="row">
+  <div class="header-img"><img src="img/header.png" /></div>
 
-<div style="text-align:center">
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li routerLinxActive="active"><a routerLink="/">Home <span class="sr-only">(current)</span></a></li>
+          <li routerLinxActive="active"><a routerLink="/schedule/">Schedule</a></li>
+          <li routerLinxActive="active"><a routerLink="/roster">Roster</a></li>
+          <li routerLinxActive="active"><a routerLink="/board/">Board & Coaches</a></li>
+          <!-- <li {% if request.path == "/coaches/" %}class="active"{% endif %}><a href="/coaches/">Coaches</a></li> -->
+          <li routerLinxActive="active"><a routerLink="/prospect/">Prospective Players</a></li>
+          <li routerLinxActive="active"><a routerLink="/contact/">Contact</a></li>
+          <li routerLinxActive="active"><a routerLink="/involvement/">Get Involved</a></li>
+          <!-- <li {% if request.path == "/golf/" %}class="active"{% endif %}><a href="/golf/">Golf Sign Up</a></li> -->
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+  <div id="content" class="row">
+    <div id="main" class="col-md-8 col-lg-9">
         <router-outlet></router-outlet>
-</div>
-
+    </div> <!--End col-md-8 columns -->
+    <div id="sidebar" class="col-md-4 col-lg-3">
+      <div class="sidebar-content">
+        <div class="season-record">
+          <div class="season-record-header">
+            <span class="season-name"></span> Record
+          </div>
+          <div class="season-record-data">
+          </div>
+        </div>
+      </div>
+      <div class="sidebar-content">
+        <div class="countdown">
+          <div id="countdown-primary" class="countdown-inner">
+            <div class="countdown-title">Next Game</div>
+            <div class="countdown-date"></div>
+            <div class="clear"></div>
+            <img class="countdown-logo" src="//placehold.it/80x80" />
+            <div class="countdown-team"></div>
+            <div class="countdown-location"></div>
+            <div class="countdown-starttime"></div>
+            <div class="countdown-time">
+              <span id="countdown-days">0<small>days</small></span>
+              <span id="countdown-hours">0<small>hours</small></span>
+              <span id="countdown-mins">0<small>mins</small></span>
+              <span id="countdown-secs">0<small>secs</small></span>
+            </div>
+          </div>
+          <div id="countdown-alt" class="countdown-inner hidden">
+            No upcoming events. Schedule will be added soon, check back later.
+          </div>
+        </div>
+      </div>
+      <div class="sidebar-content">
+        <a class="twitter-timeline" href="//twitter.com/GT_Hockey" data-widget-id="585563417941016576">Tweets by @GT_Hockey</a>
+      </div>
+      <div class="sidebar-content">
+        <div class="fb-page" data-href="https://www.facebook.com/pages/Georgia-Tech-Hockey/85852244494" data-width="330" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"></div>
+        <div id="fb-root"></div>
+      </div>
+      <div class="sidebar-content">
+        <!-- TODO Space for calendar -->
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div> <!-- End body row -->

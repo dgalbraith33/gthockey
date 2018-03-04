@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { RosterComponent } from './roster/roster.component'
 
 const routes: Routes = [
-  { path: 'ng', redirectTo: '/roster', pathMatch: 'full'},
+  { path: '', redirectTo: '', pathMatch: 'full'},
   { path: 'roster', component: RosterComponent }
 ];
 

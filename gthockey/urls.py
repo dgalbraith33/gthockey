@@ -3,18 +3,9 @@ from django.urls import path
 from . import views, api
 
 urlpatterns = [
-    path('', views.index),
-    path('schedule/', views.schedule),
-    path('roster/', views.roster),
-    path('board/', views.board),
-    path('prospect/', views.prospect),
-    path('contact/', views.contact),
-    path('news/<int:id>/', views.news),
-    path('involvement/', views.involvement),
-    # path('golf/', views.golf),
-    path('api/nextgame/', api.nextgame),
-    path('api/record/', api.seasonRecord),
-    path('api/players/', api.player_list),
+    path('nextgame/', api.nextgame),
+    path('record/', api.seasonRecord),
+    path('players/', api.player_list),
 ]
 
 handler404 = 'views.handler404'

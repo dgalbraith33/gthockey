@@ -21,8 +21,9 @@ from django.views.generic import RedirectView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
-    path('', include('gthockey.urls')),
-    path('ng/', serve, kwargs={'path': 'index.html'}),
+    path('api/', include('gthockey.urls')),
     re_path(r'^(?!/?static/)(?!/?media/)(?P<path>.*\..*)$',
-        RedirectView.as_view(url='/static/%(path)s', permanent=False))
+            RedirectView.as_view(url='/static/%(path)s', permanent=False)),
+    path('', serve, kwargs={'path': 'index.html'}),
+    path('roster/', serve, kwargs={'path': 'index.html'}),
 ]

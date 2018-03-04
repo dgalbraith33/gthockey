@@ -1,6 +1,11 @@
-<h2>Roster</h2>
-<ul *ngFor="let player of players">
-  <li>
-    <span>{{player.first_name}} {{player.last_name}}</span>
-  </li>
-</ul>
+<div class="roster">
+    <div class="card" *ngFor="let player of players">
+        <div class="col-lg-1">{{ player.number }}</div>
+        <div class="col-lg-1">{{ player.position }}</div>
+        <div class="col-lg-3">{{ player.first_name }} {{ player.last_name }}</div>
+        <div class="col-lg-3">{{ player.hometown }}</div>
+        <div class="col-lg-4">{{ player.school }}</div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+</div>
