@@ -2,8 +2,9 @@ from django.http import JsonResponse
 
 from datetime import date
 
-from .models import Game, Season, Player
-from .serializers import PlayerSerializer
+from .models import Game, Season, Player, NewsStory
+from .serializers import PlayerSerializer, GameSerializer, ArticleSerializer
+
 
 def nextgame(request):
     games = Game.objects.order_by('date').filter(date__gte=date.today())
@@ -27,6 +28,7 @@ def nextgame(request):
             resp["logo"] = game.opponent.logo.url
 
     return JsonResponse(resp)
+
 
 def seasonRecord(request):
     currentSeason = Season.get_current()
@@ -66,4 +68,15 @@ def seasonRecord(request):
 def player_list(request):
     players = Player.objects.order_by('number')
     serializer = PlayerSerializer(players, many=True)
+    return JsonResponse(serializer.data, safe=False)
+
+
+def game_list(request):
+    games = Game.objects.order_by('date').filter(season=Season.get_current())
+    serializer = GameSerializer(games, many=True)
+    return JsonResponse(serializer.data, safe=False)
+
+def article_list(request):
+    articles = NewsStory.objects.order_by('-date')[:5]
+    serializer = ArticleSerializer(articles, many=True)
     return JsonResponse(serializer.data, safe=False)
