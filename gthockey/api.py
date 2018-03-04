@@ -1,9 +1,10 @@
 from django.http import JsonResponse
 
 from datetime import date
+from rest_framework.views import APIView
 
 from .models import Game, Season, Player, NewsStory
-from .serializers import PlayerSerializer, GameSerializer, ArticleSerializer
+from .serializers import PlayerSerializer, GameSerializer, GameMinSerializer, ArticleSerializer
 
 
 def nextgame(request):
@@ -71,10 +72,34 @@ def player_list(request):
     return JsonResponse(serializer.data, safe=False)
 
 
-def game_list(request):
-    games = Game.objects.order_by('date').filter(season=Season.get_current())
-    serializer = GameSerializer(games, many=True)
-    return JsonResponse(serializer.data, safe=False)
+class GameList(APIView):
+    def get(self, request):
+        params = request.query_params
+        season = Season.get_current()
+
+        min_date_str = params.get('date_from', '2000-01-01')
+        max_date_str = params.get('date_to', '2099-01-01')
+
+        descending = 'desc' in params
+        order = '-date' if descending else 'date'
+
+        games = Game.objects.order_by(order) \
+            .filter(season=season) \
+            .filter(date__gte=min_date_str) \
+            .filter(date__lte=max_date_str) \
+            .prefetch_related('location') \
+            .prefetch_related('opponent')
+
+        serializer = GameMinSerializer(games, many=True)
+        return JsonResponse(serializer.data, safe=False)
+
+
+class GameDetail(APIView):
+    def get(self, request, id):
+        game = Game.objects.get(pk=id)
+        serializer = GameSerializer(game)
+        return JsonResponse(serializer.data, safe=False)
+
 
 def article_list(request):
     articles = NewsStory.objects.order_by('-date')[:5]

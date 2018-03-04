@@ -8,6 +8,18 @@ class PlayerSerializer(serializers.ModelSerializer):
         fields = ('id', 'first_name', 'last_name', 'position', 'number', 'hometown', 'school')
 
 
+class GameMinSerializer(serializers.Serializer):
+    id = serializers.IntegerField(read_only=True)
+    datetime = serializers.DateTimeField(read_only=True)
+    opponent_name = serializers.CharField(read_only=True)
+    rink_name = serializers.CharField(read_only=True)
+
+    is_reported = serializers.BooleanField(read_only=True)
+    short_result = serializers.CharField(read_only=True)
+    gt_score = serializers.IntegerField(read_only=True)
+    opp_score = serializers.IntegerField(read_only=True)
+
+
 class GameSerializer(serializers.ModelSerializer):
     class Meta:
         model = Game

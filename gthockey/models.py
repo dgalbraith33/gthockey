@@ -1,5 +1,5 @@
 from django.db import models
-from datetime import date
+from datetime import date, datetime
 
 class Player(models.Model):
     first_name = models.CharField(max_length=25)
@@ -87,13 +87,23 @@ class Game(models.Model):
         }
         return vdict[self.venue]
 
+    @property
+    def datetime(self):
+        return datetime.combine(self.date, self.time)
+
     def get_time(self):
         if self.time:
             return self.time.strftime("%I:%M %p").strip("0")
         else:
             return "TBD"
 
-    def get_rink_name(self):
+    def opponent_name(self):
+        if self.opponent:
+            return self.opponent.school_name
+        else:
+            return None
+
+    def rink_name(self):
         if self.location:
             return self.location.rink_name
         else:
@@ -124,6 +134,7 @@ class Game(models.Model):
 
         return "Not Yet Reported"
 
+    @property
     def short_result(self):
         trans = {
             "Upcoming": "U",
@@ -140,9 +151,17 @@ class Game(models.Model):
     def is_over(self):
         return self.date < date.today()
 
+    @property
     def is_reported(self):
         return self.score_gt_final is not None and self.score_opp_final is not None
 
+    @property
+    def gt_score(self):
+        return self.score_gt_final
+
+    @property
+    def opp_score(self):
+        return self.score_opp_final
 
     def __str__(self):
         return "vs " + str(self.opponent)
