@@ -9,8 +9,8 @@ urlpatterns = [
     path('api/games/', api.GameList.as_view()),
     path('api/games/<int:id>/', api.GameDetail.as_view()),
     path('api/articles/', api.article_list),
-    path('api/board', api.board_list),
-    path('api/coaches', api.coach_list),
+    path('api/board/', api.board_list),
+    path('api/coaches/', api.coach_list),
 ]
 
 handler404 = 'views.handler404'
