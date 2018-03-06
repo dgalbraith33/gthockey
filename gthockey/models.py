@@ -234,6 +234,7 @@ class Season(models.Model):
     def get_current():
         return Season.objects.order_by("-year")[0]
 
+
 class Board(models.Model):
     first_name = models.CharField(max_length=25)
     last_name = models.CharField(max_length=25)
@@ -242,6 +243,7 @@ class Board(models.Model):
     image = models.ImageField(upload_to="board")
     description = models.CharField(max_length=1000)
     priority = models.IntegerField()
+
 
 class Coach(models.Model):
     first_name = models.CharField(max_length=25)

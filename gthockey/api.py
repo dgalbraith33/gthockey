@@ -3,8 +3,8 @@ from django.http import JsonResponse
 from datetime import date
 from rest_framework.views import APIView
 
-from .models import Game, Season, Player, NewsStory
-from .serializers import PlayerSerializer, GameSerializer, GameMinSerializer, ArticleSerializer
+from .models import Game, Season, Player, NewsStory, Board, Coach
+from .serializers import PlayerSerializer, GameSerializer, GameMinSerializer, ArticleSerializer, BoardSerializer, CoachSerializer
 
 
 def nextgame(request):
@@ -106,4 +106,16 @@ class GameDetail(APIView):
 def article_list(request):
     articles = NewsStory.objects.order_by('-date')[:5]
     serializer = ArticleSerializer(articles, many=True)
+    return JsonResponse(serializer.data, safe=False)
+
+
+def board_list(request):
+    board = Board.objects.all().order_by('priority')
+    serializer = BoardSerializer(board, many=True)
+    return JsonResponse(serializer.data, safe=False)
+
+
+def coach_list(request):
+    coaches = Coach.objects.all().order_by('priority')
+    serializer = CoachSerializer(coaches, many=True)
     return JsonResponse(serializer.data, safe=False)
