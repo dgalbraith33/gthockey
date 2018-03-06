@@ -4,6 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import { Article } from './api/article';
+import { Board } from './api/board';
+import { Coach } from './api/coach';
 import { Game } from './api/game';
 import { Player } from './api/player';
 import { environment } from './../environments/environment';
@@ -14,6 +16,8 @@ export class ApiService {
   private rosterUrl = '/api/players';
   private articleUrl = '/api/articles';
   private gameUrl = '/api/games';
+  private boardUrl = '/api/board';
+  private coachUrl = '/api/coaches';
 
   constructor(private http: HttpClient) { }
 
@@ -27,6 +31,14 @@ export class ApiService {
 
   getGames(params: any = {}): Observable<Game[]> {
     return this.http.get<Game[]>(this.getUrl(this.gameUrl), {params}).map((games: Game[]) => games.map(game => new Game(game)));
+  }
+
+  getBoard(): Observable<Board[]> {
+    return this.http.get<Board[]>(this.getUrl(this.boardUrl));
+  }
+
+  getCoaches(): Observable<Coach[]> {
+    return this.http.get<Coach[]>(this.getUrl(this.coachUrl));
   }
 
   private getUrl(path: string) {

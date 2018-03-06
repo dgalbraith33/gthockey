@@ -1,0 +1,33 @@
+<div class="clear">
+    <div class="page-title">About the Student Board</div>
+    <p>
+        The Georgia Tech Ice Hockey Club is a student-run organization. While we do have a coaching staff, they are
+        primarily responsible for handling the on-ice performance of the team, supporting the student board with
+        off-ice operations only when necessary.
+    </p>
+    <p>
+        Every spring after the conclusion of the season, the team holds a meeting to elect a new group of board members.
+        These players are then entrusted with preparing the team for and managing the team throughout the season.
+    </p>
+</div>
+
+<div class="row">
+    <div *ngFor="let board_member of board" class="board-card col-lg-5 col-md-12 col-md-12">
+        <img src="{{ board_member.image }}" style="float:left" />
+        <p class="board-title">{{board_member.position}}</p>
+        <p class="board-name">{{board_member.first_name}} {{board_member.last_name}}</p>
+        <p class="board-email"><a href="mailto:{{board_member.email}}">{{board_member.email}}</a></p>
+        <p class="board-desc">{{board_member.description}}</p>
+    </div>
+</div>
+
+<div class="page-title">
+    About the Coaches
+</div>
+
+<div *ngFor="let coach of coaches" class="coach-card">
+    <img src="{{ coach.image }}" style="float:left" />
+    <p class="coach-name">{{coach.first_name}} {{coach.last_name}} - {{coach.coach_position}}</p>
+    <p class="board-email"><a href="mailto:{{coach.email}}">{{coach.email}}</a></p>
+    <p class="coach-bio">{{coach.bio}}</p>
+</div>
