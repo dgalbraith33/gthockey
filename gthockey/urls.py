@@ -7,7 +7,7 @@ urlpatterns = [
     path('api/record/', api.seasonRecord),
     path('api/players/', api.player_list),
     path('api/games/', api.GameList.as_view()),
-    path('api/games/<int:id>', api.GameDetail.as_view()),
+    path('api/games/<int:id>/', api.GameDetail.as_view()),
     path('api/articles/', api.article_list),
     path('api/board', api.board_list),
     path('api/coaches', api.coach_list),

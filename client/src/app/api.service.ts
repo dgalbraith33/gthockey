@@ -13,11 +13,11 @@ import { environment } from './../environments/environment';
 @Injectable()
 export class ApiService {
 
-  private rosterUrl = '/api/players';
-  private articleUrl = '/api/articles';
-  private gameUrl = '/api/games';
-  private boardUrl = '/api/board';
-  private coachUrl = '/api/coaches';
+  private rosterUrl = '/api/players/';
+  private articleUrl = '/api/articles/';
+  private gameUrl = '/api/games/';
+  private boardUrl = '/api/board/';
+  private coachUrl = '/api/coaches/';
 
   constructor(private http: HttpClient) { }
 
@@ -34,7 +34,7 @@ export class ApiService {
   }
 
   getGame(id: number): Observable<Game> {
-    return this.http.get<Game>(this.getUrl(this.gameUrl) + '/' + id);
+    return this.http.get<Game>(this.getUrl(this.gameUrl) + id + '/');
   }
 
   getBoard(): Observable<Board[]> {
