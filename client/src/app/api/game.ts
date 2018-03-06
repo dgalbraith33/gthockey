@@ -1,6 +1,9 @@
 export class Opponent {
+    id: number;
     school_name: string;
     mascot_name: string;
+    web_url: string;
+    logo: string;
 
     public constructor(serverModel: any) {
         this.school_name = serverModel.school_name;
@@ -12,6 +15,12 @@ export class Game {
     id: number;
     date: Date;
     opponent: Opponent;
+}
+
+export class GameMin {
+    id: number;
+    date: Date;
+    opponent: string;
     venue: string;
     location: string;
     is_reported: boolean;

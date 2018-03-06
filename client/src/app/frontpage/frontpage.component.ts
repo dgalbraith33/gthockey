@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { ApiService } from './../api.service';
 import { Article } from '../api/article';
-import { Game } from '../api/game';
+import { GameMin } from '../api/game';
 
 @Component({
   selector: 'app-frontpage',
@@ -12,7 +12,7 @@ import { Game } from '../api/game';
 export class FrontpageComponent implements OnInit {
 
   private articles: Article[];
-  private recentGames: Game[];
+  private recentGames: GameMin[];
 
   constructor(private apiService: ApiService) { }
 
@@ -32,10 +32,10 @@ export class FrontpageComponent implements OnInit {
   private getYesterday(): string {
     const date = new Date();
     date.setDate(date.getDate() - 1);
-    return date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate();
+    return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
   }
 
-  private getRecent(games: Game[]) {
+  private getRecent(games: GameMin[]) {
     this.recentGames = [];
     let index = games.length - 1;
     const today = new Date();

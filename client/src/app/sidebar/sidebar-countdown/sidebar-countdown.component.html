@@ -1,0 +1,22 @@
+<div *ngIf="exists" class="sidebar-content">
+  <div class="countdown">
+    <div id="countdown-primary" class="countdown-inner">
+      <div class="countdown-title">Next Game</div>
+      <div class="countdown-date">{{ game.date | date:'shortDate' }}</div>
+      <div class="clear"></div>
+      <img class="countdown-logo" src="{{ image }}" />
+      <div class="countdown-team">{{ game.opponent }}</div>
+      <div class="countdown-location">{{ game.location }}</div>
+      <div class="countdown-starttime">{{ game.date | date:'shortTime' }}</div>
+      <div class="countdown-time">
+        <span id="countdown-days">{{ diffDays }}<small>days</small></span>
+        <span id="countdown-hours">{{ diffHours }}<small>hours</small></span>
+        <span id="countdown-mins">{{ diffMinutes }}<small>mins</small></span>
+        <span id="countdown-secs">{{ diffSeconds }}<small>secs</small></span>
+      </div>
+    </div>
+    <div id="countdown-alt" class="countdown-inner hidden">
+      No upcoming events. Schedule will be added soon, check back later.
+    </div>
+  </div>
+</div>

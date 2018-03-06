@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ApiService } from './../api.service';
-import { Game } from '../api/game';
+import { GameMin } from '../api/game';
 
 @Component({
   selector: 'app-schedule',
@@ -10,7 +10,7 @@ import { Game } from '../api/game';
 })
 export class ScheduleComponent implements OnInit {
 
-  private games: Game[];
+  private games: GameMin[];
 
   constructor(private apiService: ApiService) { }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ApiService } from './../api.service';
-import { Game } from '../api/game';
+import { GameMin } from '../api/game';
 
 @Component({
   selector: 'app-sidebar-record',
@@ -30,7 +30,7 @@ export class SidebarRecordComponent implements OnInit {
     });
   }
 
-  private setRecord(games: Game[]) {
+  private setRecord(games: GameMin[]) {
     this.wins = 0;
     this.losses = 0;
     this.otls = 0;

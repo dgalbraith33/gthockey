@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 import { Article } from './api/article';
 import { Board } from './api/board';
 import { Coach } from './api/coach';
-import { Game } from './api/game';
+import { Game, GameMin } from './api/game';
 import { Player } from './api/player';
 import { environment } from './../environments/environment';
 
@@ -29,8 +29,12 @@ export class ApiService {
     return this.http.get<Article[]>(this.getUrl(this.articleUrl));
   }
 
-  getGames(params: any = {}): Observable<Game[]> {
-    return this.http.get<Game[]>(this.getUrl(this.gameUrl), {params}).map((games: Game[]) => games.map(game => new Game(game)));
+  getGames(params: any = {}): Observable<GameMin[]> {
+    return this.http.get<GameMin[]>(this.getUrl(this.gameUrl), {params}).map((games: GameMin[]) => games.map(game => new GameMin(game)));
+  }
+
+  getGame(id: number): Observable<Game> {
+    return this.http.get<Game>(this.getUrl(this.gameUrl) + '/' + id);
   }
 
   getBoard(): Observable<Board[]> {
