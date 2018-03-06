@@ -12,6 +12,7 @@ import { FrontpageComponent } from './frontpage/frontpage.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { LeadershipComponent } from './leadership/leadership.component';
 import { SidebarCountdownComponent } from './sidebar/sidebar-countdown/sidebar-countdown.component';
+import { ArticleComponent } from './article/article.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { SidebarCountdownComponent } from './sidebar/sidebar-countdown/sidebar-c
     SidebarRecordComponent,
     LeadershipComponent,
     SidebarCountdownComponent,
+    ArticleComponent,
   ],
   imports: [
     BrowserModule,

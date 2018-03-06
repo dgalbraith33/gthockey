@@ -108,6 +108,11 @@ def article_list(request):
     serializer = ArticleSerializer(articles, many=True)
     return JsonResponse(serializer.data, safe=False)
 
+def article_get(request, id):
+    article = NewsStory.objects.get(pk=id)
+    serializer = ArticleSerializer(article)
+    return JsonResponse(serializer.data, safe=False)
+
 
 def board_list(request):
     board = Board.objects.all().order_by('priority')

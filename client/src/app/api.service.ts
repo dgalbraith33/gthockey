@@ -29,6 +29,10 @@ export class ApiService {
     return this.http.get<Article[]>(this.getUrl(this.articleUrl));
   }
 
+  getArticle(id: number): Observable<Article> {
+    return this.http.get<Article>(this.getUrl(this.articleUrl) + id + '/');
+  }
+
   getGames(params: any = {}): Observable<GameMin[]> {
     return this.http.get<GameMin[]>(this.getUrl(this.gameUrl), {params}).map((games: GameMin[]) => games.map(game => new GameMin(game)));
   }

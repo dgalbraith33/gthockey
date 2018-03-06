@@ -30,7 +30,7 @@ class GameSerializer(serializers.ModelSerializer):
 class ArticleSerializer(serializers.ModelSerializer):
     class Meta:
         model = NewsStory
-        fields = ('id', 'title', 'date', 'image', 'content')
+        fields = ('id', 'title', 'date', 'image', 'content', 'content_p')
 
 
 class BoardSerializer(serializers.ModelSerializer):
