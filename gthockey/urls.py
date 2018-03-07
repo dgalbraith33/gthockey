@@ -13,6 +13,8 @@ urlpatterns = [
     path('api/board/', api.board_list),
     path('api/coaches/', api.coach_list),
     path('api/forms/contact/', api.submit_contact),
+    path('api/forms/prospect/', api.submit_prospect),
+    path('api/forms/involvement/', api.submit_involvement),
 ]
 
 handler404 = 'views.handler404'

@@ -5,7 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 from datetime import date
 from rest_framework.views import APIView
 
-from .forms import ContactForm
+from .forms import ContactForm, ProspectForm, EmailListForm
 from .models import Game, Season, Player, NewsStory, Board, Coach, Email
 from .serializers import PlayerSerializer, GameSerializer, GameMinSerializer, ArticleSerializer, BoardSerializer, \
     CoachSerializer
@@ -129,6 +129,7 @@ def coach_list(request):
     serializer = CoachSerializer(coaches, many=True)
     return JsonResponse(serializer.data, safe=False)
 
+
 @csrf_exempt
 def submit_contact(request):
     success = False
@@ -143,5 +144,42 @@ def submit_contact(request):
 
             send_mail(subject, message, sender, recipients)
             success = True
+
+    return JsonResponse({"success": success, "errors": form.errors})
+
+
+@csrf_exempt
+def submit_prospect(request):
+    success = False
+    form = ProspectForm
+    if request.method == 'POST':
+        form = ProspectForm(request.POST)
+        if form.is_valid():
+            subject = form.get_subject()
+            sender = "GT Hockey"
+            message = form.get_message()
+            recipients = [e.email for e in Email.objects.all() if e.active]
+
+            send_mail(subject, message, sender, recipients)
+            success = True
+            form = ProspectForm()
+
+    return JsonResponse({"success": success, "errors": form.errors})
+
+@csrf_exempt
+def submit_involvement(request):
+    success = False
+    form = EmailListForm()
+    if request.method == 'POST':
+        form = EmailListForm(request.POST)
+        if form.is_valid():
+            subject = form.get_subject()
+            sender = "GT Hockey"
+            message = form.get_message()
+            recipients = [e.email for e in Email.objects.all()]
+
+            send_mail(subject, message, sender, recipients)
+            success = True
+            form = EmailListForm()
 
     return JsonResponse({"success": success, "errors": form.errors})
