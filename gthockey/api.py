@@ -1,10 +1,14 @@
 from django.http import JsonResponse
+from django.core.mail import send_mail
+from django.views.decorators.csrf import csrf_exempt
 
 from datetime import date
 from rest_framework.views import APIView
 
-from .models import Game, Season, Player, NewsStory, Board, Coach
-from .serializers import PlayerSerializer, GameSerializer, GameMinSerializer, ArticleSerializer, BoardSerializer, CoachSerializer
+from .forms import ContactForm
+from .models import Game, Season, Player, NewsStory, Board, Coach, Email
+from .serializers import PlayerSerializer, GameSerializer, GameMinSerializer, ArticleSerializer, BoardSerializer, \
+    CoachSerializer
 
 
 def nextgame(request):
@@ -124,3 +128,20 @@ def coach_list(request):
     coaches = Coach.objects.all().order_by('priority')
     serializer = CoachSerializer(coaches, many=True)
     return JsonResponse(serializer.data, safe=False)
+
+@csrf_exempt
+def submit_contact(request):
+    success = False
+    form = ContactForm()
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            subject = form.get_subject()
+            sender = "GT Hockey"
+            message = form.get_message()
+            recipients = [e.email for e in Email.objects.all() if e.active]
+
+            send_mail(subject, message, sender, recipients)
+            success = True
+
+    return JsonResponse({"success": success, "errors": form.errors})

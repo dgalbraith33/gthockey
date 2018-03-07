@@ -1,3 +1,4 @@
+import { ContactForm } from './api/contact';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
@@ -18,6 +19,8 @@ export class ApiService {
   private gameUrl = '/api/games/';
   private boardUrl = '/api/board/';
   private coachUrl = '/api/coaches/';
+
+  private contactFormUrl = '/api/forms/contact/';
 
   constructor(private http: HttpClient) { }
 
@@ -49,7 +52,19 @@ export class ApiService {
     return this.http.get<Coach[]>(this.getUrl(this.coachUrl));
   }
 
+  postContactForm(form: ContactForm) {
+    return this.http.post<any>(this.getUrl(this.contactFormUrl), this.toFormData(form));
+  }
+
   private getUrl(path: string) {
     return environment.apiurl + path;
+  }
+
+  private toFormData(form: any) {
+    const data = new FormData();
+    for (const key of Object.keys(form)) {
+      data.append(key, form[key]);
+    }
+    return data;
   }
 }

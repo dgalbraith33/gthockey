@@ -1,5 +1,5 @@
 from django import forms
-from captcha.fields import ReCaptchaField
+from .fields import ReCaptchaField
 
 
 class MyForm(forms.Form):
@@ -31,7 +31,7 @@ class ProspectForm(MyForm):
     ]
 
     name = forms.CharField(required=True, label="Full Name")
-    email = forms.CharField(required=True, label="Email")
+    email = forms.EmailField(required=True, label="Email")
     phone = forms.CharField(required=False, label="Phone Number")
     birth = forms.DateField(required=False, label="Date of Birth")
     hometown = forms.CharField(required=False, label="Hometown")
@@ -64,7 +64,7 @@ class ContactForm(MyForm):
     SUBJECT = "GT Hockey Contact Form"
 
     name = forms.CharField(required=True, label="Name")
-    email = forms.CharField(required=True, label="Email")
+    email = forms.EmailField(required=True, label="Email")
     subject = forms.CharField(required=True, label="Subject")
     message = forms.CharField(required=True, widget=forms.Textarea, label="Message")
     captcha = ReCaptchaField(label="")

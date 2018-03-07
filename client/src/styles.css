@@ -101,7 +101,8 @@ form, .form {
 }
 
 .form tr td input.submit {
-    display: inline;
+    float: right;
+    width: auto;
     font-size: 1em;
     background-color: #b08d45;
     color: white;

@@ -12,6 +12,7 @@ urlpatterns = [
     path('api/articles/<int:id>/', api.article_get),
     path('api/board/', api.board_list),
     path('api/coaches/', api.coach_list),
+    path('api/forms/contact/', api.submit_contact),
 ]
 
 handler404 = 'views.handler404'

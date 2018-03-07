@@ -1,0 +1,61 @@
+<div *ngIf="success" class="form-success">Thanks for reaching out. We will get back to you shortly!</div>
+
+<form (ngSubmit)="submitForm()">
+  <table class="form">
+    <tr>
+      <th>
+        <label for="id_name">Name</label>
+      </th>
+      <td>
+        <ul *ngIf="errors.name" class="errorlist">
+          <li>{{ errors.name }}</li>
+        </ul>
+        <input type="text" [(ngModel)]="model.name" name="name" required id="id_name" />
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <label for="id_email">Email</label>
+      </th>
+      <td>
+        <ul *ngIf="errors.email" class="errorlist">
+          <li>{{ errors.email }}</li>
+        </ul>
+        <input type="text" [(ngModel)]="model.email" name="email" required id="id_email" />
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <label for="id_subject">Subject</label>
+      </th>
+      <td>
+        <ul *ngIf="errors.subject" class="errorlist">
+          <li>{{ errors.subject }}</li>
+        </ul>
+        <input type="text" [(ngModel)]="model.subject" name="subject" required id="id_subject" />
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <label for="id_message">Message</label>
+      </th>
+      <td>
+        <ul *ngIf="errors.message" class="errorlist">
+          <li>{{ errors.message }}</li>
+        </ul>
+        <textarea name="message" [(ngModel)]="model.message" rows="10" required cols="40" id="id_message"></textarea>
+      </td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>
+        <re-captcha [(ngModel)]="model.captcha" name="captcha" (response)="handleCorrectCaptcha($event)"  siteKey="{{ recaptchaKey }}"></re-captcha>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <input class="submit" type="submit" value="Submit" formmethod="post" />
+      </td>
+    </tr>
+  </table>
+</form>
