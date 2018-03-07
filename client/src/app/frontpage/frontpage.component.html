@@ -1,4 +1,4 @@
-<div id="news-slider" class="carousel slide" data-ride="carousel">
+<div *ngIf="articles" id="news-slider" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#news-slider" *ngFor="let article of articles; let i = index; let first = first" data-slide-to="i" [ngClass]="{active: first}"></li>
   </ol>

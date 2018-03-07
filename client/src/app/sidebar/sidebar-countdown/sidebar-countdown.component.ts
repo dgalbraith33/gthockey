@@ -14,7 +14,6 @@ export class SidebarCountdownComponent implements OnInit {
 
   private game: GameMin;
   private image: string;
-  private exists: boolean;
 
   private diffSeconds: string;
   private diffMinutes: string;
@@ -39,8 +38,7 @@ export class SidebarCountdownComponent implements OnInit {
 
   private getUpcoming() {
     this.apiService.getGames(this.params).subscribe(games => {
-      this.exists = games.length > 0;
-      if (this.exists) {
+      if (games.length > 0) {
         this.game = games[0];
         this.startTimer();
         this.apiService.getGame(this.game.id).subscribe(game => this.image = game.opponent.logo);

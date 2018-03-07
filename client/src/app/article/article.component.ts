@@ -24,9 +24,6 @@ export class ArticleComponent implements OnInit {
   }
 
   private getArticle() {
-    this.apiService.getArticle(this.id).subscribe(article => {
-      this.article = article;
-      this.loaded = true;
-    });
+    this.apiService.getArticle(this.id).subscribe(article => this.article = article);
   }
 }

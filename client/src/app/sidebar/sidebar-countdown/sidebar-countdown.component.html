@@ -1,4 +1,4 @@
-<div *ngIf="exists" class="sidebar-content">
+<div *ngIf="game" class="sidebar-content">
   <div class="countdown">
     <div id="countdown-primary" class="countdown-inner">
       <div class="countdown-title">Next Game</div>
@@ -14,9 +14,6 @@
         <span id="countdown-mins">{{ diffMinutes }}<small>mins</small></span>
         <span id="countdown-secs">{{ diffSeconds }}<small>secs</small></span>
       </div>
-    </div>
-    <div id="countdown-alt" class="countdown-inner hidden">
-      No upcoming events. Schedule will be added soon, check back later.
     </div>
   </div>
 </div>
