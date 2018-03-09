@@ -46,7 +46,7 @@ def seasonRecord(request):
     unknown = 0
 
     for game in games:
-        if game.date < date.today() and game.score_gt_final and game.score_opp_final:
+        if game.date < date.today() and game.score_gt_final is not None and game.score_opp_final is not None:
             if game.score_gt_final > game.score_opp_final:
                 wins += 1
             elif game.score_gt_ot and game.score_opp_ot and game.score_opp_ot > 0:
