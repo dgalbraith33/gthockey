@@ -15,7 +15,7 @@ export class SidebarRecordComponent implements OnInit {
   private otls: number;
   private ties: number;
 
-  private record: string;
+  record: string;
 
   constructor(private apiService: ApiService) { }
 

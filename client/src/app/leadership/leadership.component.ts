@@ -12,8 +12,8 @@ import { Coach } from '../api/coach';
 })
 export class LeadershipComponent implements OnInit {
 
-  private board: Board[];
-  private coaches: Coach[];
+  board: Board[];
+  coaches: Coach[];
 
   constructor(private apiService: ApiService) { }
 

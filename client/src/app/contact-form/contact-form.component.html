@@ -52,7 +52,7 @@
         <ul *ngIf="errors.captcha" class="errorlist">
           <li>{{ errors.captcha }}</li>
         </ul>
-        <re-captcha [(ngModel)]="model.captcha" name="captcha" (response)="handleCorrectCaptcha($event)"  siteKey="{{ recaptchaKey }}"></re-captcha>
+        <re-captcha [(ngModel)]="model.captcha" name="captcha" siteKey="{{ recaptchaKey }}"></re-captcha>
       </td>
     </tr>
     <tr>

@@ -10,7 +10,7 @@ import { GameMin } from '../api/game';
 })
 export class ScheduleComponent implements OnInit {
 
-  private games: GameMin[];
+  games: GameMin[];
 
   constructor(private apiService: ApiService) { }
 

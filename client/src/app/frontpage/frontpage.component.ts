@@ -11,8 +11,8 @@ import { GameMin } from '../api/game';
 })
 export class FrontpageComponent implements OnInit {
 
-  private articles: Article[];
-  private recentGames: GameMin[];
+  articles: Article[];
+  recentGames: GameMin[];
 
   constructor(private apiService: ApiService) { }
 

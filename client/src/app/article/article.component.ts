@@ -12,8 +12,7 @@ import { ApiService } from '../api.service';
 export class ArticleComponent implements OnInit {
 
   private id: number;
-  private article: Article;
-  private loaded = false;
+  article: Article;
 
   constructor(private route: ActivatedRoute,
               private apiService: ApiService) { }

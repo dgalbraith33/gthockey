@@ -12,13 +12,13 @@ import { GameMin } from '../../api/game';
 })
 export class SidebarCountdownComponent implements OnInit {
 
-  private game: GameMin;
-  private image: string;
+  game: GameMin;
+  image: string;
 
-  private diffSeconds: string;
-  private diffMinutes: string;
-  private diffHours: string;
-  private diffDays: string;
+  diffSeconds: string;
+  diffMinutes: string;
+  diffHours: string;
+  diffDays: string;
 
   readonly params = {
     date_from: SidebarCountdownComponent.getToday(),
