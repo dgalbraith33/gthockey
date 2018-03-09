@@ -1,5 +1,5 @@
 <div class="schedule">
-    <div *ngFor="let game of games" class="schedule-item row game-game.venue">
+    <div *ngFor="let game of games" class="schedule-item row game-{{game.venue}}">
     	<div *ngIf="game.is_reported" class="col-lg-2 col-xs-6 col-sm-6">{{ game.short_result }}</div>
     	<div *ngIf="game.is_reported" class="col-lg-3 col-xs-6 col-xs-6">{{ game.score_gt_final }}-{{ game.score_opp_final}}</div>
       <div *ngIf="game.is_reported == false" class="schedule-date col-lg-3 col-xs-6 col-sm-6">{{ game.date | date:'shortDate' }}</div>
