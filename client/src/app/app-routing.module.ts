@@ -7,6 +7,8 @@ import { LeadershipComponent } from './leadership/leadership.component';
 import { RosterComponent } from './roster/roster.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
+import { ProspectFormComponent } from './prospect-form/prospect-form.component';
+import { InvolvementComponent } from './involvement/involvement.component';
 
 const routes: Routes = [
   { path: '', component: FrontpageComponent},
@@ -15,6 +17,8 @@ const routes: Routes = [
   { path: 'board', component: LeadershipComponent},
   { path: 'article/:id', component: ArticleComponent},
   { path: 'contact', component: ContactFormComponent},
+  { path: 'prospect', component: ProspectFormComponent},
+  { path: 'involvement', component: InvolvementComponent},
 ];
 
 

@@ -17,6 +17,8 @@ import { LeadershipComponent } from './leadership/leadership.component';
 import { SidebarCountdownComponent } from './sidebar/sidebar-countdown/sidebar-countdown.component';
 import { ArticleComponent } from './article/article.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
+import { ProspectFormComponent } from './prospect-form/prospect-form.component';
+import { InvolvementComponent } from './involvement/involvement.component';
 
 
 @NgModule({
@@ -30,6 +32,8 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
     SidebarCountdownComponent,
     ArticleComponent,
     ContactFormComponent,
+    ProspectFormComponent,
+    InvolvementComponent,
   ],
   imports: [
     BrowserModule,

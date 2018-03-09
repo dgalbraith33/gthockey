@@ -49,6 +49,9 @@
     <tr>
       <th></th>
       <td>
+        <ul *ngIf="errors.captcha" class="errorlist">
+          <li>{{ errors.captcha }}</li>
+        </ul>
         <re-captcha [(ngModel)]="model.captcha" name="captcha" (response)="handleCorrectCaptcha($event)"  siteKey="{{ recaptchaKey }}"></re-captcha>
       </td>
     </tr>

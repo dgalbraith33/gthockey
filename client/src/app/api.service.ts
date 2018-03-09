@@ -1,4 +1,3 @@
-import { ContactForm } from './api/contact';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
@@ -7,9 +6,12 @@ import 'rxjs/add/operator/map';
 import { Article } from './api/article';
 import { Board } from './api/board';
 import { Coach } from './api/coach';
+import { ContactForm } from './api/contact';
 import { Game, GameMin } from './api/game';
 import { Player } from './api/player';
+import { ProspectForm } from './api/prospect';
 import { environment } from './../environments/environment';
+import { InvolvementForm } from './api/involvement';
 
 @Injectable()
 export class ApiService {
@@ -21,6 +23,8 @@ export class ApiService {
   private coachUrl = '/api/coaches/';
 
   private contactFormUrl = '/api/forms/contact/';
+  private prospectFormUrl = '/api/forms/prospect/';
+  private involvementFormUrl = '/api/forms/involvement/';
 
   constructor(private http: HttpClient) { }
 
@@ -54,6 +58,14 @@ export class ApiService {
 
   postContactForm(form: ContactForm) {
     return this.http.post<any>(this.getUrl(this.contactFormUrl), this.toFormData(form));
+  }
+
+  postProspectForm(form: ProspectForm) {
+    return this.http.post<any>(this.getUrl(this.prospectFormUrl), this.toFormData(form));
+  }
+
+  postInvolvementForm(form: InvolvementForm) {
+    return this.http.post<any>(this.getUrl(this.involvementFormUrl), this.toFormData(form));
   }
 
   private getUrl(path: string) {

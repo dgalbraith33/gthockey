@@ -1,18 +1,17 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { InvolvementForm } from '../api/involvement';
 import { RecaptchaComponent } from 'ng-recaptcha';
-
-import { ContactForm } from './../api/contact';
-import { environment } from './../../environments/environment';
+import { environment } from '../../environments/environment';
 import { ApiService } from '../api.service';
 
 @Component({
-  selector: 'app-contact-form',
-  templateUrl: './contact-form.component.html',
-  styleUrls: ['./contact-form.component.css']
+  selector: 'app-involvement',
+  templateUrl: './involvement.component.html',
+  styleUrls: ['./involvement.component.css']
 })
-export class ContactFormComponent implements OnInit {
+export class InvolvementComponent implements OnInit {
 
-  model = new ContactForm();
+  model = new InvolvementForm();
   @ViewChild(RecaptchaComponent) recaptcha: RecaptchaComponent;
 
   success: boolean;
@@ -27,12 +26,12 @@ export class ContactFormComponent implements OnInit {
 
   submitForm() {
     console.log(this.model);
-    this.apiService.postContactForm(this.model).subscribe(resp => {
+    this.apiService.postInvolvementForm(this.model).subscribe(resp => {
       this.success = resp.success;
       this.errors = resp.errors;
       this.recaptcha.reset();
       if (this.success) {
-        this.model = new ContactForm();
+        this.model = new InvolvementForm();
       }
     });
   }
