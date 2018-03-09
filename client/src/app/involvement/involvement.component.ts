@@ -25,7 +25,6 @@ export class InvolvementComponent implements OnInit {
   }
 
   submitForm() {
-    console.log(this.model);
     this.apiService.postInvolvementForm(this.model).subscribe(resp => {
       this.success = resp.success;
       this.errors = resp.errors;

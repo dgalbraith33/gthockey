@@ -25,7 +25,6 @@ export class ProspectFormComponent implements OnInit {
   }
 
   submitForm() {
-    console.log(this.model);
     this.apiService.postProspectForm(this.model).subscribe(resp => {
       this.success = resp.success;
       this.errors = resp.errors;
