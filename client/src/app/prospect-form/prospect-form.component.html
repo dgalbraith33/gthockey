@@ -1,5 +1,5 @@
 <div *ngIf="success" class="form-success">Thanks for reaching out. We will get back to you shortly!</div>
-<form>
+<form (ngSubmit)="submitForm()">
   <table class="form">
     <tr>
       <th>
