@@ -1,6 +1,7 @@
 from django.db import models
 from datetime import date, datetime
 
+
 class Player(models.Model):
     first_name = models.CharField(max_length=25)
     last_name = models.CharField(max_length=25)
@@ -23,7 +24,7 @@ class Player(models.Model):
     hometown = models.CharField(max_length=50,
                                 blank=True)
     school = models.CharField(max_length=50,
-                                blank=True)
+                              blank=True)
 
     def __str__(self):
         return self.first_name + " " + self.last_name
@@ -120,7 +121,7 @@ class Game(models.Model):
             return "Win"
 
         if self.score_opp_ot is not None and self.score_gt_ot is not None and \
-                        self.score_opp_ot > self.score_gt_ot:
+                self.score_opp_ot > self.score_gt_ot:
             return "Overtime Loss"
 
         if self.score_opp_final > self.score_gt_final:

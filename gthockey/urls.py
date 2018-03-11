@@ -1,20 +1,15 @@
-from django.conf.urls import handler404
 from django.urls import path
 from . import api
 
 urlpatterns = [
-    path('api/nextgame/', api.nextgame),
-    path('api/record/', api.seasonRecord),
-    path('api/players/', api.player_list),
+    path('api/players/', api.PlayerList.as_view()),
     path('api/games/', api.GameList.as_view()),
     path('api/games/<int:id>/', api.GameDetail.as_view()),
-    path('api/articles/', api.article_list),
-    path('api/articles/<int:id>/', api.article_get),
-    path('api/board/', api.board_list),
-    path('api/coaches/', api.coach_list),
-    path('api/forms/contact/', api.submit_contact),
-    path('api/forms/prospect/', api.submit_prospect),
-    path('api/forms/involvement/', api.submit_involvement),
+    path('api/articles/', api.ArticleList.as_view()),
+    path('api/articles/<int:id>/', api.ArticleDetail.as_view()),
+    path('api/board/', api.BoardList.as_view()),
+    path('api/coaches/', api.CoachList.as_view()),
+    path('api/forms/contact/', api.ContactFormView.as_view()),
+    path('api/forms/prospect/', api.ProspectFormView.as_view()),
+    path('api/forms/involvement/', api.InvolvementFormView.as_view()),
 ]
-
-handler404 = 'views.handler404'

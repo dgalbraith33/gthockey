@@ -35,7 +35,7 @@ class ProspectForm(MyForm):
     phone = forms.CharField(required=False, label="Phone Number")
     birth = forms.DateField(required=False, label="Date of Birth")
     hometown = forms.CharField(required=False, label="Hometown")
-    status = forms.ChoiceField(choices=STATUS_CHOICES,label="Status")
+    status = forms.ChoiceField(choices=STATUS_CHOICES, label="Status")
     experience = forms.CharField(required=False, label="Experience Level")
     position = forms.ChoiceField(choices=POSITION_CHOICES, label="Position")
     comments = forms.CharField(required=False, widget=forms.Textarea, label="Comments")

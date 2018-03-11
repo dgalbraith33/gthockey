@@ -17,5 +17,4 @@ class ReCaptchaField(forms.CharField):
             'response': values
         })
         if not r.json()['success']:
-            print(r.json())
             raise ValidationError('Error validating recaptcha')

@@ -13,13 +13,14 @@ Including another URLconf
     1. Add an import:  from blog import urls as blog_urls
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
-from django.urls import include, path, re_path
+from django.urls import include, path
 from django.contrib import admin
-from django.contrib.staticfiles.views import serve
-from django.views.generic import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     path('', include('gthockey.urls')),
 ]
+
+
+handler404 = 'gthockey.api.handler404'

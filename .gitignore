@@ -5,4 +5,3 @@ __pycache__
 *.pyc
 gtsite/local_settings.py
 *~
-dev-static
