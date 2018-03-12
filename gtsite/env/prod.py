@@ -1,7 +1,7 @@
 from .base import *
 
 DEBUG = False
-ALLOWED_HOSTS = ["*.gthockey.com"]
+ALLOWED_HOSTS = [".gthockey.com"]
 
 STATIC_ROOT = "/var/www/static"
 MEDIA_ROOT = "/var/www/media"
