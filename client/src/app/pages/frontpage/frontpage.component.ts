@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ApiService } from './../api.service';
-import { Article } from '../api/article';
-import { GameMin } from '../api/game';
+import { ApiService } from './../../api/api.service';
+import { Article } from '../../api/article';
+import { GameMin } from '../../api/game';
 
 @Component({
   selector: 'app-frontpage',

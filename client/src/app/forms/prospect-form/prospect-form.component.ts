@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ProspectForm } from '../api/prospect';
-import { environment } from '../../environments/environment';
+
 import { RecaptchaComponent } from 'ng-recaptcha';
-import { ApiService } from '../api.service';
+
+import { environment } from '../../../environments/environment';
+import { ApiService } from '../../api/api.service';
+import { ProspectForm } from '../../api/prospect';
 
 @Component({
   selector: 'app-prospect-form',

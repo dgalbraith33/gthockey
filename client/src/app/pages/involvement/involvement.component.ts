@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { InvolvementForm } from '../api/involvement';
+
 import { RecaptchaComponent } from 'ng-recaptcha';
-import { environment } from '../../environments/environment';
-import { ApiService } from '../api.service';
+
+import { environment } from '../../../environments/environment';
+import { ApiService } from '../../api/api.service';
+import { InvolvementForm } from '../../api/involvement';
 
 @Component({
   selector: 'app-involvement',

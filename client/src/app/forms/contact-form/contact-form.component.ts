@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+
 import { RecaptchaComponent } from 'ng-recaptcha';
 
-import { ContactForm } from './../api/contact';
-import { environment } from './../../environments/environment';
-import { ApiService } from '../api.service';
+import { environment } from './../../../environments/environment';
+import { ApiService } from '../../api/api.service';
+import { ContactForm } from './../../api/contact';
 
 @Component({
   selector: 'app-contact-form',

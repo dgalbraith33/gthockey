@@ -3,5 +3,4 @@ export class Article {
   title: string;
   date: Date;
   content: string;
-  content_p: string;
 }

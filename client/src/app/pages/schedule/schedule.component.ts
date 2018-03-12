@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ApiService } from './../api.service';
-import { GameMin } from '../api/game';
+import { ApiService } from '../../api/api.service';
+import { GameMin } from '../../api/game';
 
 @Component({
   selector: 'app-schedule',

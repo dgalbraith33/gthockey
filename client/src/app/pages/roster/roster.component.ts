@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ApiService } from '../api.service';
-import { Player } from '../api/player';
+import { ApiService } from '../../api/api.service';
+import { Player } from '../../api/player';
 
 @Component({
   selector: 'app-roster',

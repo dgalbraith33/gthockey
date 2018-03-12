@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ApiService } from './../api.service';
-import { Board } from '../api/board';
-import { Coach } from '../api/coach';
+import { ApiService } from './../../api/api.service';
+import { Board } from '../../api/board';
+import { Coach } from '../../api/coach';
 
 
 @Component({

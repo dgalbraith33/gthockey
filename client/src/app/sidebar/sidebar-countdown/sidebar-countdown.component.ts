@@ -1,8 +1,9 @@
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/timer';
 import { Component, OnInit } from '@angular/core';
 
-import { ApiService } from '../../api.service';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/timer';
+
+import { ApiService } from '../../api/api.service';
 import { GameMin } from '../../api/game';
 
 @Component({

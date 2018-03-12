@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { Article } from '../api/article';
-import { ApiService } from '../api.service';
+import { ApiService } from '../../api/api.service';
+import { Article } from '../../api/article';
 
 @Component({
   selector: 'app-article',
@@ -13,6 +13,7 @@ export class ArticleComponent implements OnInit {
 
   private id: number;
   article: Article;
+  paragraphs: string[];
 
   constructor(private route: ActivatedRoute,
               private apiService: ApiService) { }
@@ -23,6 +24,9 @@ export class ArticleComponent implements OnInit {
   }
 
   private getArticle() {
-    this.apiService.getArticle(this.id).subscribe(article => this.article = article);
+    this.apiService.getArticle(this.id).subscribe(article => {
+      this.article = article;
+      this.paragraphs = article.content.split('\n');
+    });
   }
 }

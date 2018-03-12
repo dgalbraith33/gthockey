@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ArticleComponent } from './article/article.component';
-import { FrontpageComponent } from './frontpage/frontpage.component';
-import { LeadershipComponent } from './leadership/leadership.component';
-import { RosterComponent } from './roster/roster.component';
-import { ScheduleComponent } from './schedule/schedule.component';
-import { ContactFormComponent } from './contact-form/contact-form.component';
-import { ProspectFormComponent } from './prospect-form/prospect-form.component';
-import { InvolvementComponent } from './involvement/involvement.component';
+import { ContactFormComponent } from './forms/contact-form/contact-form.component';
+import { ProspectFormComponent } from './forms/prospect-form/prospect-form.component';
+import { ArticleComponent } from './pages/article/article.component';
+import { FrontpageComponent } from './pages/frontpage/frontpage.component';
+import { InvolvementComponent } from './pages/involvement/involvement.component';
+import { LeadershipComponent } from './pages/leadership/leadership.component';
+import { RosterComponent } from './pages/roster/roster.component';
+import { ScheduleComponent } from './pages/schedule/schedule.component';
 
 const routes: Routes = [
   { path: '', component: FrontpageComponent},
