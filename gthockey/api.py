@@ -79,60 +79,43 @@ class CoachList(APIView):
 class ContactFormView(APIView):
     @csrf_exempt
     def post(self, request):
-        success = False
-        form = ContactForm()
-        if request.method == 'POST':
-            form = ContactForm(request.data)
-            if form.is_valid():
-                subject = form.get_subject()
-                sender = "GT Hockey"
-                message = form.get_message()
-                recipients = [e.email for e in Email.objects.all() if e.active]
-
-                send_mail(subject, message, sender, recipients)
-                success = True
-
-        return JsonResponse({"success": success, "errors": form.errors})
+        form = ContactForm(request.data)
+        if form.is_valid():
+            subject = form.get_subject()
+            sender = "GT Hockey"
+            message = form.get_message()
+            recipients = [e.email for e in Email.objects.all() if e.active]
+            send_mail(subject, message, sender, recipients)
+            return JsonResponse({}, status=200)
+        return JsonResponse({"errors": form.errors}, status=400)
 
 
 class ProspectFormView(APIView):
     @csrf_exempt
     def post(self, request):
-        success = False
-        form = ProspectForm
-        if request.method == 'POST':
-            form = ProspectForm(request.data)
-            if form.is_valid():
-                subject = form.get_subject()
-                sender = "GT Hockey"
-                message = form.get_message()
-                recipients = [e.email for e in Email.objects.all() if e.active]
-
-                send_mail(subject, message, sender, recipients)
-                success = True
-                form = ProspectForm()
-
-        return JsonResponse({"success": success, "errors": form.errors})
+        form = ProspectForm(request.data)
+        if form.is_valid():
+            subject = form.get_subject()
+            sender = "GT Hockey"
+            message = form.get_message()
+            recipients = [e.email for e in Email.objects.all() if e.active]
+            send_mail(subject, message, sender, recipients)
+            return JsonResponse({}, status=200)
+        return JsonResponse({"errors": form.errors}, status=400)
 
 
 class InvolvementFormView(APIView):
     @csrf_exempt
     def post(self, request):
-        success = False
-        form = EmailListForm()
-        if request.method == 'POST':
-            form = EmailListForm(request.data)
-            if form.is_valid():
-                subject = form.get_subject()
-                sender = "GT Hockey"
-                message = form.get_message()
-                recipients = [e.email for e in Email.objects.all()]
-
-                send_mail(subject, message, sender, recipients)
-                success = True
-                form = EmailListForm()
-
-        return JsonResponse({"success": success, "errors": form.errors})
+        form = EmailListForm(request.data)
+        if form.is_valid():
+            subject = form.get_subject()
+            sender = "GT Hockey"
+            message = form.get_message()
+            recipients = [e.email for e in Email.objects.all()]
+            send_mail(subject, message, sender, recipients)
+            return JsonResponse({}, status=200)
+        return JsonResponse({"errors": form.errors}, status=400)
 
 
 def handler404(request, exception):

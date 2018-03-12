@@ -25,13 +25,15 @@ export class InvolvementComponent implements OnInit {
   }
 
   submitForm() {
-    this.apiService.postInvolvementForm(this.model).subscribe(resp => {
-      this.success = resp.success;
-      this.errors = resp.errors;
+    this.apiService.postInvolvementForm(this.model).subscribe(response => {
+      this.success = true;
+      this.errors = {};
       this.recaptcha.reset();
-      if (this.success) {
-        this.model = new InvolvementForm();
-      }
+      this.model = new InvolvementForm();
+    }, response => {
+      this.success = false;
+      this.errors = response.error.errors;
+      this.recaptcha.reset();
     });
   }
 }

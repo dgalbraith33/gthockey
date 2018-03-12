@@ -26,12 +26,14 @@ export class ProspectFormComponent implements OnInit {
 
   submitForm() {
     this.apiService.postProspectForm(this.model).subscribe(resp => {
-      this.success = resp.success;
-      this.errors = resp.errors;
+      this.success = true;
+      this.errors = {};
       this.recaptcha.reset();
-      if (this.success) {
-        this.model = new ProspectForm();
-      }
+      this.model = new ProspectForm();
+    }, response => {
+      this.success = false;
+      this.errors = response.error.errors;
+      this.recaptcha.reset();
     });
   }
 }

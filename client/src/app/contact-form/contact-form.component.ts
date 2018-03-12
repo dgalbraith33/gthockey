@@ -26,13 +26,15 @@ export class ContactFormComponent implements OnInit {
   }
 
   submitForm() {
-    this.apiService.postContactForm(this.model).subscribe(resp => {
-      this.success = resp.success;
-      this.errors = resp.errors;
+    this.apiService.postContactForm(this.model).subscribe(response => {
+      this.success = true;
+      this.errors = {};
       this.recaptcha.reset();
-      if (this.success) {
-        this.model = new ContactForm();
-      }
+      this.model = new ContactForm();
+    }, response => {
+      this.success = false;
+      this.errors = response.error.errors;
+      this.recaptcha.reset();
     });
   }
 }
