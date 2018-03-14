@@ -56,10 +56,17 @@ export class SidebarCountdownComponent implements OnInit {
   private updateTime() {
     const diffMillis = this.game.date.getTime() - Date.now();
 
-    this.diffSeconds = ((diffMillis / 1000) % 60).toFixed();
-    this.diffMinutes = ((diffMillis / (60 * 1000)) % 60).toFixed();
-    this.diffHours = ((diffMillis / (60 * 60 * 1000)) % 24).toFixed();
-    this.diffDays = (diffMillis / (24 * 60 * 60 * 1000)).toFixed();
+    if (diffMillis < 0) {
+      this.diffSeconds = '0';
+      this.diffMinutes = '0';
+      this.diffHours = '0';
+      this.diffDays = '0';
+    } else {
+      this.diffSeconds = ((diffMillis / 1000) % 60).toFixed();
+      this.diffMinutes = ((diffMillis / (60 * 1000)) % 60).toFixed();
+      this.diffHours = ((diffMillis / (60 * 60 * 1000)) % 24).toFixed();
+      this.diffDays = (diffMillis / (24 * 60 * 60 * 1000)).toFixed();
+    }
   }
 
 
