@@ -4,10 +4,10 @@ from django.views.decorators.csrf import csrf_exempt
 
 from rest_framework.views import APIView
 
-from .forms import ContactForm, ProspectForm, EmailListForm
-from .models import Game, Season, Player, NewsStory, Board, Coach, Email
+from .forms import ContactForm, ProspectForm, EmailListForm, OrderForm
+from .models import Game, Season, Player, NewsStory, Board, Coach, Email, ShopItem
 from .serializers import PlayerSerializer, GameSerializer, GameMinSerializer, ArticleSerializer, \
-    BoardSerializer, CoachSerializer
+    BoardSerializer, CoachSerializer, ShopItemListSerializer, ShopItemSerializer
 
 
 class PlayerList(APIView):
@@ -73,6 +73,20 @@ class CoachList(APIView):
     def get(self, request):
         coaches = Coach.objects.all().order_by('priority')
         serializer = CoachSerializer(coaches, many=True)
+        return JsonResponse(serializer.data, safe=False)
+
+
+class ShopList(APIView):
+    def get(self, request):
+        items = ShopItem.objects.all()
+        serializer = ShopItemListSerializer(items, many=True)
+        return JsonResponse(serializer.data, safe=False)
+
+
+class ShopDetail(APIView):
+    def get(self, request, id):
+        item = ShopItem.objects.get(pk=id)
+        serializer = ShopItemSerializer(item)
         return JsonResponse(serializer.data, safe=False)
 
 

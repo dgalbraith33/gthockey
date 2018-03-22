@@ -254,3 +254,21 @@ class Coach(models.Model):
     image = models.ImageField(upload_to="coach")
     bio = models.CharField(max_length=1000)
     priority = models.IntegerField()
+
+
+class ShopItem(models.Model):
+    name = models.CharField(max_length=25)
+    price = models.IntegerField()
+    description = models.CharField(max_length=1000)
+    image = models.ImageField(upload_to="shop")
+
+
+class ShopItemOptionList(models.Model):
+    shop_item = models.ForeignKey(ShopItem, related_name='options', on_delete=models.CASCADE)
+    display_name = models.CharField(max_length=25)
+    option_list = models.CharField(max_length=100)
+
+
+class ShopItemImage(models.Model):
+    shop_item = models.ForeignKey(ShopItem, related_name='images', on_delete=models.CASCADE)
+    image = models.ImageField(upload_to="shop")

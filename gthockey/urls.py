@@ -9,6 +9,8 @@ urlpatterns = [
     path('api/articles/<int:id>/', api.ArticleDetail.as_view()),
     path('api/board/', api.BoardList.as_view()),
     path('api/coaches/', api.CoachList.as_view()),
+    path('api/shop/', api.ShopList.as_view()),
+    path('api/shop/<int:id>/', api.ShopDetail.as_view()),
     path('api/forms/contact/', api.ContactFormView.as_view()),
     path('api/forms/prospect/', api.ProspectFormView.as_view()),
     path('api/forms/involvement/', api.InvolvementFormView.as_view()),

@@ -1,7 +1,8 @@
 from django.contrib import admin
 from django import forms
 
-from .models import Player, Game, Team, Rink, Email, NewsStory, Season, Board, Coach
+from .models import Player, Game, Team, Rink, Email, NewsStory, Season, Board, Coach, ShopItem, ShopItemOptionList, \
+    ShopItemImage
 
 
 class PlayerAdmin(admin.ModelAdmin):
@@ -62,6 +63,30 @@ class CoachAdmin(admin.ModelAdmin):
         return formfield
 
 
+class ShopItemOptionListInline(admin.StackedInline):
+    model = ShopItemOptionList
+    extra = 1
+
+
+class ShopItemImageInline(admin.StackedInline):
+    model = ShopItemImage
+    extra = 1
+
+
+class ShopItemAdmin(admin.ModelAdmin):
+    list_display = ['name']
+    inlines = [
+        ShopItemOptionListInline,
+        ShopItemImageInline,
+    ]
+
+    def formfield_for_dbfield(self, db_field, **kwargs):
+        formfield = super(ShopItemAdmin, self).formfield_for_dbfield(db_field, **kwargs)
+        if db_field.name == 'description':
+            formfield.widget = forms.Textarea(attrs=formfield.widget.attrs)
+        return formfield
+
+
 admin.site.register(Player, PlayerAdmin)
 admin.site.register(Game, GameAdmin)
 admin.site.register(Team, TeamAdmin)
@@ -71,3 +96,4 @@ admin.site.register(Email)
 admin.site.register(Season)
 admin.site.register(Board, BoardAdmin)
 admin.site.register(Coach, CoachAdmin)
+admin.site.register(ShopItem, ShopItemAdmin)
