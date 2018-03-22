@@ -2,7 +2,7 @@ from django.contrib import admin
 from django import forms
 
 from .models import Player, Game, Team, Rink, Email, NewsStory, Season, Board, Coach, ShopItem, ShopItemOptionList, \
-    ShopItemImage
+    ShopItemImage, ShopItemCustomOption
 
 
 class PlayerAdmin(admin.ModelAdmin):
@@ -68,6 +68,11 @@ class ShopItemOptionListInline(admin.StackedInline):
     extra = 1
 
 
+class ShopItemCustomOptionInline(admin.StackedInline):
+    model = ShopItemCustomOption
+    extra = 1
+
+
 class ShopItemImageInline(admin.StackedInline):
     model = ShopItemImage
     extra = 1
@@ -77,6 +82,7 @@ class ShopItemAdmin(admin.ModelAdmin):
     list_display = ['name']
     inlines = [
         ShopItemOptionListInline,
+        ShopItemCustomOptionInline,
         ShopItemImageInline,
     ]
 

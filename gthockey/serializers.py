@@ -49,7 +49,7 @@ class CoachSerializer(serializers.ModelSerializer):
 class ShopItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = ShopItem
-        fields = ('id', 'name', 'price', 'description', 'image', 'images', 'options')
+        fields = ('id', 'name', 'price', 'description', 'image', 'images', 'options', 'custom_options')
         depth = 1
 
 

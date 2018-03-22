@@ -258,7 +258,7 @@ class Coach(models.Model):
 
 class ShopItem(models.Model):
     name = models.CharField(max_length=25)
-    price = models.IntegerField()
+    price = models.FloatField()
     description = models.CharField(max_length=1000)
     image = models.ImageField(upload_to="shop")
 
@@ -266,7 +266,16 @@ class ShopItem(models.Model):
 class ShopItemOptionList(models.Model):
     shop_item = models.ForeignKey(ShopItem, related_name='options', on_delete=models.CASCADE)
     display_name = models.CharField(max_length=25)
+    help_text = models.CharField(max_length=50, blank=True)
     option_list = models.CharField(max_length=100)
+
+
+class ShopItemCustomOption(models.Model):
+    shop_item = models.ForeignKey(ShopItem, related_name='custom_options', on_delete=models.CASCADE)
+    display_name = models.CharField(max_length=25)
+    help_text = models.CharField(max_length=50, blank=True)
+    required = models.BooleanField(default=False)
+    extra_cost = models.FloatField(blank=True)
 
 
 class ShopItemImage(models.Model):
