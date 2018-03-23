@@ -4,7 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 from rest_framework.views import APIView
 
-from .forms import ContactForm, ProspectForm, EmailListForm
+from .forms import ContactForm, ProspectForm, EmailListForm, OrderForm
 from .models import Game, Season, Player, NewsStory, Board, Coach, Email, ShopItem
 from .serializers import PlayerSerializer, GameSerializer, GameMinSerializer, ArticleSerializer, \
     BoardSerializer, CoachSerializer, ShopItemListSerializer, ShopItemSerializer
@@ -130,6 +130,21 @@ class InvolvementFormView(APIView):
             send_mail(subject, message, sender, recipients)
             return JsonResponse({}, status=200)
         return JsonResponse({"errors": form.errors}, status=400)
+
+
+class OrderFormView(APIView):
+    @csrf_exempt
+    def post(self, request):
+        form = OrderForm(request.data)
+        if form.is_valid():
+            subject = form.get_subject()
+            sender = "GT Hockey"
+            message = form.get_message()
+            recipients = [e.email for e in Email.objects.all()]
+            send_mail(subject, message, sender, recipients)
+            return JsonResponse({}, status=200)
+        return JsonResponse({"errors": form.errors}, status=400)
+
 
 
 def handler404(request, exception):

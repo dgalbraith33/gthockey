@@ -14,4 +14,5 @@ urlpatterns = [
     path('api/forms/contact/', api.ContactFormView.as_view()),
     path('api/forms/prospect/', api.ProspectFormView.as_view()),
     path('api/forms/involvement/', api.InvolvementFormView.as_view()),
+    path('api/forms/order/', api.OrderFormView.as_view()),
 ]

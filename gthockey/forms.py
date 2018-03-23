@@ -1,5 +1,5 @@
 from django import forms
-from .fields import ReCaptchaField
+from .fields import ReCaptchaField, ItemField
 
 
 class MyForm(forms.Form):
@@ -124,4 +124,27 @@ class GolfForm(MyForm):
         message += "Name: %s\n" % self.cleaned_data['name']
         message += "Email: %s\n" % self.cleaned_data['email']
         message += "Foursome:\n %s\n" % self.cleaned_data['foursome']
+        return message
+
+
+class OrderForm(MyForm):
+    SUBJECT = "GT Hockey Order Placed"
+
+    name = forms.CharField(required=True)
+    email = forms.EmailField(required=True)
+    phone = forms.CharField(required=True)
+    message = forms.CharField(required=False)
+    items = ItemField(required=True)
+
+    @staticmethod
+    def get_subject():
+        return OrderForm.SUBJECT
+
+    def get_message(self):
+        message = "An order has been placed!\n\n"
+        message += "Name: %s\n" % self.cleaned_data['name']
+        message += "Email: %s\n" % self.cleaned_data['email']
+        message += "Phone: %s\n" % self.cleaned_data['phone']
+        message += "Custom message: %s\n\n" % self.cleaned_data['message']
+        message += "\n\n".join(self.cleaned_data['items'])
         return message
