@@ -10,9 +10,14 @@ import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ApiService } from './api/api.service';
+import { CartService } from './cart/cart.service';
+import { ItemFormComponent } from './forms/item-form/item-form.component';
+import { CartFormComponent } from './forms/cart-form/cart-form.component';
 import { ContactFormComponent } from './forms/contact-form/contact-form.component';
+import { OrderFormComponent } from './forms/order-form/order-form.component';
 import { ProspectFormComponent } from './forms/prospect-form/prospect-form.component';
 import { ArticleComponent } from './pages/article/article.component';
+import { CartComponent } from './pages/cart/cart.component';
 import { FrontpageComponent } from './pages/frontpage/frontpage.component';
 import { InvolvementComponent } from './pages/involvement/involvement.component';
 import { LeadershipComponent } from './pages/leadership/leadership.component';
@@ -20,6 +25,9 @@ import { RosterComponent } from './pages/roster/roster.component';
 import { ScheduleComponent } from './pages/schedule/schedule.component';
 import { SidebarCountdownComponent } from './sidebar/sidebar-countdown/sidebar-countdown.component';
 import { SidebarRecordComponent } from './sidebar/sidebar-record/sidebar-record.component';
+import { ShopComponent } from './pages/shop/shop.component';
+import { ShopItemComponent } from './pages/shop-item/shop-item.component';
+
 
 
 @NgModule({
@@ -35,6 +43,12 @@ import { SidebarRecordComponent } from './sidebar/sidebar-record/sidebar-record.
     ScheduleComponent,
     SidebarRecordComponent,
     SidebarCountdownComponent,
+    ShopComponent,
+    ShopItemComponent,
+    ItemFormComponent,
+    CartFormComponent,
+    OrderFormComponent,
+    CartComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -45,7 +59,8 @@ import { SidebarRecordComponent } from './sidebar/sidebar-record/sidebar-record.
     RecaptchaModule.forRoot(),
   ],
   providers: [
-    ApiService
+    ApiService,
+    CartService
   ],
   bootstrap: [AppComponent]
 })

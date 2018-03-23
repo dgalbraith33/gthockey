@@ -1,0 +1,7 @@
+<div *ngIf="item">
+<img src="{{ item.image }}" />
+<div *ngFor="let image of item.images">
+    <img  src="{{ image.image }}" />
+</div>
+<app-item-form></app-item-form>
+</div>

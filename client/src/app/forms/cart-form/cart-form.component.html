@@ -1,0 +1,9 @@
+<div *ngIf="cartService.empty()">Add Items to your Cart to place an order!</div>
+<form (ngSubmit)="submitForm()" *ngIf="!cartService.empty()">
+  <ul>
+    <li *ngFor="let item of cartService.allItems()">
+      <h3>{{ item.shopItem.name }}</h3>
+    </li>
+  </ul>
+  <input class="submit" type="submit" value="Update Cart" />
+</form>

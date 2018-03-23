@@ -1,0 +1,28 @@
+<div *ngIf="success" class="form-success">This item was successfully added to your cart!</div>
+<form (ngSubmit)="submitForm()" *ngIf="model">
+  <table class="form">
+    <tr *ngFor="let optionlist of model.shopItem.options">
+      <th>
+        <label for="option-{{ optionlist.id }}">{{ optionlist.display_name}}</label>
+      </th>
+      <td>
+        <select [(ngModel)]="model.options[optionlist.id]" name="option-{{ optionlist.id }}" id="id_option-{{ optionlist.id }}">
+          <option *ngFor="let option of getOptions(optionlist.option_list)" value="{{ option }}">{{ option }}</option>
+        </select>
+      </td>
+    </tr>
+    <tr *ngFor="let custom_option of model.shopItem.custom_options">
+        <th>
+          <label for="custom_option-{{ custom_option.id }}">{{ custom_option.display_name}}</label>
+        </th>
+        <td>
+          <input type="text" [(ngModel)]="model.custom_options[custom_option.id]" name="custom_option-{{ custom_option.id }}" id="id_custom_option-{{ custom_option.id }}" />
+        </td>
+      </tr>
+    <tr>
+      <td colspan="2">
+        <input class="submit" type="submit" value="Add to Cart" />
+      </td>
+    </tr>
+  </table>
+</form>

@@ -1,0 +1,5 @@
+<div *ngFor="let item of items" class="card">
+  <img src="{{ item.image }}" />
+  <a [routerLink]="['/shop', item.id]">{{ item.name }}</a>
+  <span>${{ item.price }}</span>
+</div>
