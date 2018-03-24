@@ -1,4 +1,6 @@
-<div *ngIf="articles" id="news-slider" class="carousel slide" data-ride="carousel">
+<app-carousel [carouselItems]="carouselItems"></app-carousel>
+<!-- 
+  <div *ngIf="articles" id="news-slider" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#news-slider" *ngFor="let article of articles; let i = index; let first = first" data-slide-to="i" [ngClass]="{active: first}"></li>
   </ol>
@@ -22,7 +24,7 @@
     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
-</div>
+</div> -->
 
 <div class="page-item col-lg-6 col-md-12 col-sm-12">
   <div class="sub-title">

@@ -14,9 +14,14 @@
     <tr *ngFor="let custom_option of model.shopItem.custom_options">
         <th>
           <label for="custom_option-{{ custom_option.id }}">{{ custom_option.display_name}}</label>
+          <span *ngIf="custom_option.extra_cost">(+${{ custom_option.extra_cost }})</span>
         </th>
         <td>
-          <input type="text" [(ngModel)]="model.custom_options[custom_option.id]" name="custom_option-{{ custom_option.id }}" id="id_custom_option-{{ custom_option.id }}" />
+          <input type="text" 
+                 [(ngModel)]="model.custom_options[custom_option.id]"
+                 name="custom_option-{{ custom_option.id }}"
+                 id="id_custom_option-{{ custom_option.id }}"
+                 placeholder="{{ custom_option.help_text }}" />
         </td>
       </tr>
     <tr>

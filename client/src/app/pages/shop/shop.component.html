@@ -1,5 +1,15 @@
-<div *ngFor="let item of items" class="card">
-  <img src="{{ item.image }}" />
-  <a [routerLink]="['/shop', item.id]">{{ item.name }}</a>
-  <span>${{ item.price }}</span>
+<div *ngFor="let item of items">
+  <a [routerLink]="['/shop', item.id]">
+    <div class="card row">
+      <div class="col-lg-3 shop-image">
+        <img src="{{ item.image }}" />
+      </div>
+      <div class="col-lg-6 shop-name">
+        {{ item.name }}
+      </div>
+      <div class="col-lg-3 shop-price">
+        ${{ item.price }}
+      </div>
+    </div>
+  </a>
 </div>

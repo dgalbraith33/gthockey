@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { ApiService } from '../../api/api.service';
 import { ShopItem } from '../../api/shop-item';
+import { CarouselItem } from '../../common/carousel/carousel';
 
 @Component({
   selector: 'app-shop-item',
@@ -13,6 +14,7 @@ export class ShopItemComponent implements OnInit {
 
   private id: number;
   item: ShopItem;
+  imageCarousel: CarouselItem[];
 
   constructor(private route: ActivatedRoute,
               private apiService: ApiService) { }
@@ -23,7 +25,18 @@ export class ShopItemComponent implements OnInit {
   }
 
   private getItem() {
-    this.apiService.getShopItem(this.id).subscribe(item => this.item = item);
+    this.apiService.getShopItem(this.id).subscribe(item => {
+      this.item = item;
+      this.imageCarousel = [];
+      this.imageCarousel.push(new CarouselItem(item.image));
+      item.images.forEach(image => {
+        this.imageCarousel.push(new CarouselItem(image.image));
+      });
+    });
+  }
+
+  paragraphs(description: string): string[] {
+    return description.split('\n');
   }
 
 }

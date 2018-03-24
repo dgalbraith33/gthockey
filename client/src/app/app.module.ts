@@ -27,6 +27,7 @@ import { SidebarCountdownComponent } from './sidebar/sidebar-countdown/sidebar-c
 import { SidebarRecordComponent } from './sidebar/sidebar-record/sidebar-record.component';
 import { ShopComponent } from './pages/shop/shop.component';
 import { ShopItemComponent } from './pages/shop-item/shop-item.component';
+import { CarouselComponent } from './common/carousel/carousel.component';
 
 
 
@@ -49,6 +50,7 @@ import { ShopItemComponent } from './pages/shop-item/shop-item.component';
     CartFormComponent,
     OrderFormComponent,
     CartComponent,
+    CarouselComponent,
   ],
   imports: [
     AppRoutingModule,
