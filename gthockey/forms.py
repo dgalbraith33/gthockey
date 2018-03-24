@@ -133,8 +133,10 @@ class OrderForm(MyForm):
     name = forms.CharField(required=True)
     email = forms.EmailField(required=True)
     phone = forms.CharField(required=True)
+    address = forms.CharField(required=True)
     message = forms.CharField(required=False)
     items = ItemField(required=True)
+    captcha = ReCaptchaField(label="")
 
     @staticmethod
     def get_subject():
@@ -145,6 +147,7 @@ class OrderForm(MyForm):
         message += "Name: %s\n" % self.cleaned_data['name']
         message += "Email: %s\n" % self.cleaned_data['email']
         message += "Phone: %s\n" % self.cleaned_data['phone']
+        message += "Address:\n%s\n" % self.cleaned_data['address']
         message += "Custom message: %s\n\n" % self.cleaned_data['message']
         message += "\n\n".join(self.cleaned_data['items'])
         return message

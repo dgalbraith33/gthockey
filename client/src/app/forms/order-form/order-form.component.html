@@ -37,6 +37,17 @@
     </tr>
     <tr>
       <th>
+        <label for="id_address">Address</label>
+      </th>
+      <td>
+        <ul *ngIf="errors.address" class="errorlist">
+          <li>{{ errors.address }}</li>
+        </ul>
+        <textarea name="address" [(ngModel)]="model.address" rows="3" required cols="40" id="id_address"></textarea>
+      </td>
+    </tr>
+    <tr>
+      <th>
         <label for="id_message">Message</label>
       </th>
       <td>
