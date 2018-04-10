@@ -103,6 +103,10 @@ class ContactFormView(APIView):
             return JsonResponse({}, status=200)
         return JsonResponse({"errors": form.errors}, status=400)
 
+    @csrf_exempt
+    def dispatch(self, *args, **kwargs):
+        return super(ContactFormView, self).dispatch(*args, **kwargs)
+
 
 class ProspectFormView(APIView):
     @csrf_exempt
@@ -117,6 +121,9 @@ class ProspectFormView(APIView):
             return JsonResponse({}, status=200)
         return JsonResponse({"errors": form.errors}, status=400)
 
+    @csrf_exempt
+    def dispatch(self, *args, **kwargs):
+        return super(ProspectFormView, self).dispatch(*args, **kwargs)
 
 class InvolvementFormView(APIView):
     @csrf_exempt
@@ -131,6 +138,9 @@ class InvolvementFormView(APIView):
             return JsonResponse({}, status=200)
         return JsonResponse({"errors": form.errors}, status=400)
 
+    @csrf_exempt
+    def dispatch(self, *args, **kwargs):
+        return super(InvolvementFormView, self).dispatch(*args, **kwargs)
 
 class OrderFormView(APIView):
     @csrf_exempt
@@ -144,6 +154,10 @@ class OrderFormView(APIView):
             send_mail(subject, message, sender, recipients)
             return JsonResponse({}, status=200)
         return JsonResponse({"errors": form.errors}, status=400)
+
+    @csrf_exempt
+    def dispatch(self, *args, **kwargs):
+        return super(OrderFormView, self).dispatch(*args, **kwargs)
 
 
 
