@@ -7,7 +7,15 @@
       <div class="col-lg-2"><h3>Price</h3></div>
   </div>
   <div *ngFor="let item of cartService.allItems(); let i = index" class="card row cart-row">
-    <div class="col-lg-4"><h4>{{ item.shopItem.name }}</h4></div>
+    <div class="col-lg-4">
+      <h4>{{ item.shopItem.name }}</h4>
+      <div *ngFor="let option of item.getOptions()">
+        <h6>{{ option }}</h6>
+      </div>
+      <div *ngFor="let custom_option of item.getCustomOptions()">
+          <h6>{{ custom_option }}</h6>
+        </div>
+    </div>
     <div class="col-lg-4"><h4>1</h4></div>
     <div class="col-lg-2"><h4>${{ cartService.getPrice(item) }}</h4></div>
     <div class="col-lg-2"><h4><a (click)="removeFromCart(i)">Remove</a></h4></div>
