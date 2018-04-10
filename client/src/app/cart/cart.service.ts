@@ -9,12 +9,6 @@ export class CartService {
   private items: CartItem[] = [];
 
   constructor() {
-    this.addItem(new CartItem({
-      id: 1,
-      name: 'Test Item',
-      price: 100,
-      image: 'https://test.gthockey.com/media/shop/Group_14_hrodo2A.png',
-    } as ShopItem));
   }
 
   addItem(item: CartItem) {
