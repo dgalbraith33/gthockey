@@ -142,6 +142,7 @@ class InvolvementFormView(APIView):
     def dispatch(self, *args, **kwargs):
         return super(InvolvementFormView, self).dispatch(*args, **kwargs)
 
+
 class OrderFormView(APIView):
     @csrf_exempt
     def post(self, request):
@@ -152,13 +153,19 @@ class OrderFormView(APIView):
             message = form.get_message()
             recipients = [e.email for e in Email.objects.all()]
             send_mail(subject, message, sender, recipients)
+
+            # Customer Email
+            subject = form.get_customer_subject()
+            sender = "GT Hockey"
+            message = form.get_customer_message()
+            recipients = [form.cleaned_data['email']]
+            send_mail(subject, message, sender, recipients)
             return JsonResponse({}, status=200)
         return JsonResponse({"errors": form.errors}, status=400)
 
     @csrf_exempt
     def dispatch(self, *args, **kwargs):
         return super(OrderFormView, self).dispatch(*args, **kwargs)
-
 
 
 def handler404(request, exception):

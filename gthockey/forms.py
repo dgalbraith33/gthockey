@@ -138,6 +138,9 @@ class OrderForm(MyForm):
     items = ItemField(required=True)
     captcha = ReCaptchaField(label="")
 
+    def get_total_cost(self):
+        pass
+
     @staticmethod
     def get_subject():
         return OrderForm.SUBJECT
@@ -151,4 +154,21 @@ class OrderForm(MyForm):
         message += "Custom message: %s\n\n" % self.cleaned_data['message']
         message += "Items:\n"
         message += "\n\n".join(self.cleaned_data['items'])
+        return message
+
+    def get_customer_subject(self):
+        return "Your GT Hockey order has been placed."
+
+    def get_customer_message(self):
+        message = "Hi %s, thank you for ordering from GT Hockey!\n\n" % self.cleaned_data['name']
+        message += "Please keep in mind that we are a student-run organization. While "
+        message += "we strive to fulfill your order as fast as possible, some delays may "
+        message += "be inevitable.\n\n"
+        message += "One great way to help us expedite the process would be to pay for your "
+        message += "order right now on paypal. You can follow this link and pay the total listed below!\n\n"
+        message += "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=2MEXK924Y38Z4\n\n"
+        message += "Items:\n"
+        message += "\n\n".join(self.cleaned_data['items'])
+
+
         return message

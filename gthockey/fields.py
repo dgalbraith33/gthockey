@@ -27,10 +27,12 @@ class ItemField(forms.CharField):
         if type(value) != list:
             raise ValidationError('Must pass list to items')
         item_strs = []
+        total_price = 0.0
         for item in value:
             item_str = ""
             shopitem = ShopItem.objects.get(pk=item['item_id'])
             item_str += shopitem.name
+            price = shopitem.price
             if 'options' in item:
                 for optionlistid in item['options'].keys():
                     shopitemoptionlist = ShopItemOptionList.objects.get(pk=int(optionlistid))
@@ -39,6 +41,10 @@ class ItemField(forms.CharField):
                 for customoptionid in item['custom_options'].keys():
                     shopitemcustomoption = ShopItemCustomOption.objects.get(pk=int(customoptionid))
                     item_str += "\n" + shopitemcustomoption.display_name + ":" + item['custom_options'][customoptionid]
+                    if shopitemcustomoption.extra_cost:
+                        price += shopitemcustomoption.extra_cost
+            total_price += price
+            item_str += "\nPrice: $%.2f" % price
             item_strs.append(item_str)
 
-        return item_strs
+        return ["Total: $%.2f" % total_price] + item_strs
