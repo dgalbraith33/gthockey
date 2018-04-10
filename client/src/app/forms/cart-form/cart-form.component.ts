@@ -17,4 +17,8 @@ export class CartFormComponent implements OnInit {
   submitForm() {
   }
 
+  removeFromCart(index: number) {
+    this.cartService.removeItem(index);
+  }
+
 }

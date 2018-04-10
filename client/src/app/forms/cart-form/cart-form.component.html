@@ -1,9 +1,20 @@
+<div class="page-title">Shopping Cart</div>
 <div *ngIf="cartService.empty()">Add Items to your Cart to place an order!</div>
 <form (ngSubmit)="submitForm()" *ngIf="!cartService.empty()">
-  <ul>
-    <li *ngFor="let item of cartService.allItems()">
-      <h3>{{ item.shopItem.name }}</h3>
-    </li>
-  </ul>
-  <input class="submit" type="submit" value="Update Cart" />
+  <div class="card row">
+      <div class="col-lg-4"><h3>Item</h3></div>
+      <div class="col-lg-4"><h3>Quantity</h3></div>
+      <div class="col-lg-2"><h3>Price</h3></div>
+  </div>
+  <div *ngFor="let item of cartService.allItems(); let i = index" class="card row cart-row">
+    <div class="col-lg-4"><h4>{{ item.shopItem.name }}</h4></div>
+    <div class="col-lg-4"><h4>1</h4></div>
+    <div class="col-lg-2"><h4>${{ cartService.getPrice(item) }}</h4></div>
+    <div class="col-lg-2"><h4><a href="#" (click)="removeFromCart(i)">Remove</a></h4></div>
+  </div>
+  <div class="card row">
+    <div class="col-lg-8"><h3>Total Cost</h3></div>
+    <div class="col-lg-2"><h3>${{ cartService.totalCost() }}</h3></div>
+  </div>
 </form>
+<div *ngIf="!cartService.empty()" class="form-success">Fill out the form below and we will reach out to you for payment!</div>

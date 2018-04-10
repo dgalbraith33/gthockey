@@ -34,6 +34,7 @@ export class OrderFormComponent implements OnInit {
       this.success = true;
       this.errors = {};
       this.recaptcha.reset();
+      this.cartService.reset();
       this.model = new Order();
     }, response => {
       this.success = false;
