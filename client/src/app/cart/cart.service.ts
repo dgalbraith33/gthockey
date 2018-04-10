@@ -47,16 +47,10 @@ export class CartService {
 
   private getPrice(item: CartItem): number {
     let price = item.shopItem.price;
-    console.log(item.custom_options);
-    console.log(item.shopItem.custom_options);
     if (item.shopItem && item.shopItem.custom_options) {
       for (const option of item.shopItem.custom_options) {
-        console.log(option);
-        console.log(option.extra_cost);
-        console.log(item.custom_options[option.id]);
         if (option.extra_cost && item.custom_options[option.id]) {
           price += option.extra_cost;
-          console.log(price);
         }
       }
     }

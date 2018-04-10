@@ -149,5 +149,6 @@ class OrderForm(MyForm):
         message += "Phone: %s\n" % self.cleaned_data['phone']
         message += "Address:\n%s\n" % self.cleaned_data['address']
         message += "Custom message: %s\n\n" % self.cleaned_data['message']
+        message += "Items:\n"
         message += "\n\n".join(self.cleaned_data['items'])
         return message

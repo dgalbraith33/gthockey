@@ -10,7 +10,7 @@
     <div class="col-lg-4"><h4>{{ item.shopItem.name }}</h4></div>
     <div class="col-lg-4"><h4>1</h4></div>
     <div class="col-lg-2"><h4>${{ cartService.getPrice(item) }}</h4></div>
-    <div class="col-lg-2"><h4><a href="#" (click)="removeFromCart(i)">Remove</a></h4></div>
+    <div class="col-lg-2"><h4><a (click)="removeFromCart(i)">Remove</a></h4></div>
   </div>
   <div class="card row">
     <div class="col-lg-8"><h3>Total Cost</h3></div>
