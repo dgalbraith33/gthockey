@@ -21,6 +21,7 @@ export class ItemFormComponent implements OnInit {
 
   success: boolean;
   errors: any;
+  option_unselected: any = {};
 
   constructor(private route: ActivatedRoute,
               private apiService: ApiService,
@@ -39,9 +40,20 @@ export class ItemFormComponent implements OnInit {
   }
 
   submitForm() {
-    this.cartService.addItem(this.model);
-    this.success = true;
-    this.model = new CartItem(this.item);
+    let valid = true;
+    for (const optionlist of this.item.options) {
+      if (!this.model.options[optionlist.id]) {
+        valid = false;
+        this.option_unselected[optionlist.id] = true;
+      } else {
+        this.option_unselected[optionlist.id] = false;
+      }
+    }
+    if (valid) {
+      this.cartService.addItem(this.model);
+      this.success = true;
+      this.model = new CartItem(this.item);
+    }
   }
 
   getOptions(option_str: string): string[] {

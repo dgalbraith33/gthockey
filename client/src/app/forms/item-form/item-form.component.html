@@ -1,11 +1,14 @@
 <div *ngIf="success" class="form-success">This item was successfully added to your cart!</div>
-<form (ngSubmit)="submitForm()" *ngIf="model">
+<form (ngSubmit)="submitForm()" *ngIf="model" #form="ngForm">
   <table class="form">
     <tr *ngFor="let optionlist of model.shopItem.options">
       <th>
         <label for="option-{{ optionlist.id }}">{{ optionlist.display_name}}</label>
       </th>
       <td>
+        <ul *ngIf="option_unselected[optionlist.id]" class="errorlist">
+          <li>Must select one</li>
+        </ul>
         <select [(ngModel)]="model.options[optionlist.id]" name="option-{{ optionlist.id }}" id="id_option-{{ optionlist.id }}">
           <option *ngFor="let option of getOptions(optionlist.option_list)" value="{{ option }}">{{ option }}</option>
         </select>
