@@ -160,13 +160,9 @@ class OrderForm(MyForm):
         return "Your GT Hockey order has been placed."
 
     def get_customer_message(self):
-        message = "Hi %s, thank you for ordering from GT Hockey!\n\n" % self.cleaned_data['name']
-        message += "Please keep in mind that we are a student-run organization. While "
-        message += "we strive to fulfill your order as fast as possible, some delays may "
-        message += "be inevitable.\n\n"
-        message += "One great way to help us expedite the process would be to pay for your "
-        message += "order right now on paypal. You can follow this link and pay the total listed below!\n\n"
-        message += "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=2MEXK924Y38Z4\n\n"
+        message = "Hi %s,\n\n" % self.cleaned_data['name']
+        message += "Thank you for ordering from Georgia Tech Hockey! We appreciate your support. This is a confirmation email letting you know that we have received your order and now all we ask is that you go ahead and make your payment. Please keep in mind that we are a student-run organization and while we strive to fill your order as soon as possible, there is always the possibility of a delay. One great way to help us expedite the process would be to make your payment right now through PayPal at: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=2MEXK924Y38Z4. Please follow the link and pay the total of all of your items listed below.\n\n"
+        message += "Finally, you should expect to be receiving your GT Hockey apparel in mid to late June. It takes a while to make all of the jerseys, but we know it’ll be worth the wait. If you have any questions about your order, please send an email to the team president, Caleb Rudnicki, at calebrudnicki@gmail.com. Thanks again for your support! Go Jackets!\n\n"
         message += "Items:\n"
         message += "\n\n".join(self.cleaned_data['items'])
 
