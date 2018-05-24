@@ -3,6 +3,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { Angulartics2Module } from 'angulartics2';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 
@@ -61,6 +63,7 @@ import { PaypalButtonComponent } from './forms/paypal-button/paypal-button.compo
     HttpClientModule,
     RecaptchaFormsModule,
     RecaptchaModule.forRoot(),
+    Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
   ],
   providers: [
     ApiService,

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
+
 import { environment } from './../environments/environment';
 
 @Component({
@@ -10,5 +12,5 @@ import { environment } from './../environments/environment';
 })
 export class AppComponent {
 
-  constructor() {}
+  constructor(angularitcs2GoogleAnalytics: Angulartics2GoogleAnalytics) {}
 }
