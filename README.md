@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/dgalbraith33/gthockey.svg?branch=master)](https://travis-ci.org/dgalbraith33/gthockey)
+
 # Georgia Tech Hockey Website
 
 This repository holds the code for the Georgia Tech club hockey website that can be found [here.](http://www.gthockey.com)
