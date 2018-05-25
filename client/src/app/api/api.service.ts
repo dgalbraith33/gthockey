@@ -1,9 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import 'rxjs/add/operator/map';
-import { Observable } from 'rxjs/Observable';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { Observable, ReplaySubject } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { environment } from './../../environments/environment';
 import { Article } from './article';
@@ -67,7 +66,7 @@ export class ApiService {
   }
 
   getGames(params: any = {}): Observable<GameMin[]> {
-    return this.http.get<GameMin[]>(this.gameUrl, {params}).map((games: GameMin[]) => games.map(game => new GameMin(game)));
+    return this.http.get<GameMin[]>(this.gameUrl, {params}).pipe(map((games: GameMin[]) => games.map(game => new GameMin(game))));
   }
 
   getGame(id: number): Observable<Game> {

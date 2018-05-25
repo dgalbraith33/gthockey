@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 

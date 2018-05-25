@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/timer';
+import {timer as observableTimer,  Observable } from 'rxjs';
 
 import { ApiService } from '../../api/api.service';
 import { GameMin } from '../../api/game';
@@ -49,7 +48,7 @@ export class SidebarCountdownComponent implements OnInit {
 
 
   private startTimer() {
-    const timer = Observable.timer(0, 1000);
+    const timer = observableTimer(0, 1000);
     timer.subscribe(t => this.updateTime());
   }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import 'rxjs/add/operator/first';
+import {first} from 'rxjs/operators';
 
 import { ApiService } from '../../api/api.service';
 import { CartItem } from '../../api/cart-item';
@@ -33,7 +33,7 @@ export class ItemFormComponent implements OnInit {
   }
 
   private getItem() {
-    this.apiService.getShopItem(this.id).first().subscribe(item => {
+    this.apiService.getShopItem(this.id).pipe(first()).subscribe(item => {
       this.item = item;
       this.model = new CartItem(item);
     });
