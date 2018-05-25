@@ -24,7 +24,8 @@ class GameMinSerializer(serializers.Serializer):
 class GameSerializer(serializers.ModelSerializer):
     class Meta:
         model = Game
-        fields = ('id', 'date', 'time', 'opponent', 'venue', 'location', 'season', 'score_gt_final', 'score_opp_final', 'short_result')
+        fields = ('id', 'date', 'time', 'opponent', 'venue', 'location', 'season', 'score_gt_final',
+                  'score_opp_final', 'short_result')
         depth = 1
 
 
@@ -49,7 +50,8 @@ class CoachSerializer(serializers.ModelSerializer):
 class ShopItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = ShopItem
-        fields = ('id', 'name', 'price', 'description', 'image', 'images', 'options', 'custom_options')
+        fields = ('id', 'name', 'price', 'description', 'image', 'images', 'options',
+                  'custom_options')
         depth = 1
 
 

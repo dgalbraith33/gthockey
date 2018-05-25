@@ -54,7 +54,8 @@ class ProspectForm(MyForm):
         message += "Hometown: %s\n" % self.cleaned_data['hometown']
         message += "Status: %s\n" % ProspectForm.STATUS_CHOICES[int(self.cleaned_data['status'])][1]
         message += "Experience: %s\n" % self.cleaned_data['experience']
-        message += "Position: %s\n" % ProspectForm.POSITION_CHOICES[int(self.cleaned_data['position'])][1]
+        message += "Position: %s\n" % \
+                   ProspectForm.POSITION_CHOICES[int(self.cleaned_data['position'])][1]
         message += "Comments: %s\n" % self.cleaned_data['comments']
         return message
 
@@ -160,11 +161,22 @@ class OrderForm(MyForm):
         return "Your GT Hockey order has been placed."
 
     def get_customer_message(self):
+        url = "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=2MEXK924Y38Z4"
         message = "Hi %s,\n\n" % self.cleaned_data['name']
-        message += "Thank you for ordering from Georgia Tech Hockey! We appreciate your support. This is a confirmation email letting you know that we have received your order and now all we ask is that you go ahead and make your payment. Please keep in mind that we are a student-run organization and while we strive to fill your order as soon as possible, there is always the possibility of a delay. One great way to help us expedite the process would be to make your payment right now through PayPal at: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=2MEXK924Y38Z4. Please follow the link and pay the total of all of your items listed below.\n\n"
-        message += "Finally, you should expect to be receiving your GT Hockey apparel in mid to late June. It takes a while to make all of the jerseys, but we know it’ll be worth the wait. If you have any questions about your order, please send an email to the team president, Caleb Rudnicki, at calebrudnicki@gmail.com. Thanks again for your support! Go Jackets!\n\n"
+        message += ("Thank you for ordering from Georgia Tech Hockey! We appreciate your support. "
+                    "This is a confirmation email letting you know that we have received your "
+                    "order and now all we ask is that you go ahead and make your payment. Please "
+                    "keep in mind that we are a student-run organization and while we strive to "
+                    "fill your order as soon as possible, there is always the possibility of a "
+                    "delay. One great way to help us expedite the process would be to make your "
+                    "payment right now through PayPal at: {url}. Please follow the link and pay "
+                    "the total of all of your items listed below.\n\n").format(url=url)
+        message += ("Finally, you should expect to be receiving your GT Hockey apparel in mid to "
+                    "late June. It takes a while to make all of the jerseys, but we know it’ll be "
+                    "worth the wait. If you have any questions about your order, please send an "
+                    "email to the team president, Caleb Rudnicki, at calebrudnicki@gmail.com. "
+                    "Thanks again for your support! Go Jackets!\n\n")
         message += "Items:\n"
         message += "\n\n".join(self.cleaned_data['items'])
-
 
         return message

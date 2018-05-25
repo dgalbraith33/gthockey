@@ -36,11 +36,13 @@ class ItemField(forms.CharField):
             if 'options' in item:
                 for optionlistid in item['options'].keys():
                     shopitemoptionlist = ShopItemOptionList.objects.get(pk=int(optionlistid))
-                    item_str += "\n" + shopitemoptionlist.display_name + ":" + item['options'][optionlistid]
+                    item_str += "\n" + shopitemoptionlist.display_name \
+                                + ":" + item['options'][optionlistid]
             if 'custom_options' in item:
                 for customoptionid in item['custom_options'].keys():
                     shopitemcustomoption = ShopItemCustomOption.objects.get(pk=int(customoptionid))
-                    item_str += "\n" + shopitemcustomoption.display_name + ":" + item['custom_options'][customoptionid]
+                    item_str += "\n" + shopitemcustomoption.display_name \
+                                + ":" + item['custom_options'][customoptionid]
                     if shopitemcustomoption.extra_cost:
                         price += shopitemcustomoption.extra_cost
             total_price += price

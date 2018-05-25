@@ -1,8 +1,8 @@
 from django.contrib import admin
 from django import forms
 
-from .models import Player, Game, Team, Rink, Email, NewsStory, Season, Board, Coach, ShopItem, ShopItemOptionList, \
-    ShopItemImage, ShopItemCustomOption
+from .models import Player, Game, Team, Rink, Email, NewsStory, Season, Board, Coach, ShopItem, \
+    ShopItemOptionList, ShopItemImage, ShopItemCustomOption
 
 
 class PlayerAdmin(admin.ModelAdmin):
@@ -17,8 +17,10 @@ class GameAdmin(admin.ModelAdmin):
         ('Team', {'fields': ['opponent']}),
         ('Location', {'fields': ['venue', 'location']}),
         ('Time', {'fields': ['period', 'minutes', 'seconds']}),
-        ('Score GT', {'fields': ['score_gt_first', 'score_gt_second', 'score_gt_third', 'score_gt_ot', 'score_gt_final']}),
-        ('Score Opp', {'fields': ['score_opp_first', 'score_opp_second', 'score_opp_third', 'score_opp_ot', 'score_opp_final']})
+        ('Score GT', {'fields': ['score_gt_first', 'score_gt_second', 'score_gt_third',
+                                 'score_gt_ot', 'score_gt_final']}),
+        ('Score Opp', {'fields': ['score_opp_first', 'score_opp_second', 'score_opp_third',
+                                  'score_opp_ot', 'score_opp_final']})
     ]
 
 

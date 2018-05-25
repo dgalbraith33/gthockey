@@ -217,7 +217,8 @@ class NewsStory(models.Model):
         return "/news/%i/" % self.id
 
 
-# Simple model to hold emails in the database rather than commit them to prevent them from being scraped
+# Simple model to hold emails in the database rather than commit them to prevent them from being
+# scraped from github
 class Email(models.Model):
     name = models.CharField(max_length=50)
     email = models.EmailField(max_length=100)

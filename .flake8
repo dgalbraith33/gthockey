@@ -1,0 +1,8 @@
+[flake8]
+exclude =
+    .git,
+    client,
+    gthockey/migrations,
+    gtsite/env,
+    virtenv
+max-line-length = 100
