@@ -2,6 +2,9 @@ language: python
 
 python: 3.5
 
+env:
+  - DJANGO_SETTINGS_MODULE=gtsite.env.test
+
 install:
   - pip install -r requirements.txt
   - pip install flake8
