@@ -14,7 +14,6 @@ INSTALLED_APPS = (
     'rest_framework',
     'gthockey',
     'corsheaders',
-    'captcha',
 )
 
 MIDDLEWARE = (
