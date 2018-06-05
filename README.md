@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/dgalbraith33/gthockey.svg?branch=master)](https://travis-ci.org/dgalbraith33/gthockey)
+[![Build Status](https://gitlab.com/gthockey/gthockey/badges/master/build.svg)](https://gitlab.com/gthockey/gthockey/commits/master)
 
 # Georgia Tech Hockey Website
 
