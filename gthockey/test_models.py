@@ -1,7 +1,7 @@
 from django.test import TestCase
 from datetime import datetime, date, time
 
-from .models import Game, Team, Rink
+from .models import Game, Team, Rink, NewsStory
 
 
 class GameTestCase(TestCase):
@@ -58,3 +58,18 @@ class GameTestCase(TestCase):
         game = Game(date=date(2100, 1, 1))
         self.assertEquals(game.get_result(), "Upcoming")
         self.assertEquals(game.short_result, "U")
+
+
+class NewsTestCase(TestCase):
+
+    def test_news_no_content(self):
+        story = NewsStory(title="A")
+        self.assertFalse(story.has_content())
+
+    def test_news_empty_content(self):
+        story = NewsStory(title="A", content="")
+        self.assertFalse(story.has_content())
+
+    def test_news_has_content(self):
+        story = NewsStory(title="A", content="B")
+        self.assertTrue(story.has_content())
