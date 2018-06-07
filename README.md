@@ -1,6 +1,7 @@
 # Georgia Tech Hockey Website
 
 [![Build Status](https://travis-ci.org/dgalbraith33/gthockey.svg?branch=master)](https://travis-ci.org/dgalbraith33/gthockey)
+[![Gitlab pipeline](https://gitlab.com/gthockey/gthockey/badges/master/build.svg)](https://gitlab.com/gthockey/gthockey/commits/master)
 
 This repository holds the code for the Georgia Tech club hockey website that can be found [here](https://www.gthockey.com).
 

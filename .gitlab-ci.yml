@@ -1,0 +1,11 @@
+variables:
+  DJANGO_SETTINGS_MODULE: gtsite.env.test
+
+test:django:
+  image: python:latest
+  script:
+    - python -V
+    - pip install -r requirements.txt
+    - pip install flake8
+    - python manage.py test
+    - flake8
