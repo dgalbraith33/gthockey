@@ -1,7 +1,14 @@
 from django.test import TestCase
 from datetime import datetime, date, time
 
-from .models import Game, Team, Rink, NewsStory
+from .models import Game, NewsStory, Player, Rink, Team
+
+
+class PlayerTestCase(TestCase):
+
+    def test_player_str(self):
+        player = Player(first_name="George", last_name="Burdell")
+        self.assertEquals(str(player), "George Burdell")
 
 
 class GameTestCase(TestCase):
@@ -73,3 +80,15 @@ class NewsTestCase(TestCase):
     def test_news_has_content(self):
         story = NewsStory(title="A", content="B")
         self.assertTrue(story.has_content())
+
+    def test_news_formats_one_p(self):
+        story = NewsStory(title="A", content="B")
+        self.assertEquals(story.content_p(), "<p>B</p>")
+
+    def test_news_formats_multiple_p(self):
+        story = NewsStory(title="A", content="B\nC")
+        self.assertEquals(story.content_p(), "<p>B</p><p>C</p>")
+
+    def test_news_formats_multiple_newlines(self):
+        story = NewsStory(title="A", content="B\n\n\nC")
+        self.assertEquals(story.content_p(), "<p>B</p><p>C</p>")

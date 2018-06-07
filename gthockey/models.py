@@ -202,17 +202,8 @@ class NewsStory(models.Model):
                and len(self.content) > 0
 
     def content_p(self):
-        formatted = ""
-        paras = self.content.split("\n")
-        for line in paras:
-            formatted += "<p>"
-            formatted += line
-            formatted += "</p>"
-
-        return formatted
-
-    def get_absolute_url(self):
-        return "/news/%i/" % self.id
+        ps = ["<p>{line}</p>".format(line=line) for line in self.content.split("\n") if line]
+        return ''.join(ps)
 
 
 # Simple model to hold emails in the database rather than commit them to prevent them from being
