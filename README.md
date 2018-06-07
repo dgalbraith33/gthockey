@@ -1,62 +1,43 @@
-[![Build Status](https://travis-ci.org/dgalbraith33/gthockey.svg?branch=master)](https://travis-ci.org/dgalbraith33/gthockey)
-
 # Georgia Tech Hockey Website
 
-This repository holds the code for the Georgia Tech club hockey website that can be found [here.](http://www.gthockey.com)
+[![Build Status](https://travis-ci.org/dgalbraith33/gthockey.svg?branch=master)](https://travis-ci.org/dgalbraith33/gthockey)
+[![Gitlab pipeline](https://gitlab.com/gthockey/gthockey/badges/master/build.svg)](https://gitlab.com/gthockey/gthockey/commits/master)
 
-Currently, it is in beta and not running in production.
+This repository holds the code for the Georgia Tech club hockey website that can be found [here](https://www.gthockey.com).
 
-## Installation
+## Client-Server Architecture
 
-Here are the instructions for installing on ubuntu.
+The client side implementation for the browser and the server side implementation for the API are
+completely independent. They could be decoupled into seperate repositories and even run/served by
+seperate machines if necessary.
 
-Install python 3 and the corresponding pip.
+### Client
 
+The client code is contained in the `client/` directory and is written using Angular and Typescript.
+Once loaded, the entire website is available without page reloads and simply loads data by making
+API calls to the server.
+
+### Server
+
+The server is written in Django/Python. Configuration is in `gtsite/` and business logic is in
+`gthockey/`. The server leverages DjangoRestFramework to send serialize model objects into JSON
+for API call responses.
+
+## Setting up a Development Environment
+
+### Setting up the client
+
+The first step is to install `node` from LINK.
+
+Once node is installed the next step is to install dependencies and build the client.
 ```
-sudo apt-get install python3 python3-pip python3-dev
-```
-
-Then install virtualenv and create a virtual environment in the project directory:
-
-```
-sudo apt-get install virtualenv
-cd gthockey/
-virtualenv -p python3 virtenv
-source virtenv/bin/activate
-```
-
-Install the postgres dev library:
-```
-sudo apt-get install libpq-dev
-```
-
-Install the rest of the requirements with pip
-
-```
-pip install -r requirements.txt
-```
-
-
-
-and configure local_settings.py like so:
-
-```
-DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': '********',
-            'USER': '********',
-            'PASSWORD': '*********',
-            'HOST': '******',
-            'PORT': '',
-        }
-    }
-
+$ cd client/
+$ npm install
+$ ng build
 ```
 
-At this point we should be able to migrate and run the server:
-
+If the above steps complete without error, you can have angular (ng) serve the client at
+`localhost:4200` with the following command:
 ```
-./manage.py migrate
-./manage.py runserver
+$ ng serve
 ```

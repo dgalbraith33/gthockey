@@ -1,5 +1,5 @@
 from django.db import models
-from datetime import date, datetime
+from datetime import datetime, time
 
 
 class Player(models.Model):
@@ -90,7 +90,8 @@ class Game(models.Model):
 
     @property
     def datetime(self):
-        return datetime.combine(self.date, self.time)
+        temp_time = self.time or time(0)
+        return datetime.combine(self.date, temp_time)
 
     def get_time(self):
         if self.time:
@@ -111,7 +112,7 @@ class Game(models.Model):
             return "TBD"
 
     def get_result(self):
-        if self.period == 0 and self.date >= date.today():
+        if self.datetime >= datetime.now():
             return "Upcoming"
 
         if self.score_gt_final is None or self.score_opp_final is None:
@@ -137,20 +138,17 @@ class Game(models.Model):
 
     @property
     def short_result(self):
-        trans = {
+        short_version = {
             "Upcoming": "U",
             "Win": "W",
             "Overtime Loss": "OT",
             "Loss": "L",
             "Tie": "T",
             "Cancelled": "C",
-            "Not Yet Reported": "N"
+            "Not Yet Reported": "?"
         }
 
-        return trans[self.get_result()]
-
-    def is_over(self):
-        return self.date < date.today()
+        return short_version[self.get_result()]
 
     @property
     def is_reported(self):
