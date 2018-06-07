@@ -78,7 +78,7 @@ class CoachList(APIView):
 
 class ShopList(APIView):
     def get(self, request):
-        items = ShopItem.objects.all()
+        items = ShopItem.objects.all().filter(visible=True)
         serializer = ShopItemListSerializer(items, many=True)
         return JsonResponse(serializer.data, safe=False)
 

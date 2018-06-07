@@ -262,6 +262,8 @@ class ShopItem(models.Model):
     price = models.FloatField()
     description = models.CharField(max_length=1000)
     image = models.ImageField(upload_to="shop")
+    visible = models.BooleanField(default=True)
+    in_stock = models.BooleanField(default=True)
 
 
 class ShopItemOptionList(models.Model):
