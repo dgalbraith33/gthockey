@@ -41,3 +41,20 @@ If the above steps complete without error, you can have angular (ng) serve the c
 ```
 $ ng serve
 ```
+
+### Setting up the server
+
+Make sure you have python 3 downloaded and installed. Then create a virtual environment and
+install all of the necessary dependencies.
+
+```
+virtualenv --python=python3 virtenv
+source virtenv/bin/activate
+pip install -r requirements.txt
+```
+
+If this step completes successfully you should be able to run the test server
+
+```
+./manage.py runserver --settings=gtsite.env.test
+```
