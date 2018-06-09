@@ -51,7 +51,7 @@ class ShopItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = ShopItem
         fields = ('id', 'name', 'price', 'description', 'image', 'images', 'options',
-                  'custom_options')
+                  'custom_options', 'in_stock')
         depth = 1
 
 
