@@ -1,4 +1,5 @@
 from django.http import JsonResponse
+from django.core.exceptions import ObjectDoesNotExist
 from django.core.mail import send_mail
 from django.views.decorators.csrf import csrf_exempt
 
@@ -78,16 +79,19 @@ class CoachList(APIView):
 
 class ShopList(APIView):
     def get(self, request):
-        items = ShopItem.objects.all()
+        items = ShopItem.objects.all().filter(visible=True)
         serializer = ShopItemListSerializer(items, many=True)
         return JsonResponse(serializer.data, safe=False)
 
 
 class ShopDetail(APIView):
     def get(self, request, id):
-        item = ShopItem.objects.get(pk=id)
-        serializer = ShopItemSerializer(item)
-        return JsonResponse(serializer.data, safe=False)
+        try:
+            item = ShopItem.objects.get(pk=id, visible=True)
+            serializer = ShopItemSerializer(item)
+            return JsonResponse(serializer.data, safe=False)
+        except ObjectDoesNotExist:
+            return JsonResponse({"errors": "Object Does Not Exist"}, status=404)
 
 
 class ContactFormView(APIView):
