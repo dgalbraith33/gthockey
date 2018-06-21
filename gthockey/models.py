@@ -162,6 +162,10 @@ class Game(models.Model):
     def opp_score(self):
         return self.score_opp_final
 
+    @property
+    def season_name(self):
+        return self.season.name
+
     def __str__(self):
         return "vs " + str(self.opponent)
 

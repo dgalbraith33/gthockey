@@ -21,6 +21,7 @@ export class GameMin {
     id: number;
     date: Date;
     opponent: string;
+    season: string;
     venue: string;
     location: string;
     is_reported: boolean;
@@ -32,6 +33,7 @@ export class GameMin {
         this.id = serverModel.id;
         this.date = new Date(serverModel.datetime);
         this.opponent = serverModel.opponent_name;
+        this.season = serverModel.season_name;
         this.venue = serverModel.venue;
         this.location = serverModel.rink_name;
         this.is_reported = serverModel.is_reported;

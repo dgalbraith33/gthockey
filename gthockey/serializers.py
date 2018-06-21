@@ -12,6 +12,7 @@ class GameMinSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
     datetime = serializers.DateTimeField(read_only=True)
     opponent_name = serializers.CharField(read_only=True)
+    season_name = serializers.CharField(read_only=True)
     rink_name = serializers.CharField(read_only=True)
     venue = serializers.CharField(read_only=True)
 

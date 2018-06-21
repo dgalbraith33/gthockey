@@ -16,6 +16,7 @@ export class SidebarRecordComponent implements OnInit {
   private ties: number;
 
   record: string;
+  season: string;
 
   constructor(private apiService: ApiService) { }
 
@@ -35,6 +36,7 @@ export class SidebarRecordComponent implements OnInit {
     this.losses = 0;
     this.otls = 0;
     this.ties = 0;
+    this.season = games.length ? games[0].season : '';
     games.forEach(game => {
         switch (game.short_result) {
             case('W'):
