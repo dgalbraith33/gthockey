@@ -1,132 +1,119 @@
-<div *ngIf="success" class="form-success">Thanks for reaching out. We will get back to you shortly!</div>
+<div class="uk-alert-success" uk-alert *ngIf="success"><p>Thanks for reaching out. We will get back to you shortly!</p></div>
+<!--
 <form (ngSubmit)="submitForm()">
-  <table class="form">
-    <tr>
-      <th>
-        <label for="id_name">Full Name</label>
-      </th>
-      <td>
-          <ul *ngIf="errors.name" class="errorlist">
-            <li>{{ errors.name }}</li>
-          </ul>
-        <input type="text" [(ngModel)]="model.name" name="name" required id="id_name" />
-      </td>
-    </tr>
-    <tr>
-      <th>
-        <label for="id_email">Email</label>
-      </th>
-      <td>
-          <ul *ngIf="errors.email" class="errorlist">
-            <li>{{ errors.email }}</li>
-          </ul>
-        <input type="text" [(ngModel)]="model.email" name="email" required id="id_email" />
-      </td>
-    </tr>
-    <tr>
-      <th>
-        <label for="id_phone">Phone Number</label>
-      </th>
-      <td>
-          <ul *ngIf="errors.phone" class="errorlist">
-            <li>{{ errors.phone }}</li>
-          </ul>
-        <input type="text" [(ngModel)]="model.phone" name="phone" id="id_phone" />
-      </td>
-    </tr>
-    <tr>
-      <th>
-        <label for="id_birth">Date of Birth</label>
-      </th>
-      <td>
-          <ul *ngIf="errors.birth" class="errorlist">
-            <li>{{ errors.birth }}</li>
-          </ul>
-        <input type="text" [(ngModel)]="model.birth" name="birth" id="id_birth" />
-      </td>
-    </tr>
-    <tr>
-      <th>
-        <label for="id_hometown">Hometown</label>
-      </th>
-      <td>
-          <ul *ngIf="errors.hometown" class="errorlist">
-            <li>{{ errors.hometown }}</li>
-          </ul>
-        <input type="text" [(ngModel)]="model.hometown" name="hometown" id="id_hometown" />
-      </td>
-    </tr>
-    <tr>
-      <th>
-        <label for="id_status">Status</label>
-      </th>
-      <td>
-          <ul *ngIf="errors.status" class="errorlist">
-            <li>{{ errors.status }}</li>
-          </ul>
-        <select [(ngModel)]="model.status" name="status" id="id_status">
-          <option value="0">-- Select one --</option>
-          <option value="1">Current Tech Student</option>
-          <option value="2">Incoming Freshman</option>
-          <option value="3">Admitted to Tech (Undecided)</option>
-          <option value="4">Applying to Tech</option>
-          <option value="5">High School Senior</option>
-          <option value="6">High School Junior</option>
-          <option value="7">Other</option>
-        </select>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        <label for="id_experience">Experience Level</label>
-      </th>
-      <td>
-          <ul *ngIf="errors.experience" class="errorlist">
-            <li>{{ errors.experience }}</li>
-          </ul>
-        <input type="text" [(ngModel)]="model.experience" name="experience" id="id_experience" />
-      </td>
-    </tr>
-    <tr>
-      <th>
-        <label for="id_position">Position</label>
-      </th>
-      <td>
-        <ul *ngIf="errors.position" class="errorlist">
-          <li>{{ errors.position }}</li>
-        </ul>
-        <select [(ngModel)]="model.position" name="position" id="id_position">
-          <option selected value="0">-- Select one --</option>
-          <option value="1">Forward</option>
-          <option value="2">Defense</option>
-          <option value="3">Goalie</option>
-        </select>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        <label for="id_comments">Comments</label>
-      </th>
-      <td>
-          <ul *ngIf="errors.comments" class="errorlist">
-            <li>{{ errors.comments }}</li>
-          </ul>
-        <textarea [(ngModel)]="model.comments" name="comments" rows="10" id="id_comments" cols="40"></textarea>
-      </td>
-    </tr>
+  <table class="
     <tr>
       <th></th>
       <td>
         <ul *ngIf="errors.captcha" class="errorlist">
           <li>{{ errors.captcha }}</li>
         </ul>
-        <re-captcha [(ngModel)]="model.captcha" name="captcha"  siteKey="{{ recaptchaKey }}"></re-captcha>
       </td>
     </tr>
     <tr>
       <td colspan="2">
-        <input class="submit" type="submit" value="Submit" formmethod="post" />
       </td>
     </tr>
   </table>
+</form>
+-->
+
+<h1 class="uk-header-divider">Prospective Players</h1>
+
+<form (ngSubmit)="submitForm()">
+  <div class="uk-margin">
+    <div class="uk-alert-danger" uk-alert *ngIf="errors.name">
+        <a class="uk-alert-close" uk-close></a>
+        <p>{{ errors.name }}</p>
+    </div>
+    <input type="text" [(ngModel)]="model.name" name="name" required id="id_name" class="uk-input" placeholder="Full Name"/>
+  </div>
+  
+  <div class="uk-margin">
+    <div class="uk-alert-danger" uk-alert *ngIf="errors.email">
+        <a class="uk-alert-close" uk-close></a>
+        <p>{{ errors.email }}</p>
+    </div>
+    <input type="text" [(ngModel)]="model.email" name="email" required id="id_email" class="uk-input" placeholder="Email Address" />
+  </div>
+  
+  <div class="uk-margin">
+    <div class="uk-alert-danger" uk-alert *ngIf="errors.phone">
+        <a class="uk-alert-close" uk-close></a>
+        <p>{{ errors.phone }}</p>
+    </div>
+    <input type="text" [(ngModel)]="model.phone" name="phone" id="id_phone" class="uk-input" placeholder="Phone Number" />
+  </div>
+  
+  <div class="uk-margin">
+    <div class="uk-alert-danger" uk-alert *ngIf="errors.birth">
+        <a class="uk-alert-close" uk-close></a>
+        <p>{{ errors.birh }}</p>
+    </div>    
+    <input type="text" [(ngModel)]="model.birth" name="birth" id="id_birth" class="uk-input" placeholder="Date of Birth" />
+  </div>
+  
+  <div class="uk-margin">
+    <div class="uk-alert-danger" uk-alert *ngIf="errors.hometown">
+        <a class="uk-alert-close" uk-close></a>
+        <p>{{ errors.hometown }}</p>
+    </div>
+    <input type="text" [(ngModel)]="model.hometown" name="hometown" id="id_hometown" class="uk-input" placeholder="Hometown" />
+  </div>
+
+  <div class="uk-margin">
+    <div class="uk-alert-danger" uk-alert *ngIf="errors.status">
+        <a class="uk-alert-close" uk-close></a>
+        <p>{{ errors.status }}</p>
+    </div>
+    <select [(ngModel)]="model.status" name="status" id="id_status" class="uk-select">
+      <option value="0">-- Select one --</option>
+      <option value="1">Current Tech Student</option>
+      <option value="2">Incoming Freshman</option>
+      <option value="3">Admitted to Tech (Undecided)</option>
+      <option value="4">Applying to Tech</option>
+      <option value="5">High School Senior</option>
+      <option value="6">High School Junior</option>
+      <option value="7">Other</option>
+    </select>
+  </div>
+
+  <div class="uk-margin">
+    <div class="uk-alert-danger" uk-alert *ngIf="errors.experience">
+        <a class="uk-alert-close" uk-close></a>
+        <p>{{ errors.experience }}</p>
+    </div>    
+    <input type="text" [(ngModel)]="model.experience" name="experience" id="id_experience" class="uk-input" placeholder="Experience Level" />
+  </div>
+ 
+  <div class="uk-margin">
+    <div class="uk-alert-danger" uk-alert *ngIf="errors.position">
+        <a class="uk-alert-close" uk-close></a>
+        <p>{{ errors.position }}</p>
+    </div>
+    <select [(ngModel)]="model.position" name="position" id="id_position" class="uk-select">
+      <option selected value="0">-- Select one --</option>
+      <option value="1">Forward</option>
+      <option value="2">Defense</option>
+      <option value="3">Goalie</option>
+    </select>
+  </div>
+
+  <div class="uk-margin">
+    <div class="uk-alert-danger" uk-alert *ngIf="errors.comments">
+        <a class="uk-alert-close" uk-close></a>
+        <p>{{ errors.comments }}</p>
+    </div>
+    <textarea [(ngModel)]="model.comments" name="comments" rows="10" id="id_comments" class="uk-textarea" placeholder="Comments"></textarea>
+  </div>
+
+  <div class="uk-margin">
+    <div class="uk-alert-danger" uk-alert *ngIf="errors.captcha">
+        <a class="uk-alert-close" uk-close></a>
+        <p>{{ errors.captcha }}</p>
+    </div>
+    <re-captcha [(ngModel)]="model.captcha" name="captcha"  siteKey="{{ recaptchaKey }}"></re-captcha>
+  </div>
+
+  <input class="uk-button uk-button-primary" type="submit" value="Submit" />  
 </form>
