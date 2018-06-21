@@ -1,25 +1,6 @@
 <div class="uk-alert-success" uk-alert *ngIf="success"><p>Thanks for reaching out. We will get back to you shortly!</p></div>
-<!--
-<form (ngSubmit)="submitForm()">
-  <table class="
-    <tr>
-      <th></th>
-      <td>
-        <ul *ngIf="errors.captcha" class="errorlist">
-          <li>{{ errors.captcha }}</li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="2">
-      </td>
-    </tr>
-  </table>
-</form>
--->
 
 <h1 class="uk-header-divider">Prospective Players</h1>
-
 <form (ngSubmit)="submitForm()">
   <div class="uk-margin">
     <div class="uk-alert-danger" uk-alert *ngIf="errors.name">
