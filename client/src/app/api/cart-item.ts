@@ -8,6 +8,9 @@ export class CartItem {
 
     constructor(readonly shopItem: ShopItem) {
         this.item_id = this.shopItem.id;
+        for (const optionlist of shopItem.options) {
+            this.options[optionlist.id] = 0;
+        }
     }
 
     getOptions(): any[] {
