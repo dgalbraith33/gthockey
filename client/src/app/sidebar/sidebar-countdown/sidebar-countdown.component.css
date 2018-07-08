@@ -1,5 +1,5 @@
 .countdown {
-    background: black;
+    background: #00263a;
     padding:10px;
     text-align:center;
 }
@@ -17,7 +17,7 @@
 }
 
 .countdown-date {
-    background: black;
+    background: #00263a;
     color:white;
     float:left;
     padding:5px;

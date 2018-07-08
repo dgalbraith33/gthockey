@@ -8,11 +8,11 @@
       <div class="countdown-team">{{ game.opponent }}</div>
       <div class="countdown-location">{{ game.location }}</div>
       <div class="countdown-starttime">{{ game.date | date:'shortTime' }}</div>
-      <div class="countdown-time">
-        <span id="countdown-days">{{ diffDays }}<small>days</small></span>
-        <span id="countdown-hours">{{ diffHours }}<small>hours</small></span>
-        <span id="countdown-mins">{{ diffMinutes }}<small>mins</small></span>
-        <span id="countdown-secs">{{ diffSeconds }}<small>secs</small></span>
+      <div class="countdown-time" attr.uk-countdown="date: {{ game.date }}">
+        <span id="countdown-days"><span class="uk-countdown-days"></span><small>days</small></span>
+        <span id="countdown-hours"><span class="uk-countdown-hours"></span><small>hours</small></span>
+        <span id="countdown-mins"><span class="uk-countdown-minutes"></span><small>mins</small></span>
+        <span id="countdown-secs"><span class="uk-countdown-seconds"></span><small>secs</small></span>
       </div>
     </div>
   </div>
