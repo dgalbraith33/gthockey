@@ -4,9 +4,7 @@
         <div class="story-date">{{ article.date }}</div>
         <hr />
         <div>
-            <p *ngFor="let paragraph of paragraphs">
-                {{paragraph}}
-            </p>
+            <p *ngFor="let paragraph of paragraphs" [innerHtml]="paragraph"></p>
         </div>
     </div>
 </div>
