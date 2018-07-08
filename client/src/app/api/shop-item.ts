@@ -22,6 +22,7 @@ export class ShopItem {
     name: string;
     price: number;
     description: string;
+    in_stock: boolean;
     image: string;
     images: ShopItemImage[];
     options: ShopItemOptionList[];
