@@ -1,28 +1,32 @@
-<div class="page-title">Shopping Cart</div>
-<div *ngIf="cartService.empty()">Add Items to your Cart to place an order!</div>
-<form (ngSubmit)="submitForm()" *ngIf="!cartService.empty()">
-  <div class="card row">
-      <div class="col-lg-4"><h3>Item</h3></div>
-      <div class="col-lg-4"><h3>Quantity</h3></div>
-      <div class="col-lg-2"><h3>Price</h3></div>
-  </div>
-  <div *ngFor="let item of cartService.allItems(); let i = index" class="card row cart-row">
-    <div class="col-lg-4">
-      <h4>{{ item.shopItem.name }}</h4>
-      <div *ngFor="let option of item.getOptions()">
-        <h6>{{ option }}</h6>
-      </div>
-      <div *ngFor="let custom_option of item.getCustomOptions()">
-          <h6>{{ custom_option }}</h6>
-        </div>
-    </div>
-    <div class="col-lg-4"><h4>1</h4></div>
-    <div class="col-lg-2"><h4>${{ cartService.getPrice(item) }}</h4></div>
-    <div class="col-lg-2"><h4><a (click)="removeFromCart(i)">Remove</a></h4></div>
-  </div>
-  <div class="card row">
-    <div class="col-lg-8"><h3>Total Cost</h3></div>
-    <div class="col-lg-2"><h3>${{ cartService.totalCost() }}</h3></div>
-  </div>
+<form (ngSubmit)="submitForm()">
+  <table class="uk-table uk-table-divider">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Quantity</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of cartService.allItems(); let i = index">
+        <td>
+          <p class="uk-margin-remove uk-text-bold">{{ item.shopItem.name }}</p>
+          <div *ngFor="let option of item.getOptions()">
+            {{ option }}
+          </div>
+          <div *ngFor="let custom_option of item.getCustomOptions()">
+            {{ custom_option }}
+          </div>
+        </td>
+        <td>1</td>
+        <td>${{ cartService.getPrice(item) }}</td>
+        <td><a class="uk-button uk-button-danger" (click)="removeFromCart(i)">Remove</a></td>
+      </tr>
+      <tr>
+        <td>Total Cost</td>
+        <td></td>
+        <td>${{ cartService.totalCost() }}</td>
+      </tr>
+    </tbody>
+  </table>
 </form>
-<div *ngIf="!cartService.empty()" class="form-success">Fill out the form below and we will reach out to you for payment!</div>

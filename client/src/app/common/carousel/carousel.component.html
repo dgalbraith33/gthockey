@@ -1,25 +1,23 @@
-<div *ngIf="carouselItems" id="news-slider" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li data-target="#news-slider" *ngFor="let item of carouselItems; let i = index; let first = first" data-slide-to="i" [ngClass]="{active: first}"></li>
-    </ol>
-    <div class="carousel-inner" role="listbox">
-      <div *ngFor="let item of carouselItems; let first = first" class="item" [ngClass]="{active: first}">
-        <img src="{{ item.image }}" />
-        <div class="carousel-caption"  *ngIf="item.text">
-          <h3>
-            <a [routerLink]="item.route">
-              {{ item.text }}
-            </a>
-          </h3>
-        </div>
-      </div>
+<div uk-slider="center: true; autoplay: true; autoplay-interval: 4000; pause-on-hover: true">
+    <div class="uk-position-relative uk-visible-toggle uk-light">
+        <ul class="uk-slider-items uk-grid">
+            <li *ngFor="let item of carouselItems">
+                <div class="uk-card uk-card-default">
+                    <div class="uk-card-media-top">
+                        <img src="{{ item.image }}" alt="">
+                    </div>
+                    <div class="uk-card-body" *ngIf="item.text">
+                        <a [routerLink]="item.route"><h3 class="uk-card-title">{{ item.text }}</h3></a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+        <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+        <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
+
     </div>
-    <a class="left carousel-control" href="#news-slider" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#news-slider" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
+
+    <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+
+</div>

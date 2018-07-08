@@ -1,3 +1,41 @@
+// 1. Your custom variables and variable overwrites.
+$gt-gold: #b3a369;
+$gt-navy: #00263a;
+
+$form-focus-border: $gt-gold;
+$table-row-active-background: lighten($gt-gold, 30%);
+
+$navbar-background: $gt-navy;
+$navbar-nav-item-color: #fff;
+
+// 2. Import default variables and available mixins.
+@import "../node_modules/uikit/src/scss/variables-theme.scss";
+@import "../node_modules/uikit/src/scss/mixins-theme.scss";
+
+// 3. Your custom mixin overwrites.
+@mixin hook-navbar-nav-item() { 
+    font-family: 'Heebo', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 1.2em;
+    color: #FFF;
+}
+@mixin hook-navbar-nav-item-hover() {
+    background-color: $gt-gold;
+    color: #fff;
+}
+@mixin hook-navbar-nav-item-onclick() {
+    background-color: $gt-gold;
+    color: #fff;
+}
+@mixin hook-navbar-nav-item-active() {
+    background-color: $gt-gold;
+    color: #fff;
+}
+
+// 4. Import UIkit.
+@import "../node_modules/uikit/src/scss/uikit-theme.scss";
+
 /* You can add global styles to this file, and also import other style files */
 body {
     background-image: url("assets/img/background.jpg");

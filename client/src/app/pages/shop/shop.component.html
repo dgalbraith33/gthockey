@@ -1,14 +1,15 @@
 <div *ngFor="let item of items">
-  <a [routerLink]="['/shop', item.id]">
-    <div class="card row">
-      <div class="col-lg-3 shop-image">
-        <img src="{{ item.image }}" />
+  <a [routerLink]="['/shop', item.id]" class="uk-button-text">
+    <div class="uk-card uk-card-default uk-card-hover uk-grid-collapse uk-margin" uk-grid >
+      <div class="uk-card-media-left uk-cover-container uk-width-1-4@s">
+        <img src="{{ item.image }}" alt="" uk-cover>
+        <canvas width="600" height="400"></canvas>
       </div>
-      <div class="col-lg-6 shop-name">
-        {{ item.name }}
+      <div class="uk-card-body uk-width-1-2@s uk-padding-remove-bottom">
+        <h3 class="uk-card-title uk-text-center">{{ item.name }}</h3>
       </div>
-      <div class="col-lg-3 shop-price">
-        ${{ item.price }}
+      <div class="uk-card-body uk-width-1-4@s">
+        <h4 class="uk-card-title uk-text-center">${{ item.price }}</h4>
       </div>
     </div>
   </a>

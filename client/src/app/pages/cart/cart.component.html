@@ -1,3 +1,7 @@
-<app-cart-form></app-cart-form>
-<hr />
-<app-order-form></app-order-form>
+<h1 class="uk-header-divider">Shopping Cart</h1>
+<div *ngIf="cartService.empty()"><p>Add Items to your Cart to place an order!</p></div>
+<div *ngIf="!cartService.empty()">
+    <app-cart-form></app-cart-form>
+    <hr class="uk-divider-icon" />
+    <app-order-form></app-order-form>
+</div>
