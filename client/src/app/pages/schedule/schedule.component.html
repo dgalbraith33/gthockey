@@ -1,11 +1,47 @@
-<div class="schedule">
-    <div *ngFor="let game of games" class="schedule-item row game-{{game.venue}}">
-    	<div *ngIf="game.is_reported" class="col-lg-2 col-xs-6 col-sm-6">{{ game.short_result }}</div>
-    	<div *ngIf="game.is_reported" class="col-lg-3 col-xs-6 col-xs-6">{{ game.score_gt_final }}-{{ game.score_opp_final}}</div>
-      <div *ngIf="game.is_reported == false" class="schedule-date col-lg-3 col-xs-6 col-sm-6">{{ game.date | date:'shortDate' }}</div>
-      <div *ngIf="game.is_reported == false" class="schedule-time col-lg-2 col-xs-6 col-sm-6">{{ game.date | date:'shortTime' }}</div>
-      <div class="schedule-school col-lg-3 col-xs-12 col-sm-12">{{ game.opponent }}</div>
-      <div class="schedule-rink col-lg-4 col-xs-12 col-sm-12">@ {{ game.location }}</div>
-      <div class="clear"></div>
-    </div>
-</div>
+<ul class="uk-child-width-expand" uk-tab>
+  <li><a href="#">Upcoming</a></li>
+  <li><a href="#">Completed</a></li>
+</ul>
+
+<ul class="uk-switcher uk-margin">
+  <li>
+    <table class="uk-table uk-table-small uk-table-divider uk-table-hover">
+      <thead>
+          <tr>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Opponent</th>
+              <th>Location</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let game of upcomingGames">
+              <td>{{ game.date | date:'shortDate' }}</td>
+              <td>{{ game.date | date:'shortTime' }}</td>
+              <td>{{ game.opponent}}</td>
+              <td>{{ game.location }}</td>
+          </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table class="uk-table uk-table-small uk-table-divider uk-table-hover">
+      <thead>
+          <tr>
+              <th>Result</th>
+              <th>Score</th>
+              <th>Opponent</th>
+              <th class="uk-visible@m">Location</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let game of completedGames">
+              <td>{{ game.short_result }}</td>
+              <td>{{ game.score_gt_final }}-{{ game.score_opp_final}}</td>
+              <td>{{ game.opponent}}</td>
+              <td class="uk-visible@m">{{ game.location }}</td>
+          </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>

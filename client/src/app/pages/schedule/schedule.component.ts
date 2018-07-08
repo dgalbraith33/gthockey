@@ -10,7 +10,8 @@ import { GameMin } from '../../api/game';
 })
 export class ScheduleComponent implements OnInit {
 
-  games: GameMin[];
+  completedGames: GameMin[];
+  upcomingGames: GameMin[];
 
   constructor(private apiService: ApiService) { }
 
@@ -19,7 +20,10 @@ export class ScheduleComponent implements OnInit {
   }
 
   private getGames() {
-    this.apiService.getGames().subscribe(games => this.games = games);
+    this.apiService.getGames().subscribe(games => {
+      this.completedGames = games.filter(game => game.is_reported);
+      this.upcomingGames = games.filter(game => !game.is_reported);
+    });
   }
 
 }
