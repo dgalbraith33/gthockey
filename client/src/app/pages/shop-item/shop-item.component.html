@@ -9,4 +9,7 @@
     </div>
 </div>
 <hr class="uk-divider-icon">
-<app-item-form></app-item-form>
+<app-item-form *ngIf="item.in_stock"></app-item-form>
+<div class="out-of-stock" *ngIf="!item.in_stock">
+    This item is current out of stock, appologies for any inconvenience.
+</div>
