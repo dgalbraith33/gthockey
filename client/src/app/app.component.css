@@ -17,15 +17,6 @@
     padding: 35px;
 }
 
-#main, #sidebar {
-    padding: 10px;
-    padding-top:0;
-}
-
 #sidebar {
     border-left: 1px #CCC solid;
-}
-
-.hidden {
-    display: none;
 }
