@@ -1,11 +1,6 @@
-<div *ngIf="article" class="story" [ngStyle]="{'background-image': 'url(' + article.image + ')'}" style="background-repeat: no-repeat;">
-    <div class="story-content col-lg-8 col-sm-12 col-md-12">
-        <div class="story-title">{{ article.title }}</div>
-        <div class="story-date">{{ article.date }}</div>
-        <hr />
-        <div>
-            <p *ngFor="let paragraph of paragraphs" [innerHtml]="paragraph"></p>
-        </div>
-    </div>
-</div>
-
+<article *ngIf="article" class="uk-article">
+    <img src="{{ article.image }}" />
+    <h1 class="uk-article-title">{{ article.title }}</h1>
+    <p class="uk-article-meta">{{ article.date }}</p>
+    <p *ngFor="let paragraph of paragraphs" [innerHtml]="paragraph"></p>    
+</article>

@@ -1,20 +1,22 @@
-<table class="uk-table uk-table-small uk-table-divider uk-table-hover">
-    <thead>
-        <tr>
-            <th>#</th>
-            <th>Pos</th>
-            <th>Name</th>
-            <th class="uk-visible@m">Hometown</th>
-            <th class="uk-visible@m">School</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let player of players">
-            <td>{{ player.number }}</td>
-            <td>{{ player.position }}</td>
-            <td>{{ player.first_name }} {{ player.last_name }}</td>
-            <td class="uk-visible@m">{{ player.hometown }}</td>
-            <td class="uk-visible@m">{{ player.school }}</td>
-        </tr>
-    </tbody>
-</table>
+<div class="uk-overflow-auto">
+    <table class="uk-table uk-table-small uk-table-divider uk-table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Pos</th>
+                <th>Name</th>
+                <th class="uk-visible@m">Hometown</th>
+                <th class="uk-visible@m">School</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let player of players">
+                <td>{{ player.number }}</td>
+                <td>{{ player.position }}</td>
+                <td>{{ player.first_name }} {{ player.last_name }}</td>
+                <td class="uk-visible@m">{{ player.hometown }}</td>
+                <td class="uk-visible@m">{{ player.school }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

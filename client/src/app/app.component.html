@@ -1,4 +1,4 @@
-<div class="row">
+<div class="uk-container uk-padding-remove">
   <div class="header-img uk-visible@l"><img src="/assets/img/header.png" /></div>
 
   <nav class="uk-navbar-container uk-margin uk-visible@l" uk-navbar>
@@ -12,11 +12,11 @@
         <li routerLinkActive="uk-active"><a routerLink="/contact/">Contact</a></li>
         <li routerLinkActive="uk-active"><a routerLink="/involvement/">Get Involved</a></li>
         <li routerLinkActive="uk-active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/shop/">Shop</a></li>
-        <li routerLinkActive="uk-active"><a routerLink="/cart/">Cart</a></li>
+        <li *ngIf="!cartService.empty()" routerLinkActive="uk-active"><a routerLink="/cart/">Cart</a></li>
       </ul>
     </div>
   </nav>
-  <nav class="uk-navbar-container uk-hidden@l" uk-navbar="mode: click; dropbar: true; dropbar-mode: push">
+  <nav class="uk-navbar-container uk-hidden@l" uk-navbar="mode: click; dropbar: true; dropbar-mode: push; offset: 0">
     <div class="uk-navbar-left">
       <ul class="uk-navbar-nav">
         <li>
@@ -33,7 +33,7 @@
               <li routerLinkActive="uk-active"><a routerLink="/contact/">Contact</a></li>
               <li routerLinkActive="uk-active"><a routerLink="/involvement/">Get Involved</a></li>
               <li routerLinkActive="uk-active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/shop/">Shop</a></li>
-              <li routerLinkActive="uk-active"><a routerLink="/cart/">Cart</a></li>
+              <li *ngIf="!cartService.empty()" routerLinkActive="uk-active"><a routerLink="/cart/">Cart</a></li>
             </ul>
           </div>
         </li>
@@ -41,11 +41,11 @@
     </div>
   </nav>
 
-  <div id="content" class="row">
-    <div id="main" class="col-md-8 col-lg-9">
-        <router-outlet></router-outlet>
-    </div> <!--End col-md-8 columns -->
-    <div id="sidebar" class="col-md-4 col-lg-3 uk-visible@m">
+  <div id="content" class="uk-grid-collapse" uk-grid>
+    <div id="main" class="uk-width-expand uk-padding-small">
+      <router-outlet></router-outlet>
+    </div>
+    <div id="sidebar" class="uk-width-1-4 uk-visible@m uk-padding-small">
       <app-sidebar-record></app-sidebar-record>
       <app-sidebar-countdown></app-sidebar-countdown>
       <div class="sidebar-content">
@@ -55,10 +55,6 @@
         <div class="fb-page" data-href="https://www.facebook.com/pages/Georgia-Tech-Hockey/85852244494" data-width="330" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"></div>
         <div id="fb-root"></div>
       </div>
-      <div class="sidebar-content">
-        <!-- TODO Space for calendar -->
-      </div>
     </div>
-    <div class="clear"></div>
   </div>
-</div> <!-- End body row -->
+</div>

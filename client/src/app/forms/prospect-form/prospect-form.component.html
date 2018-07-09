@@ -4,7 +4,6 @@
 <form (ngSubmit)="submitForm()">
   <div class="uk-margin">
     <div class="uk-alert-danger" uk-alert *ngIf="errors.name">
-        <a class="uk-alert-close" uk-close></a>
         <p>{{ errors.name }}</p>
     </div>
     <input type="text" [(ngModel)]="model.name" name="name" required id="id_name" class="uk-input" placeholder="Full Name"/>
@@ -12,7 +11,6 @@
   
   <div class="uk-margin">
     <div class="uk-alert-danger" uk-alert *ngIf="errors.email">
-        <a class="uk-alert-close" uk-close></a>
         <p>{{ errors.email }}</p>
     </div>
     <input type="text" [(ngModel)]="model.email" name="email" required id="id_email" class="uk-input" placeholder="Email Address" />
@@ -20,7 +18,6 @@
   
   <div class="uk-margin">
     <div class="uk-alert-danger" uk-alert *ngIf="errors.phone">
-        <a class="uk-alert-close" uk-close></a>
         <p>{{ errors.phone }}</p>
     </div>
     <input type="text" [(ngModel)]="model.phone" name="phone" id="id_phone" class="uk-input" placeholder="Phone Number" />
@@ -28,7 +25,6 @@
   
   <div class="uk-margin">
     <div class="uk-alert-danger" uk-alert *ngIf="errors.birth">
-        <a class="uk-alert-close" uk-close></a>
         <p>{{ errors.birh }}</p>
     </div>    
     <input type="text" [(ngModel)]="model.birth" name="birth" id="id_birth" class="uk-input" placeholder="Date of Birth" />
@@ -36,7 +32,6 @@
   
   <div class="uk-margin">
     <div class="uk-alert-danger" uk-alert *ngIf="errors.hometown">
-        <a class="uk-alert-close" uk-close></a>
         <p>{{ errors.hometown }}</p>
     </div>
     <input type="text" [(ngModel)]="model.hometown" name="hometown" id="id_hometown" class="uk-input" placeholder="Hometown" />
@@ -44,7 +39,6 @@
 
   <div class="uk-margin">
     <div class="uk-alert-danger" uk-alert *ngIf="errors.status">
-        <a class="uk-alert-close" uk-close></a>
         <p>{{ errors.status }}</p>
     </div>
     <select [(ngModel)]="model.status" name="status" id="id_status" class="uk-select">
@@ -61,7 +55,6 @@
 
   <div class="uk-margin">
     <div class="uk-alert-danger" uk-alert *ngIf="errors.experience">
-        <a class="uk-alert-close" uk-close></a>
         <p>{{ errors.experience }}</p>
     </div>    
     <input type="text" [(ngModel)]="model.experience" name="experience" id="id_experience" class="uk-input" placeholder="Experience Level" />
@@ -69,7 +62,6 @@
  
   <div class="uk-margin">
     <div class="uk-alert-danger" uk-alert *ngIf="errors.position">
-        <a class="uk-alert-close" uk-close></a>
         <p>{{ errors.position }}</p>
     </div>
     <select [(ngModel)]="model.position" name="position" id="id_position" class="uk-select">
@@ -82,7 +74,6 @@
 
   <div class="uk-margin">
     <div class="uk-alert-danger" uk-alert *ngIf="errors.comments">
-        <a class="uk-alert-close" uk-close></a>
         <p>{{ errors.comments }}</p>
     </div>
     <textarea [(ngModel)]="model.comments" name="comments" rows="10" id="id_comments" class="uk-textarea" placeholder="Comments"></textarea>
@@ -90,7 +81,6 @@
 
   <div class="uk-margin">
     <div class="uk-alert-danger" uk-alert *ngIf="errors.captcha">
-        <a class="uk-alert-close" uk-close></a>
         <p>{{ errors.captcha }}</p>
     </div>
     <re-captcha [(ngModel)]="model.captcha" name="captcha"  siteKey="{{ recaptchaKey }}"></re-captcha>
