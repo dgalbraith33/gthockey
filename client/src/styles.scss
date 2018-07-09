@@ -33,6 +33,10 @@ $navbar-nav-item-color: #fff;
     color: #fff;
 }
 
+@mixin hook-navbar-dropbar() {
+    background: none;
+}
+
 // 4. Import UIkit.
 @import "../node_modules/uikit/src/scss/uikit-theme.scss";
 
