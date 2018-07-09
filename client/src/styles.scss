@@ -37,6 +37,20 @@ $navbar-nav-item-color: #fff;
     background: none;
 }
 
+@mixin hook-dropdown() {
+    background-color: $gt-navy;
+    width: 100%;
+}
+
+@mixin hook-navbar-dropdown-nav-item() {
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.2em;
+}
+
+@mixin hook-navbar-dropdown-nav-item-active() {
+    color: $gt-gold;
+}
 // 4. Import UIkit.
 @import "../node_modules/uikit/src/scss/uikit-theme.scss";
 
