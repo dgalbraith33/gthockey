@@ -42,8 +42,14 @@ $navbar-nav-item-color: #fff;
 
 // Old Global Styles
 body {
-    background-image: url("assets/img/background.jpg");
     font-family: 'OpenSans', Helvetica, sans-serif !important;
+}
+
+@media (min-width: $breakpoint-medium) {
+    body {
+        background-image: url("assets/img/background.jpg");
+    }
+  
 }
 
 .sidebar-content {
