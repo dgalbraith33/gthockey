@@ -1,17 +1,19 @@
-<div class="uk-grid-small" *ngIf="item" uk-grid>
-    <div class="uk-width-1">
-        <h1 class="uk-text-center uk-margin-remove-bottom">{{ item.name }}</h1>
-        <h2 class="uk-heading-line uk-text-center uk-margin-small-top"><span>${{ item.price }}</span></h2>
+<div *ngIf="item">
+    <div class="uk-grid-small" uk-grid>
+        <div class="uk-width-1">
+            <h1 class="uk-text-center uk-margin-remove-bottom">{{ item.name }}</h1>
+            <h2 class="uk-heading-line uk-text-center uk-margin-small-top"><span>${{ item.price }}</span></h2>
+        </div>
+        <div class="uk-width-1-3@m">
+            <app-carousel [carouselItems]="imageCarousel"></app-carousel>
+        </div>
+        <div class="uk-width-2-3@m">
+            <p *ngFor="let paragraph of paragraphs(item.description)" [innerHTML]="paragraph"></p>
+        </div>
     </div>
-    <div class="uk-width-1-3@m">
-        <app-carousel [carouselItems]="imageCarousel"></app-carousel>
+    <hr class="uk-divider-icon">
+    <app-item-form *ngIf="item.in_stock"></app-item-form>
+    <div class="out-of-stock" *ngIf="!item.in_stock">
+        This item is current out of stock, appologies for any inconvenience.
     </div>
-    <div class="uk-width-2-3@m">
-        <p *ngFor="let paragraph of paragraphs(item.description)" [innerHTML]="paragraph"></p>
-    </div>
-</div>
-<hr class="uk-divider-icon">
-<app-item-form *ngIf="item.in_stock"></app-item-form>
-<div class="out-of-stock" *ngIf="!item.in_stock">
-    This item is current out of stock, appologies for any inconvenience.
 </div>
