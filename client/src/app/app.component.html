@@ -1,4 +1,4 @@
-<div class="row">
+<div class="uk-container">
   <div class="header-img uk-visible@l"><img src="/assets/img/header.png" /></div>
 
   <nav class="uk-navbar-container uk-margin uk-visible@l" uk-navbar>
@@ -41,11 +41,11 @@
     </div>
   </nav>
 
-  <div id="content" class="row">
-    <div id="main" class="col-md-8 col-lg-9">
-        <router-outlet></router-outlet>
-    </div> <!--End col-md-8 columns -->
-    <div id="sidebar" class="col-md-4 col-lg-3 uk-visible@m">
+  <div id="content" class="uk-grid-collapse" uk-grid>
+    <div id="main" class="uk-width-expand">
+      <router-outlet></router-outlet>
+    </div>
+    <div id="sidebar" class="uk-width-1-4 uk-visible@m">
       <app-sidebar-record></app-sidebar-record>
       <app-sidebar-countdown></app-sidebar-countdown>
       <div class="sidebar-content">
@@ -55,10 +55,6 @@
         <div class="fb-page" data-href="https://www.facebook.com/pages/Georgia-Tech-Hockey/85852244494" data-width="330" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"></div>
         <div id="fb-root"></div>
       </div>
-      <div class="sidebar-content">
-        <!-- TODO Space for calendar -->
-      </div>
     </div>
-    <div class="clear"></div>
   </div>
-</div> <!-- End body row -->
+</div>
