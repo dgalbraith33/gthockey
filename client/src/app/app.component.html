@@ -12,7 +12,7 @@
         <li routerLinkActive="uk-active"><a routerLink="/contact/">Contact</a></li>
         <li routerLinkActive="uk-active"><a routerLink="/involvement/">Get Involved</a></li>
         <li routerLinkActive="uk-active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/shop/">Shop</a></li>
-        <li routerLinkActive="uk-active"><a routerLink="/cart/">Cart</a></li>
+        <li *ngIf="!cartService.empty()" routerLinkActive="uk-active"><a routerLink="/cart/">Cart</a></li>
       </ul>
     </div>
   </nav>
