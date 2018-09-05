@@ -58,7 +58,7 @@ class CurrentSeason(APIView):
 
 class ArticleList(APIView):
     def get(self, request):
-        articles = NewsStory.objects.order_by('-date')[:5]
+        articles = NewsStory.objects.order_by('-date')
         serializer = ArticleSerializer(articles, many=True)
         return JsonResponse(serializer.data, safe=False)
 
