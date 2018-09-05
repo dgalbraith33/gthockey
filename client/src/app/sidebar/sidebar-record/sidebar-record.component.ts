@@ -16,6 +16,7 @@ export class SidebarRecordComponent implements OnInit {
   private ties: number;
 
   record: string;
+  season: string;
 
   constructor(private apiService: ApiService) { }
 
@@ -28,6 +29,7 @@ export class SidebarRecordComponent implements OnInit {
         this.setRecord(games);
         this.composeRecord();
     });
+    this.apiService.getCurrentSeason().subscribe(resp => this.season = resp.name);
   }
 
   private setRecord(games: GameMin[]) {

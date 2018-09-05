@@ -7,8 +7,7 @@ from rest_framework.views import APIView
 
 from .forms import ContactForm, ProspectForm, EmailListForm, OrderForm
 from .models import Game, Season, Player, NewsStory, Board, Coach, Email, ShopItem
-from .serializers import PlayerSerializer, GameSerializer, GameMinSerializer, ArticleSerializer, \
-    BoardSerializer, CoachSerializer, ShopItemListSerializer, ShopItemSerializer
+from .serializers import *
 
 
 class PlayerList(APIView):
@@ -48,6 +47,12 @@ class GameDetail(APIView):
         serializer = GameSerializer(game)
         return JsonResponse(serializer.data, safe=False)
 
+
+class CurrentSeason(APIView):
+    def get(self, request):
+        season = Season.get_current()
+        serializer = SeasonSerializer(season)
+        return JsonResponse(serializer.data, safe=False)
 
 class ArticleList(APIView):
     def get(self, request):

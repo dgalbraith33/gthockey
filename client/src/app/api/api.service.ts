@@ -15,6 +15,7 @@ import { Order } from './order';
 import { Player } from './player';
 import { ProspectForm } from './prospect';
 import { ShopItem } from './shop-item';
+import { Season } from './season';
 
 @Injectable()
 export class ApiService {
@@ -25,6 +26,7 @@ export class ApiService {
   private readonly rosterUrl: string;
   private readonly articleUrl: string;
   private readonly gameUrl: string;
+  private readonly seasonUrl: string;
   private readonly boardUrl: string;
   private readonly coachUrl: string;
   private readonly shopUrl: string;
@@ -43,6 +45,7 @@ export class ApiService {
     this.rosterUrl = this.apiEndpoint + 'players/';
     this.articleUrl = this.apiEndpoint + 'articles/';
     this.gameUrl = this.apiEndpoint +  'games/';
+    this.seasonUrl = this.apiEndpoint + 'seasons/current/';
     this.boardUrl = this.apiEndpoint + 'board/';
     this.coachUrl = this.apiEndpoint + 'coaches/';
     this.shopUrl = this.apiEndpoint + 'shop/';
@@ -71,6 +74,10 @@ export class ApiService {
 
   getGame(id: number): Observable<Game> {
     return this.getFromCache(this.gameUrl + id + '/');
+  }
+
+  getCurrentSeason(): Observable<Season> {
+    return this.getFromCache(this.seasonUrl);
   }
 
   getBoard(): Observable<Board[]> {
