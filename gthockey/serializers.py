@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from gthockey.models import Player, Game, NewsStory, Board, Coach, ShopItem
+from gthockey.models import Player, Game, NewsStory, Board, Coach, ShopItem, Season
 
 
 class PlayerSerializer(serializers.ModelSerializer):
@@ -59,3 +59,9 @@ class ShopItemListSerializer(serializers.ModelSerializer):
     class Meta:
         model = ShopItem
         fields = ('id', 'name', 'price', 'description', 'image')
+
+
+class SeasonSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Season
+        fields = ('id', 'name', 'year')
