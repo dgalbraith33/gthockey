@@ -1,11 +1,9 @@
+import argparse
 from bs4 import BeautifulSoup
-import requests
 from datetime import datetime as dt
+import requests
 
 URL_BASE = "http://achahockey.org/stats/schedule/team/508789"
-SEASON_ID = "16169"
-YEAR = 2016
-
 GT_NAME = 'M3 Georgia Institute of Technology'
 
 
@@ -59,13 +57,17 @@ def build_result_table(page_bs, year):
     return [parse_row_dict(tr, year) for tr in page_bs.find('tbody').find_all('tr')]
 
 
-def main():
-    resp = get_stats_page(SEASON_ID)
+def main(args):
+    resp = get_stats_page(args.season)
     soup = BeautifulSoup(resp.text, 'html.parser')
-    result_table = build_result_table(soup, YEAR)
+    result_table = build_result_table(soup, args.year)
     for result in result_table:
         print(result)
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--season", type=int, required=True, default=16169)
+    parser.add_argument("--year", type=int, required=True)
+    args = parser.parse_args()
+    main(args)
