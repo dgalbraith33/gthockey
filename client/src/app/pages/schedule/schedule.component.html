@@ -1,10 +1,10 @@
 <ul class="uk-child-width-expand" uk-tab>
-  <li *ngIf="upcomingGames"><a href="#">Upcoming</a></li>
-  <li *ngIf="completedGames"><a href="#">Completed</a></li>
+  <li *ngIf="hasUpcomingGames"><a href="#">Upcoming</a></li>
+  <li *ngIf="hasCompletedGames"><a href="#">Completed</a></li>
 </ul>
 
 <ul class="uk-switcher uk-margin">
-  <li *ngIf="upcomingGames" class="uk-overflow-auto">
+  <li *ngIf="hasUpcomingGames" class="uk-overflow-auto">
     <table class="uk-table uk-table-small uk-table-divider uk-table-hover">
       <thead>
           <tr>
@@ -24,7 +24,7 @@
       </tbody>
     </table>
   </li>
-  <li *ngIf="completedGames" class="uk-overflow-auto">
+  <li *ngIf="hasCompletedGames" class="uk-overflow-auto">
     <table class="uk-table uk-table-small uk-table-divider uk-table-hover">
       <thead>
           <tr>

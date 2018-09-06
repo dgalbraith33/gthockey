@@ -13,6 +13,9 @@ export class ScheduleComponent implements OnInit {
   completedGames: GameMin[];
   upcomingGames: GameMin[];
 
+  hasCompletedGames = false;
+  hasUpcomingGames = false;
+
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
@@ -22,7 +25,9 @@ export class ScheduleComponent implements OnInit {
   private getGames() {
     this.apiService.getGames().subscribe(games => {
       this.completedGames = games.filter(game => game.is_reported);
+      this.hasCompletedGames = this.completedGames.length > 0;
       this.upcomingGames = games.filter(game => !game.is_reported);
+      this.hasUpcomingGames = this.upcomingGames.length > 0;
     });
   }
 
