@@ -35,9 +35,9 @@ export class ScheduleComponent implements OnInit {
     this.hasCompletedGames = false;
     this.hasUpcomingGames = false;
     this.apiService.getGames(params).subscribe(games => {
-      this.completedGames = games.filter(game => game.is_reported);
+      this.completedGames = games.filter(game => game.date < new Date());
       this.hasCompletedGames = this.completedGames.length > 0;
-      this.upcomingGames = games.filter(game => !game.is_reported);
+      this.upcomingGames = games.filter(game => game.date >= new Date());
       this.hasUpcomingGames = this.upcomingGames.length > 0;
     });
   }
