@@ -211,6 +211,10 @@ class NewsStory(models.Model):
 
         return formatted
 
+    def teaser(self):
+        first_sentence = self.content.find('.')
+        return self.content[:first_sentence+1]
+
     def get_absolute_url(self):
         return "/news/%i/" % self.id
 

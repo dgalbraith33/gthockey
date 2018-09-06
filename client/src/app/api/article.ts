@@ -4,4 +4,5 @@ export class Article {
   date: Date;
   image: string;
   content: string;
+  teaser: string;
 }
