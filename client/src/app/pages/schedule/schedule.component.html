@@ -1,47 +1,60 @@
-<ul class="uk-child-width-expand" uk-tab>
-  <li *ngIf="hasUpcomingGames"><a href="#">Upcoming</a></li>
-  <li *ngIf="hasCompletedGames"><a href="#">Completed</a></li>
-</ul>
+<div class="uk-margin">
+    <select class="uk-select" (change)="getGames($event.target.value)">
+        <option *ngFor="let season of seasons" value="{{season.id}}">{{ season.name }}</option>
+    </select>
+</div>
 
-<ul class="uk-switcher uk-margin">
-  <li *ngIf="hasUpcomingGames" class="uk-overflow-auto">
-    <table class="uk-table uk-table-small uk-table-divider uk-table-hover">
-      <thead>
-          <tr>
-              <th>Date</th>
-              <th>Time</th>
-              <th>Opponent</th>
-              <th>Location</th>
-          </tr>
-      </thead>
-      <tbody>
-          <tr *ngFor="let game of upcomingGames">
-              <td>{{ game.date | date:'shortDate' }}</td>
-              <td>{{ game.date | date:'shortTime' }}</td>
-              <td>{{ game.opponent}}</td>
-              <td>{{ game.location }}</td>
-          </tr>
-      </tbody>
-    </table>
-  </li>
-  <li *ngIf="hasCompletedGames" class="uk-overflow-auto">
-    <table class="uk-table uk-table-small uk-table-divider uk-table-hover">
-      <thead>
-          <tr>
-              <th>Result</th>
-              <th>Score</th>
-              <th>Opponent</th>
-              <th class="uk-visible@m">Location</th>
-          </tr>
-      </thead>
-      <tbody>
-          <tr *ngFor="let game of completedGames">
-              <td>{{ game.short_result }}</td>
-              <td>{{ game.score_gt_final }}-{{ game.score_opp_final}}</td>
-              <td>{{ game.opponent}}</td>
-              <td class="uk-visible@m">{{ game.location }}</td>
-          </tr>
-      </tbody>
-    </table>
-  </li>
-</ul>
+
+
+<div *ngIf="!hasUpcomingGames && !hasCompletedGames" class="uk-text-center">
+    <div uk-spinner="ratio: 3"></div>
+</div>
+
+<div *ngIf="hasUpcomingGames || hasCompletedGames">
+    <ul class="uk-child-width-expand" uk-tab>
+        <li *ngIf="hasUpcomingGames"><a href="#">Upcoming</a></li>
+        <li *ngIf="hasCompletedGames"><a href="#">Completed</a></li>
+    </ul>
+    <ul class="uk-switcher uk-margin">
+        <li *ngIf="hasUpcomingGames" class="uk-overflow-auto">
+            <table class="uk-table uk-table-small uk-table-divider uk-table-hover">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Opponent</th>
+                    <th>Location</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let game of upcomingGames">
+                    <td>{{ game.date | date:'shortDate' }}</td>
+                    <td>{{ game.date | date:'shortTime' }}</td>
+                    <td>{{ game.opponent}}</td>
+                    <td>{{ game.location }}</td>
+                </tr>
+            </tbody>
+            </table>
+        </li>
+        <li *ngIf="hasCompletedGames" class="uk-overflow-auto">
+            <table class="uk-table uk-table-small uk-table-divider uk-table-hover">
+            <thead>
+                <tr>
+                    <th>Result</th>
+                    <th>Score</th>
+                    <th>Opponent</th>
+                    <th class="uk-visible@m">Location</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let game of completedGames">
+                    <td>{{ game.short_result }}</td>
+                    <td>{{ game.score_gt_final }}-{{ game.score_opp_final}}</td>
+                    <td>{{ game.opponent}}</td>
+                    <td class="uk-visible@m">{{ game.location }}</td>
+                </tr>
+            </tbody>
+            </table>
+        </li>
+    </ul>
+</div>
