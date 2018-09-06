@@ -1,6 +1,7 @@
 import argparse
 from bs4 import BeautifulSoup
 from datetime import datetime as dt
+from django.core.management.base import BaseCommand, CommandError
 import requests
 
 URL_BASE = "http://achahockey.org/stats/schedule/team/508789"
@@ -57,17 +58,16 @@ def build_result_table(page_bs, year):
     return [parse_row_dict(tr, year) for tr in page_bs.find('tbody').find_all('tr')]
 
 
-def main(args):
-    resp = get_stats_page(args.season)
-    soup = BeautifulSoup(resp.text, 'html.parser')
-    result_table = build_result_table(soup, args.year)
-    for result in result_table:
-        print(result)
+class Command(BaseCommand):
+    help = 'Pulls results from acha website'
 
+    def add_arguments(self, parser):
+        parser.add_argument("--season", type=int, required=True, default=16169)
+        parser.add_argument("--year", type=int, required=True)
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--season", type=int, required=True, default=16169)
-    parser.add_argument("--year", type=int, required=True)
-    args = parser.parse_args()
-    main(args)
+    def handle(self, *args, **options):
+        resp = get_stats_page(options['season'])
+        soup = BeautifulSoup(resp.text, 'html.parser')
+        result_table = build_result_table(soup, options['year'])
+        for result in result_table:
+            self.stdout.write(str(result))
