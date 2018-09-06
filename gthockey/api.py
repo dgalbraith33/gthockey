@@ -21,7 +21,9 @@ class PlayerList(APIView):
 class GameList(APIView):
     def get(self, request):
         params = request.query_params
-        season = Season.get_current()
+
+        season_id = int(params.get('season', Season.get_current().id))
+        season = Season.objects.get(pk=season_id)
 
         min_date_str = params.get('date_from', '2000-01-01')
         max_date_str = params.get('date_to', '2099-01-01')
@@ -46,6 +48,13 @@ class GameDetail(APIView):
     def get(self, request, id):
         game = Game.objects.get(pk=id)
         serializer = GameSerializer(game)
+        return JsonResponse(serializer.data, safe=False)
+
+
+class SeasonList(APIView):
+    def get(self, request):
+        seasons = Season.objects.all()
+        serializer = SeasonSerializer(seasons, many=True)
         return JsonResponse(serializer.data, safe=False)
 
 
