@@ -34,8 +34,8 @@
 
 
     <ul class="uk-pagination uk-flex-center uk-text-large" uk-margin>
-        <li class="uk-margin-auto-right" [ngClass]="{'uk-disabled':currentPage <= 1}"><a (click)="updatePage(currentPage-1)"><span uk-pagination-previous></span> Previous</a></li>
+        <li class="uk-margin-auto-right" [ngClass]="{'uk-disabled':currentPage <= 1}"><a href="#nav-anchor" (click)="updatePage(currentPage-1)"><span uk-pagination-previous></span> Previous</a></li>
         <li *ngFor="let page of pageNumbers" class="uk-visible@m" [ngClass]="{'uk-active':currentPage === page}"><a href="#nav-anchor" (click)="updatePage(page)">{{ page }}</a></li>
-        <li class="uk-margin-auto-left" [ngClass]="{'uk-disabled':currentPage > numPages}"><a (click)="updatePage(currentPage+1)">Next <span uk-pagination-next></span></a></li>
+        <li class="uk-margin-auto-left" [ngClass]="{'uk-disabled':currentPage > numPages}"><a href="#nav-anchor" (click)="updatePage(currentPage+1)">Next <span uk-pagination-next></span></a></li>
     </ul>
 </div>
