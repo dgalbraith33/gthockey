@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 from datetime import datetime as dt
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 import requests
 
 from gthockey.models import Game, Season
@@ -70,6 +70,7 @@ def equal(game, result):
     return (game.score_opp_final == int(result['score_opp']) and
             game.score_gt_final == int(result['score_gt']))
 
+
 class Command(BaseCommand):
     help = 'Pulls results from acha website'
 
@@ -113,4 +114,3 @@ class Command(BaseCommand):
         games = get_games_from_season(season)
         for result in result_table:
             self._match_result_to_game(result, games, options['dry_run'], options['overwrite'])
-
