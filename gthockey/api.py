@@ -49,6 +49,13 @@ class GameDetail(APIView):
         return JsonResponse(serializer.data, safe=False)
 
 
+class SeasonList(APIView):
+    def get(self, request):
+        seasons = Season.objects.all()
+        serializer = SeasonSerializer(seasons, many=True)
+        return JsonResponse(serializer.data, safe=False)
+
+
 class CurrentSeason(APIView):
     def get(self, request):
         season = Season.get_current()
