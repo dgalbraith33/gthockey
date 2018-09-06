@@ -30,11 +30,7 @@ export class ScheduleComponent implements OnInit {
     this.apiService.getSeasons().subscribe(seasons => this.seasons = seasons.reverse());
   }
 
-  private onChange(param: any) {
-    console.log(param);
-  }
-
-  private getGames(season?: number) {
+  getGames(season?: number) {
     const params = season ? {season} : {};
     this.hasCompletedGames = false;
     this.hasUpcomingGames = false;
