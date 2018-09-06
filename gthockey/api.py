@@ -21,7 +21,9 @@ class PlayerList(APIView):
 class GameList(APIView):
     def get(self, request):
         params = request.query_params
-        season = Season.get_current()
+
+        season_id = int(params.get('season', Season.get_current().id))
+        season = Season.objects.get(pk=season_id)
 
         min_date_str = params.get('date_from', '2000-01-01')
         max_date_str = params.get('date_to', '2099-01-01')
