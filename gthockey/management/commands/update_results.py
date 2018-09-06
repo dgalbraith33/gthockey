@@ -1,11 +1,12 @@
-import argparse
 from bs4 import BeautifulSoup
 from datetime import datetime as dt
 from django.core.management.base import BaseCommand, CommandError
 import requests
 
+from gthockey.models import Game, Season
+
 URL_BASE = "http://achahockey.org/stats/schedule/team/508789"
-GT_NAME = 'M3 Georgia Institute of Technology'
+GT_NAME = 'Georgia Institute of Tech'
 
 
 def strip(str_or_none):
@@ -24,13 +25,13 @@ def get_stats_page(season_id):
 
 def clean_dict(row, year):
     cd = {}
-    if row['home'] == GT_NAME:
+    if GT_NAME in row['home']:
         cd['score_gt'] = row['home_score']
-        cd['opp'] = row['away'][3:]
+        cd['opp'] = row['away']
         cd['score_opp'] = row['away_score']
     else:
         cd['score_gt'] = row['away_score']
-        cd['opp'] = row['home'][3:]
+        cd['opp'] = row['home']
         cd['score_opp'] = row['home_score']
     datestr = row['date'][5:]
 
@@ -46,6 +47,8 @@ def clean_dict(row, year):
 def parse_row_dict(tr, year):
     row = {}
     tds = tr.find_all('td')
+    if tds[8].string.strip() != "FINAL":
+        return None
     row['away'] = strip(tds[1].a.string)
     row['away_score'] = strip(tds[2].string)
     row['home'] = strip(tds[3].a.string)
@@ -55,19 +58,59 @@ def parse_row_dict(tr, year):
 
 
 def build_result_table(page_bs, year):
-    return [parse_row_dict(tr, year) for tr in page_bs.find('tbody').find_all('tr')]
+    results = [parse_row_dict(tr, year) for tr in page_bs.find('tbody').find_all('tr')]
+    return filter(lambda d: d is not None, results)
 
+
+def get_games_from_season(season):
+    return Game.objects.filter(season=season)
+
+
+def equal(game, result):
+    return (game.score_opp_final == int(result['score_opp']) and
+            game.score_gt_final == int(result['score_gt']))
 
 class Command(BaseCommand):
     help = 'Pulls results from acha website'
 
+    def _match_result_to_game(self, result, games, dry_run, overwrite):
+        matched = games.filter(date=result['date'])
+        if matched and len(matched) > 0:
+            game = matched[0]
+            message = ("Matched: " + str(result['date']) + " : " + result['opp'] + "==" +
+                       str(game.opponent))
+            self.stdout.write(self.style.SUCCESS(message))
+
+            if not equal(game, result):
+                if game.is_reported and not overwrite:
+                    warn = "DB(gt={db_gt}, opp={db_opp}) ACHA(gt={gt}, opp={opp})"
+                    warn = warn.format(db_gt=game.score_gt_final, db_opp=game.score_opp_final,
+                                       gt=result['score_gt'], opp=result['score_opp'])
+                    self.stdout.write(self.style.WARNING(warn))
+                else:
+                    if not dry_run:
+                        game.score_opp_final = int(result['score_opp'])
+                        game.score_gt_final = int(result['score_gt'])
+                        game.save()
+
+                    success = "----Updated(gt={gt}, opp={opp})".format(gt=result['score_gt'],
+                                                                       opp=result['score_opp'])
+                    self.stdout.write(self.style.SUCCESS(success))
+        else:
+            self.stderr.write("Couldn't Match " + str(result['date']) + " : " + result['opp'])
+
     def add_arguments(self, parser):
-        parser.add_argument("--season", type=int, required=True, default=16169)
-        parser.add_argument("--year", type=int, required=True)
+        parser.add_argument("--acha_season", type=int, required=True)
+        parser.add_argument("--db_season", type=int, required=True)
+        parser.add_argument("--dry_run", dest='dry_run', action='store_true', default=False)
+        parser.add_argument("--overwrite", dest='overwrite', action='store_true', default=False)
 
     def handle(self, *args, **options):
-        resp = get_stats_page(options['season'])
+        season = Season.objects.get(pk=options['db_season'])
+        resp = get_stats_page(options['acha_season'])
         soup = BeautifulSoup(resp.text, 'html.parser')
-        result_table = build_result_table(soup, options['year'])
+        result_table = build_result_table(soup, season.year)
+        games = get_games_from_season(season)
         for result in result_table:
-            self.stdout.write(str(result))
+            self._match_result_to_game(result, games, options['dry_run'], options['overwrite'])
+
